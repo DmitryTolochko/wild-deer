@@ -14,12 +14,12 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         rb.rotation = 0;
-        if (Input.GetKey(KeyCode.Mouse0))
+        /*if (Input.GetKey(KeyCode.Mouse0))
         {
             cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             newPos = new Vector2(cursorPosition.x, cursorPosition.y);
             isMoving = true;
-        }
+        }*/
 
         if (isMoving)
         {

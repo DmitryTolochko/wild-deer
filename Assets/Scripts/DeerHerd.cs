@@ -5,12 +5,11 @@ using System.Linq;
 
 public class DeerHerd : MonoBehaviour
 {
-    public List<GameObject> deers = new List<GameObject>();
+    public List<GameObject> deers = new();
     public GameObject deer;
 
     void Start()
     {
-        deers.Add(Instantiate(deer, new Vector3(0, 0, 0), Quaternion.identity));
     }
 
     void Update()
