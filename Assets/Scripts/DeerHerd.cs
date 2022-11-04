@@ -5,20 +5,21 @@ using System.Linq;
 
 public class DeerHerd : MonoBehaviour
 {
-    public List<GameObject> deers = new();
-    public GameObject deer;
-
-    void Start()
+    private IEnumerator GenerateRoutine(PoolObjectType type)
     {
+        GameObject ob = PoolManager.Instance.GetPoolObject(type);
+
+        // ob.transform.position = new Vector2(Random.Range(-2f, 2f), Random.Range(-3f, 3f));
+        ob.gameObject.SetActive(true);
+        
+        while (ob.tag != "Dead") 
+            yield return new WaitForSecondsRealtime(0);
+        PoolManager.Instance.CoolObject(ob, type);
+
     }
 
-    void Update()
+    private void Start() 
     {
-        if (GameObject.FindWithTag("Dead") != null)
-            GameObject.Destroy(GameObject.FindWithTag("Dead"));
-    }
-    private void OnMouseDown() 
-    {
-        Instantiate(deer, new Vector3(0, 0, 0), Quaternion.identity);
+        StartCoroutine(GenerateRoutine(PoolObjectType.Deer));
     }
 }

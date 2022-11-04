@@ -7,7 +7,7 @@ using UnityEngine;
 using Timer = Unity.VisualScripting.Timer;
 
 
-enum Age 
+public enum Age 
 {
     Newborn,
     Child,
@@ -16,39 +16,37 @@ enum Age
     Dead
 }
 
+public enum Gender
+{
+    Female,
+    Male
+}
+
 public class Deer : MonoBehaviour
 {
-    // public Deer()
-    // {
-    //     transform.position = new Vector3(random.Next(-1, 2), random.Next(-1, 2), 0);
-    //     StartCoroutine(GetOlder());
-    //     rb = GetComponent<Rigidbody2D>();
-    // }
-
     private const int speed = 2;
     private System.Random random = new System.Random();
-    public const int a = 7;
-    public const int b = 4;
-    public Rigidbody2D rb;
+    private bool isSearchingNewTarget = false;
 
-    private float x = 0;
-    private float y = 0;
-
-    private Age currentAge;
+    public Rigidbody2D Rb;
+    public Transform Target;   
+    public Collider2D GameField; 
     public bool IsIll = false;
+    public Age CurrentAge;
+    public Gender DeerGender;
 
-    private DateTime time = new DateTime();
+    public GameObject CurrentTarget;
 
     void Start()
     {
         transform.position = new Vector3(random.Next(-1, 2), random.Next(-1, 2), 0);
         StartCoroutine(GetOlder());
-        while (x == 0 & y == 0)
-        {
-            x = random.Next(-1, 2);
-            y = random.Next(-1, 2);
-        }
-        rb = GetComponent<Rigidbody2D>();
+        GetTargetPosition(0);
+        Rb = GetComponent<Rigidbody2D>();
+        if (random.Next(0, 1) == 0)
+            DeerGender = Gender.Female;
+        else
+            DeerGender = Gender.Male;
     }
 
     void Update()
@@ -59,53 +57,72 @@ public class Deer : MonoBehaviour
             //change sprite
             StartCoroutine(Infection());
         }
-        if (currentAge == Age.Dead)
+        if (CurrentAge == Age.Dead)
             gameObject.tag = "Dead";
     }
 
     private IEnumerator GetOlder()
     {
-        currentAge = Age.Newborn;
+        CurrentAge = Age.Newborn;
         print("Родился");
         yield return new WaitForSecondsRealtime(10);
-        currentAge = Age.Child;
+        CurrentAge = Age.Child;
         print("Повзрослел");
         yield return new WaitForSecondsRealtime(10);
-        currentAge = Age.Adult;
+        CurrentAge = Age.Adult;
         print("Повзрослел");
         yield return new WaitForSecondsRealtime(10);
-        currentAge = Age.Elder;
+        CurrentAge = Age.Elder;
         print("Повзрослел");
         yield return new WaitForSecondsRealtime(10);
-        currentAge = Age.Dead;
+        CurrentAge = Age.Dead;
         print("Умер");
     }
 
     private IEnumerator Infection()
     {
         yield return new WaitForSecondsRealtime(10);
-        currentAge = Age.Dead;
+        CurrentAge = Age.Dead;
         print("Умер от заражения");
         StopCoroutine(GetOlder());
         StopCoroutine(Infection());
         IsIll = false;
     }
 
-    private bool IsInBounds(Vector3 position)
-    {
-        return Math.Pow(position.x, 2) / (a * a) + Math.Pow(position.y, 2) / (b * b) <= 1;
-    }
-
     private void Move()
     {
-        if (!IsInBounds(transform.position))
+        float distanceToTarget = Vector3.Distance(transform.localPosition, Target.localPosition);
+        if (distanceToTarget < 0.2f && !isSearchingNewTarget)
         {
-            while (!IsInBounds(transform.position += new Vector3(x, y, 0) * speed * Time.deltaTime))
-            {
-                x = random.Next(-1, 2);
-                y = random.Next(-1, 2);
-            }
+            StartCoroutine(GetTargetPosition(1));
         }
-        transform.position += new Vector3(x, y, 0) * speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, Target.localPosition, speed * Time.deltaTime);
+    }
+
+    private IEnumerator GetTargetPosition(int time)
+    {
+        isSearchingNewTarget = true;
+        yield return new WaitForSecondsRealtime(UnityEngine.Random.value * time);
+
+        var point = new Vector3(UnityEngine.Random.value * 8-4, UnityEngine.Random.value * 8-4, 0);
+        while (!GameField.bounds.Contains(point))
+        {
+            point = new Vector3(UnityEngine.Random.value * 8-4, UnityEngine.Random.value * 8-4, 0);
+        }
+        Target.localPosition = point;
+        isSearchingNewTarget = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Deer") || other.CompareTag("Dead"))
+        {
+            StartCoroutine(GetTargetPosition(0));
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        print("Ура");
     }
 }
