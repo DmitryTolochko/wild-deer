@@ -15,12 +15,13 @@ public class InventoryShell : MonoBehaviour
 
     void Start()
     {
-        var test = Resources
+        var firstElementPosition = Resources
             .FindObjectsOfTypeAll<GameObject>()
             .FirstOrDefault(x => x.name == "InventoryBackground")
-            ?.GetComponent<Collider2D>();
-        
-        inventoryCells.Add(Instantiate(inventoryCell, new Vector3(-5.43f, -4.373f, 0), Quaternion.identity));
+            .GetComponent<Transform>()
+            .position;
+
+        inventoryCells.Add(Instantiate(inventoryCell, firstElementPosition + Vector3.left * 5 , Quaternion.identity));
         inventoryCells.Add(Instantiate(inventoryCell, inventoryCells.Last().transform.position + cellOffset,
             Quaternion.identity));
         inventoryCells.Add(Instantiate(inventoryCell, inventoryCells.Last().transform.position + cellOffset,
