@@ -31,7 +31,6 @@ public class Target : MonoBehaviour
         var point = new Vector3(UnityEngine.Random.value * 8-4, UnityEngine.Random.value * 8-4, 0);
         while (!isInField)
         {
-            print("y");
             point = new Vector3(UnityEngine.Random.value * 8-4, UnityEngine.Random.value * 8-4, 0);
             transform.position = point;
         }

@@ -1,13 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public enum PoolObjectType
 {
-    Deer, 
-    Food, 
-    InventoryCell
+    Deer,
+    Food,
+    Booster,
 }
 
 [Serializable]
@@ -17,13 +17,12 @@ public class PoolInfo
     public int amount = 0;
     public GameObject prefab;
     public GameObject container;
-    [HideInInspector]
-    public List<GameObject> pool = new List<GameObject>();
+    [HideInInspector] public List<GameObject> pool = new List<GameObject>();
 }
+
 public class PoolManager : Singleton<PoolManager>
 {
-    [SerializeField]
-    List<PoolInfo> listOfPool;
+    [SerializeField] List<PoolInfo> listOfPool;
 
     private Vector3 defaultPos = new Vector3(-100, -100, -100);
 
@@ -33,16 +32,16 @@ public class PoolManager : Singleton<PoolManager>
             FillPool(listOfPool[i]);
     }
 
-    void FillPool(PoolInfo info )
+    public static void FillPool(PoolInfo info)
     {
         for (int i = 0; i < info.amount; i++)
         {
             GameObject obInstance = null;
             obInstance = Instantiate(info.prefab, info.container.transform);
             obInstance.gameObject.SetActive(false);
-            obInstance.transform.position = defaultPos;
+            obInstance.transform.position = new Vector3(-100, -100, -100);
             info.pool.Add(obInstance);
-        } 
+        }
     }
 
     public GameObject GetPoolObject(PoolObjectType type)
@@ -53,7 +52,7 @@ public class PoolManager : Singleton<PoolManager>
         GameObject obInstance = null;
         if (pool.Count > 0)
         {
-            obInstance = pool[pool.Count -1];
+            obInstance = pool[pool.Count - 1];
             pool.Remove(obInstance);
         }
         else
