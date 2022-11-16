@@ -10,23 +10,11 @@ public class DeerSpawner : MonoBehaviour
 
     public int StressLevel = 0;
     public static HashSet<GameObject> deers = new HashSet<GameObject>();
-    public IEnumerator GenerateRoutine(PoolObjectType type)
-    {
-        GameObject deer = PoolManager.Instance.GetPoolObject(type);
-        deer.gameObject.SetActive(true);
-        deers.Add(deer);
-        while (deer.GetComponent<Deer>().CurrentAge != Age.Dead) 
-            yield return new WaitForSecondsRealtime(0);
-        
-        deers.RemoveWhere(x => x.GetComponent<Deer>().CurrentAge == Age.Dead);
-        deer.gameObject.GetComponent<Deer>().Start();
-        PoolManager.Instance.CoolObject(deer, type);
-    }
 
     private void Start() 
     {
-        StartCoroutine(GenerateRoutine(PoolObjectType.Deer));
-        StartCoroutine(GenerateRoutine(PoolObjectType.Deer));
+        StartCoroutine(CreateDeer(PoolObjectType.Deer));
+        StartCoroutine(CreateDeer(PoolObjectType.Deer));
         deers.ElementAt(0).GetComponent<Deer>().DeerGender = Gender.Female;
         deers.ElementAt(1).GetComponent<Deer>().DeerGender = Gender.Male;
     }
@@ -49,8 +37,8 @@ public class DeerSpawner : MonoBehaviour
                         && secondDeer.DeerGender != firstDeer.DeerGender)
                         {
                             secondDeer.FreezePosition();
-                            firstDeer.Target_pos = secondDeer.transform.position;
-                            print(firstDeer.Target_pos);
+                            firstDeer.TargetPos = secondDeer.transform.position;
+                            print(firstDeer.TargetPos);
                             print(secondDeer.transform.position);
                             firstDeer.IsPairing = true;
                             secondDeer.IsPairing = true;
@@ -67,12 +55,28 @@ public class DeerSpawner : MonoBehaviour
         if (isMakingNewDeer)
         {
             isMakingNewDeer = false;
-            StartCoroutine(GenerateRoutine(PoolObjectType.Deer));
+            StartCoroutine(CreateDeer(PoolObjectType.Deer));
         }
     }
 
     public static void GenerateNew()
     {
         isMakingNewDeer = true;
+    }
+
+    public IEnumerator CreateDeer(PoolObjectType type)
+    {
+        GameObject deer = PoolManager.Instance.GetPoolObject(type);
+        deer.gameObject.SetActive(true);
+        // deer.gameObject.GetComponent<Deer>().DeerGender = 
+        //     UnityEngine.Random.Range(0, 1) > 0.5f ? Gender.Female : Gender.Male;
+
+        deers.Add(deer);
+        while (deer.GetComponent<Deer>().CurrentAge != Age.Dead) 
+            yield return new WaitForSecondsRealtime(0);
+        
+        deers.RemoveWhere(x => x.GetComponent<Deer>().CurrentAge == Age.Dead);
+        deer.gameObject.GetComponent<Deer>().Start();
+        PoolManager.Instance.CoolObject(deer, type);
     }
 }

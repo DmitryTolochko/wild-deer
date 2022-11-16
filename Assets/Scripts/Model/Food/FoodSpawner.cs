@@ -8,6 +8,7 @@ public class FoodSpawner : MonoBehaviour
     private PolygonCollider2D gameField; 
     private Collider2D foodField; 
     private int foodItemsCount = 0;
+    private const int MaxFoodItemsCount = 5;
 
     private bool isWaiting = false;
     private void Start()
@@ -23,7 +24,7 @@ public class FoodSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (!isWaiting && foodItemsCount < 5)
+        if (!isWaiting && foodItemsCount < MaxFoodItemsCount)
         {
             StartCoroutine(Wait(Random.Range(3, 10)));
             StartCoroutine(GenerateRoutine(PoolObjectType.Food));
@@ -52,7 +53,8 @@ public class FoodSpawner : MonoBehaviour
         GenerateNewPosition(item);
         item.gameObject.SetActive(true);
         foodItemsCount += 1;
-        while (!item.GetComponent<FoodItem>().isCollected) 
+        var foodItem = item.GetComponent<FoodItem>();
+        while (!foodItem.isCollected) 
             yield return new WaitForSecondsRealtime(0);
         foodItemsCount -= 1;
         item.gameObject.GetComponent<FoodItem>().ResetItem();

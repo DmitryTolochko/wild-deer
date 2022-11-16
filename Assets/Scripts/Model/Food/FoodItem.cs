@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class FoodItem : MonoBehaviour
 {
-    
     public bool isCollected = false;
-
     public bool isCollectable = false;
+    public event Action<FoodItem> ItemCollected;
 
     private Rigidbody2D rb;
 
@@ -24,6 +24,7 @@ public class FoodItem : MonoBehaviour
     private void OnMouseDown() 
     {
         isCollected = true;
+        ItemCollected.Invoke(this);
         print("Собрал");
     }
 

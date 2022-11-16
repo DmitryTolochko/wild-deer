@@ -2,29 +2,13 @@ using System.Collections;
 using UnityEngine;
 using System.Linq;
 
-
-public enum Age 
-{
-    Newborn,
-    Child,
-    Adult,
-    Elder,
-    Dead
-}
-
-public enum Gender
-{
-    Female,
-    Male
-}
-
 public class Deer : MonoBehaviour
 {
     private float speed = 2;
-    private bool isWaiting = false;
+    public bool IsWaiting = false;
 
     private Rigidbody2D rb;
-    public Vector3 Target_pos = new Vector3();   
+    public Vector3 TargetPos = new Vector3();   
     private Collider2D gameField; 
 
     public bool IsIll = false;
@@ -39,14 +23,7 @@ public class Deer : MonoBehaviour
             ?.GetComponent<PolygonCollider2D>();
 
         rb = GetComponent<Rigidbody2D>();
-        Target_pos = GenerateNewPosition();
-        transform.position = GenerateNewPosition();
-        StartCoroutine(GetOlder());
-
-        // if (UnityEngine.Random.Range(0, 1) > 0.5f)
-        //     DeerGender = Gender.Female;
-        // else
-        //     DeerGender = Gender.Male;
+        Initialize();
     }
 
     private void Update()
@@ -59,16 +36,13 @@ public class Deer : MonoBehaviour
         }
     }
 
-    public void Reset() 
+    public void Initialize() 
     {
-        Target_pos = GenerateNewPosition();
+        TargetPos = GenerateNewPosition();
         transform.position = GenerateNewPosition();
         StartCoroutine(GetOlder());
 
-        if (UnityEngine.Random.Range(0, 1) > 0.5f)
-            DeerGender = Gender.Female;
-        else
-            DeerGender = Gender.Male;
+        DeerGender = UnityEngine.Random.Range(0, 1) == 1 ? Gender.Female : Gender.Male;
     }
 
     private IEnumerator GetOlder()
@@ -102,22 +76,22 @@ public class Deer : MonoBehaviour
 
     private void Move()
     {
-        float distanceToTarget = Vector3.Distance(transform.localPosition, Target_pos);
-        if (distanceToTarget < 0.5f && !isWaiting)
+        float distanceToTarget = Vector3.Distance(transform.localPosition, TargetPos);
+        if (distanceToTarget < 0.5f && !IsWaiting)
         {
             StartCoroutine(WaitAndChangeTargetPose(UnityEngine.Random.Range(0, 3)));
         }
-        else if (!isWaiting)
-            transform.position = Vector3.MoveTowards(transform.position, Target_pos, speed * Time.deltaTime);
+        else if (!IsWaiting)
+            transform.position = Vector3.MoveTowards(transform.position, TargetPos, speed * Time.deltaTime);
     }
 
     private IEnumerator WaitAndChangeTargetPose(int time)
     {
-        isWaiting = true;
+        IsWaiting = true;
         yield return new WaitForSecondsRealtime(time);
-        Target_pos = GenerateNewPosition();
+        TargetPos = GenerateNewPosition();
         speed = Random.Range(0.2f, 2f);
-        isWaiting = false;
+        IsWaiting = false;
     }
 
     private Vector3 GenerateNewPosition()
@@ -131,7 +105,7 @@ public class Deer : MonoBehaviour
 
     public void FreezePosition()
     {
-        isWaiting = !isWaiting;
+        IsWaiting = !IsWaiting;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -139,7 +113,7 @@ public class Deer : MonoBehaviour
         if (other.name == "Deer(Clone)" 
             && !other.gameObject.GetComponent<Deer>().IsPairing
             && !this.IsPairing)
-            Target_pos = GenerateNewPosition();
+            TargetPos = GenerateNewPosition();
     }
 
     private void OnTriggerStay2D(Collider2D other) 
@@ -147,10 +121,10 @@ public class Deer : MonoBehaviour
         if (other.name == "Deer(Clone)" 
             && other.gameObject.GetComponent<Deer>().IsPairing
             && this.IsPairing
-            && this.isWaiting)
+            && this.IsWaiting)
         {
             DeerSpawner.GenerateNew();
-            this.isWaiting = false;
+            this.IsWaiting = false;
             other.gameObject.GetComponent<Deer>().IsPairing = false;
             this.IsPairing = false;
         }
