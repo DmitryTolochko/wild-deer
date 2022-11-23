@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 0.8301887, g: 0.45817018, b: 0.45817018, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9d213b044ce8a1042a984bdf956a26d0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb5c71c459fabb545b2eee3fe6f0b94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target_pos: {x: 0, y: 0, z: 0}
+  IsWaiting: 0
+  TargetPos: {x: 0, y: 0, z: 0}
   IsIll: 0
   CurrentAge: 0
   DeerGender: 0

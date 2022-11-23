@@ -50,10 +50,10 @@ public class CuttingPoacher : MonoBehaviour, IThreat
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "Booster(Clone)" 
-        && BoosterTypes.Contains(other.gameObject.GetComponent<Booster>().type))
+        /*if (other.gameObject.name == "Booster(Clone)" 
+        && BoosterTypes.Contains(other.gameObject.GetComponent<BoosterWorld>().type))
         {
             Status = ThreatStatus.Defeated;
-        }
+        }*/
     }
 }
