@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Model.Boosters;
 using ServiceInstances;
 using UnityEngine;
 
 public class GameModel : MonoBehaviour
 {
     public List<Deer> Deers { get; private set; }
-    public Dictionary<BoosterType, Booster> Boosters { get; private set; }
+    public Dictionary<BoosterType, IBooster> Boosters { get; private set; }
     public int Count => Deers.Count;
     public int Balance { get; private set; }
     //public int DeersStressLevel => Deers.Sum(x => x.StressLevel);

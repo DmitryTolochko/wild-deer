@@ -3,25 +3,26 @@ using System.Collections.Generic;
 using ServiceInstances;
 using UnityEngine;
 using System.Linq;
+using Model.Boosters;
 
 public class BaseThreat : MonoBehaviour, IThreat
 {
-    public virtual ThreatType Type { get ; set ; }
+    public virtual ThreatType Type { get; set; }
 
     public HashSet<BoosterType> BoosterTypes => new HashSet<BoosterType>();
 
-    public virtual int StressTime { get ; set ; }
-    public virtual float StressLevel { get ; set ; }
-    public virtual ThreatStatus Status { get ; set ; }
-    public virtual GameObject TargetDeer { get ; set ; }
-    public virtual Vector3 SpawnPoint { get ; set ; }
+    public virtual int StressTime { get; set; }
+    public virtual float StressLevel { get; set; }
+    public virtual ThreatStatus Status { get; set; }
+    public virtual GameObject TargetDeer { get; set; }
+    public virtual Vector3 SpawnPoint { get; set; }
 
     private bool onGameField;
 
     public virtual void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "Booster(Clone)" 
-         && BoosterTypes.Contains(other.gameObject.GetComponent<Booster>().type))
+        if (other.gameObject.name == "Booster(Clone)"
+            && BoosterTypes.Contains(other.gameObject.GetComponent<IBooster>().Type))
             Status = ThreatStatus.Defeated;
     }
 
@@ -48,9 +49,9 @@ public class BaseThreat : MonoBehaviour, IThreat
     public void FindNewTargetDeer()
     {
         TargetDeer = Resources.FindObjectsOfTypeAll<GameObject>()
-                 .Where(y => y.activeInHierarchy)
-                 .FirstOrDefault(x => x.name == "Deer(Clone)" 
-                 && !x.GetComponent<Deer>().IsAVictim);
+            .Where(y => y.activeInHierarchy)
+            .FirstOrDefault(x => x.name == "Deer(Clone)"
+                                 && !x.GetComponent<Deer>().IsAVictim);
     }
 
     public virtual void ActAfterWin()
@@ -68,14 +69,14 @@ public class BaseThreat : MonoBehaviour, IThreat
     public virtual void CheckIntersectionOnGameField()
     {
         if (GameModel.GameField.bounds.Contains(transform.position)
-        && !onGameField)
+            && !onGameField)
         {
             onGameField = true;
             StartCoroutine(AddStress(StressTime));
         }
     }
 
-    public virtual void Start() 
+    public virtual void Start()
     {
         onGameField = false;
         Status = ThreatStatus.Spawning;
@@ -85,7 +86,7 @@ public class BaseThreat : MonoBehaviour, IThreat
         transform.position = new Vector3(SpawnPoint.x, SpawnPoint.y + 11, 0);
     }
 
-    private void Update() 
+    private void Update()
     {
         var distanceToTarget = Vector3.Distance(transform.position, TargetDeer.transform.position);
 
@@ -97,6 +98,6 @@ public class BaseThreat : MonoBehaviour, IThreat
             ActAfterWin();
         else if (Status == ThreatStatus.Spawned && distanceToTarget <= 0.5f)
             Act();
-        CheckIntersectionOnGameField();        
+        CheckIntersectionOnGameField();
     }
 }

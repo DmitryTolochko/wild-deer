@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Model.Boosters;
 using ServiceInstances;
-using UnityEngine;
 
 namespace Model.Inventory
 {
@@ -16,6 +15,8 @@ namespace Model.Inventory
 
         static Inventory()
         {
+            AddItem(new FoodBooster());
+            AddItem(new ProtectiveCapBooster());
             AddItem(new PinkTrapBooster());
         }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,8 +35,8 @@ public class UIScript : MonoBehaviour
 
     private void Update()
     {
-        RefreshStressLevel();  
-        RefreshCounts();      
+        RefreshStressLevel();
+        RefreshCounts();
     }
 
     private void RefreshStressLevel()

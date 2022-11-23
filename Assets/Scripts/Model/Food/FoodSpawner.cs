@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Model.Food;
 
 public class FoodSpawner : MonoBehaviour
 {
@@ -56,11 +57,11 @@ public class FoodSpawner : MonoBehaviour
         GenerateNewPosition(foodItem);
         foodItemsCount += 1;
 
-        while (!foodItem.GetComponent<FoodItem>().isCollected) 
+        while (!foodItem.GetComponent<FoodWorld>().isCollected) 
             yield return new WaitForSecondsRealtime(0);
 
         foodItemsCount -= 1;
-        foodItem.gameObject.GetComponent<FoodItem>().ResetItem();
+        foodItem.gameObject.GetComponent<FoodWorld>().ResetItem();
         PoolManager.Instance.CoolObject(foodItem, type);
     }
 }
