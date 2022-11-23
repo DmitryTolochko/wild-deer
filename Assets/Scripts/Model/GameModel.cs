@@ -15,9 +15,14 @@ public class GameModel : MonoBehaviour
 
     private List<GameObject> deersGameObjects;
 
+    public static Collider2D GameField;
+
 
     private void Start()
     {
+        GameField = Resources.FindObjectsOfTypeAll<GameObject>()
+            .FirstOrDefault(x => x.name == "GameField")
+            ?.GetComponent<PolygonCollider2D>();
         /*LoadStatistics();*/
         var kek = GameObject.Find("GameField");
         // PoolManager.FillPool(new PoolInfo

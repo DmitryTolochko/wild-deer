@@ -1,8 +1,9 @@
 public enum Age 
 {
-    Newborn,
+    // Newborn,
     Child,
+    CanMakeChild,
     Adult,
-    Elder,
+    // Elder,
     Dead
 }

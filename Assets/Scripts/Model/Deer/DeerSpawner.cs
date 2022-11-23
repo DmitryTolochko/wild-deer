@@ -6,51 +6,84 @@ using System.Linq;
 public class DeerSpawner : MonoBehaviour
 {
     private static bool isMakingNewDeer = false;
-    private int previousStressLevel = 0;
+    private static bool isStoped = false;
+    private int ChildrenCountForGeneration = 2;
+    private bool IsSideDeerNeeded;
+    private int GenerationNumber = 0;
 
-    public int StressLevel = 0;
-    public static HashSet<GameObject> deers = new HashSet<GameObject>();
+    private HashSet<GameObject> parentDeers = new HashSet<GameObject>();
+    private HashSet<GameObject> childDeers = new HashSet<GameObject>();
+
+    public static int DeerCount = 0;
+    public static int FemaleCount = 0;
+    public static int MaleCount = 0;
+
+    private static Collider2D gameField; 
+
+    public GameObject SideDeerMessagePrefab;
+    private static GameObject SideDeerMessage;
+
+    public static void GenerateNew()
+    {
+        isMakingNewDeer = true;
+    }
 
     private void Start() 
     {
+        gameField = Resources.FindObjectsOfTypeAll<GameObject>()
+            .FirstOrDefault(x => x.name == "GameField")
+            ?.GetComponent<PolygonCollider2D>();
+
+        
         StartCoroutine(CreateDeer(PoolObjectType.Deer));
         StartCoroutine(CreateDeer(PoolObjectType.Deer));
-        deers.ElementAt(0).GetComponent<Deer>().DeerGender = Gender.Female;
-        deers.ElementAt(1).GetComponent<Deer>().DeerGender = Gender.Male;
+        childDeers.ElementAt(0).GetComponent<Deer>().DeerGender = Gender.Female;
+        childDeers.ElementAt(1).GetComponent<Deer>().DeerGender = Gender.Male;
     }
 
     private void Update() 
     {
-        if (deers.Count > 1 && StressLevel < 20 && Random.Range(0, 1000) == 0)
+        if (UIScript.StressLevel <= 0.25f)
         {
-            for(var i = 0; i < deers.Count - 1; i++)
+            if (ChildrenCountForGeneration == 0 
+            && childDeers.Count == 0 
+            && IsSideDeerNeeded == false)
             {
-                var firstDeer = deers.ElementAt(i).GetComponent<Deer>();
-                if (firstDeer.CurrentAge != Age.Adult || firstDeer.IsIll || firstDeer.IsPairing)
-                    continue;
-                for (var j = i + 1; j < deers.Count; j++)
+                GenerationNumber += 1;
+                print(GenerationNumber);
+                ChildrenCountForGeneration = Random.Range(1, 3);
+                IsSideDeerNeeded = ChildrenCountForGeneration == 1;
+            }
+            if (CheckIfTwoParents() && !isStoped)
+            {
+                if (ChildrenCountForGeneration > 0)
                 {
-                    var secondDeer = deers.ElementAt(j).GetComponent<Deer>();
-                    if (secondDeer.CurrentAge == Age.Adult 
-                        && !secondDeer.IsIll
-                        && !secondDeer.IsPairing
-                        && secondDeer.DeerGender != firstDeer.DeerGender)
-                        {
-                            secondDeer.FreezePosition();
-                            firstDeer.TargetPos = secondDeer.transform.position;
-                            print(firstDeer.TargetPos);
-                            print(secondDeer.transform.position);
-                            firstDeer.IsPairing = true;
-                            secondDeer.IsPairing = true;
-                            break;
-                        }
+                    isStoped = true;
+                    print("1 создаем оленя");
+                    BringTogetherParents();
+                }
+                else if (ChildrenCountForGeneration == 0 && IsSideDeerNeeded && SideDeerMessage == null)
+                {
+                    ChildrenCountForGeneration += 1;
+                    isStoped = true;
+                    print("2 вызов стороннего оленя");
+                    ShowSideDeerMessage();
+                    StartCoroutine(CreateDeer(PoolObjectType.Deer));
+                    IsSideDeerNeeded = false;
                 }
             }
-        }
-
-        if (previousStressLevel != StressLevel)
-        {
-            previousStressLevel = StressLevel;
+            else if (parentDeers.Count < 2 
+                && childDeers.Count < 2 
+                && SideDeerMessage == null)
+            {
+                ChildrenCountForGeneration += 1;
+                print("убит");
+                isStoped = true;
+                print("вызов стороннего оленя при убийстве");
+                ShowSideDeerMessage();
+                StartCoroutine(CreateDeer(PoolObjectType.Deer));
+                IsSideDeerNeeded = false;
+            }
         }
         if (isMakingNewDeer)
         {
@@ -59,24 +92,111 @@ public class DeerSpawner : MonoBehaviour
         }
     }
 
-    public static void GenerateNew()
+    private bool CheckIfTwoParents()
     {
-        isMakingNewDeer = true;
+        return parentDeers.Count == 2;
     }
 
-    public IEnumerator CreateDeer(PoolObjectType type)
+    private void BringTogetherParents()
     {
-        GameObject deer = PoolManager.Instance.GetPoolObject(type);
-        deer.gameObject.SetActive(true);
-        // deer.gameObject.GetComponent<Deer>().DeerGender = 
-        //     UnityEngine.Random.Range(0, 1) > 0.5f ? Gender.Female : Gender.Male;
+        parentDeers.ElementAt(1).GetComponent<Deer>().FreezePosition();
+        parentDeers.ElementAt(0).GetComponent<Deer>().TargetPos =
+         parentDeers.ElementAt(1).GetComponent<Deer>().transform.position;
 
-        deers.Add(deer);
+        parentDeers.ElementAt(1).GetComponent<Deer>().IsPairing = true;
+        parentDeers.ElementAt(0).GetComponent<Deer>().IsPairing = true;
+    }
+
+    private IEnumerator CreateDeer(PoolObjectType type)    
+    {
+        ChildrenCountForGeneration -= 1;
+        isStoped = false;
+
+        GameObject deer = PoolManager.Instance.GetPoolObject(type);
+        StartCoroutine(deer.GetComponent<Deer>().GetOlder());
+        SetGender(deer);
+        PlaceDeer(deer);
+        childDeers.Add(deer);
+        deer.gameObject.GetComponent<Deer>().IsWaiting = false;
+        deer.gameObject.SetActive(true);
+        DeerCount += 1;
+        FemaleCount += deer.GetComponent<Deer>().DeerGender == Gender.Female ? 1 : 0;
+        MaleCount += deer.GetComponent<Deer>().DeerGender == Gender.Male ? 1 : 0;
+        while (true) 
+        {
+            if (deer.GetComponent<Deer>().CurrentAge == Age.CanMakeChild)
+            {
+                parentDeers.Add(deer);
+                childDeers.Remove(deer);
+                break;
+            }
+            if (deer.GetComponent<Deer>().CurrentAge == Age.Dead)
+            {
+                childDeers.Remove(deer);
+                break;
+            }
+            yield return new WaitForSecondsRealtime(0);
+        }
+        while (true) 
+        {
+            if (deer.GetComponent<Deer>().CurrentAge == Age.Adult
+            || deer.GetComponent<Deer>().CurrentAge == Age.Dead)
+            {
+                parentDeers.Remove(deer);
+                break;
+            }
+            yield return new WaitForSecondsRealtime(0);
+        }
         while (deer.GetComponent<Deer>().CurrentAge != Age.Dead) 
             yield return new WaitForSecondsRealtime(0);
-        
-        deers.RemoveWhere(x => x.GetComponent<Deer>().CurrentAge == Age.Dead);
-        deer.gameObject.GetComponent<Deer>().Start();
+
+        DeerCount -= 1;    
+        FemaleCount -= deer.GetComponent<Deer>().DeerGender == Gender.Female ? 1 : 0;
+        MaleCount -= deer.GetComponent<Deer>().DeerGender == Gender.Male ? 1 : 0;
+        //deer.gameObject.GetComponent<Deer>().Initialize();  
         PoolManager.Instance.CoolObject(deer, type);
+    }
+
+    private void SetGender(GameObject deer)
+    {
+        if (childDeers.Count == 0)
+            deer.gameObject.GetComponent<Deer>().DeerGender = 
+                UnityEngine.Random.Range(0, 1) > 0.5f ? Gender.Female : Gender.Male;
+        else
+            deer.gameObject.GetComponent<Deer>().DeerGender = 
+                childDeers.Last().GetComponent<Deer>().DeerGender == Gender.Female ? Gender.Male : Gender.Female;
+    }
+
+    private void PlaceDeer(GameObject deer)
+    {
+        deer.GetComponent<Deer>().speed = 3;
+        deer.GetComponent<Deer>().TargetPos = GenerateNewPosition();
+        deer.transform.position = new Vector3(
+            deer.GetComponent<Deer>().TargetPos.x, 
+            deer.GetComponent<Deer>().TargetPos.y + 11, 
+            0);
+        // print(deer.transform.position);
+    }
+
+    public static Vector3 GenerateNewPosition()
+    {
+        var point = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-5.0f, 5.0f), 0);
+        while (Physics2D.OverlapCircle(point, 0f) != gameField)
+            point = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-5.0f, 5.0f), 0);
+
+        return point;
+    }
+
+    private void ShowSideDeerMessage()
+    {
+        print(SideDeerMessagePrefab);
+        SideDeerMessage = Instantiate(SideDeerMessagePrefab);
+        Time.timeScale = 0;
+    }
+
+    public static void HideSideDeerMessage()
+    {
+        Destroy(SideDeerMessage);
+        Time.timeScale = 1;
     }
 }

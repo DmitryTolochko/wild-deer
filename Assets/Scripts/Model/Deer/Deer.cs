@@ -1,29 +1,37 @@
 using System.Collections;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Deer : MonoBehaviour
 {
-    private float speed = 2;
+    public float speed;
     public bool IsWaiting = false;
 
     private Rigidbody2D rb;
     public Vector3 TargetPos = new Vector3();   
-    private Collider2D gameField; 
 
     public bool IsIll = false;
     public Age CurrentAge;
     public Gender DeerGender;
     public bool IsPairing = false;
+    public bool IsAVictim = false;
+
+    public bool WantToEat = false;
+    public bool WantToDrink = false;
+    private Slider TimerBar;
+    private float valuePerSecond = 0;
 
     public void Start()
     {
-        gameField = Resources.FindObjectsOfTypeAll<GameObject>()
-            .FirstOrDefault(x => x.name == "GameField")
-            ?.GetComponent<PolygonCollider2D>();
-
         rb = GetComponent<Rigidbody2D>();
-        Initialize();
+        transform.Find("Timer").GetComponent<Canvas>().worldCamera = Resources
+            .FindObjectsOfTypeAll<GameObject>()
+            .FirstOrDefault(x => x.name == "Main Camera")
+            ?.GetComponent<Camera>();
+        
+        transform.Find("Timer").gameObject.SetActive(false);
+        TimerBar = transform.Find("Timer").transform.Find("Slider").GetComponent<Slider>();
     }
 
     private void Update()
@@ -34,44 +42,44 @@ public class Deer : MonoBehaviour
             //change sprite
             StartCoroutine(Infection());
         }
+        if (valuePerSecond != 0)
+            ChangeTimerBar();
     }
 
-    public void Initialize() 
+    public IEnumerator GetOlder()
     {
-        TargetPos = GenerateNewPosition();
-        transform.position = GenerateNewPosition();
-        StartCoroutine(GetOlder());
-
-        DeerGender = UnityEngine.Random.Range(0, 1) == 1 ? Gender.Female : Gender.Male;
-    }
-
-    private IEnumerator GetOlder()
-    {
-        CurrentAge = Age.Newborn;
-        print("Родился");
-        print(DeerGender);
-        yield return new WaitForSecondsRealtime(10);
         CurrentAge = Age.Child;
         print("Ребёнок");
-        yield return new WaitForSecondsRealtime(10);
+        yield return new WaitForSecondsRealtime(60);
+        CurrentAge = Age.CanMakeChild;
+        print("Должен сделать детей");
+        yield return new WaitForSecondsRealtime(25);
         CurrentAge = Age.Adult;
         print("Взрослый");
-        yield return new WaitForSecondsRealtime(30);
-        CurrentAge = Age.Elder;
-        print("Пожилой");
-        yield return new WaitForSecondsRealtime(10);
+        yield return new WaitForSecondsRealtime(515);
         CurrentAge = Age.Dead;
         print("Умер");
     }
 
     private IEnumerator Infection()
     {
+        transform.Find("Timer").gameObject.SetActive(true);
+        valuePerSecond = 0.1f;
         yield return new WaitForSecondsRealtime(10);
         CurrentAge = Age.Dead;
         print("Умер от заражения");
         StopCoroutine(GetOlder());
         StopCoroutine(Infection());
+        
         IsIll = false;
+        valuePerSecond = 0;
+        transform.Find("Timer").gameObject.SetActive(false);
+        TimerBar.value = 1;
+    }
+
+    private void ChangeTimerBar()
+    {
+        TimerBar.value -= valuePerSecond * Time.deltaTime;
     }
 
     private void Move()
@@ -89,18 +97,9 @@ public class Deer : MonoBehaviour
     {
         IsWaiting = true;
         yield return new WaitForSecondsRealtime(time);
-        TargetPos = GenerateNewPosition();
+        TargetPos = DeerSpawner.GenerateNewPosition();
         speed = Random.Range(0.2f, 2f);
         IsWaiting = false;
-    }
-
-    private Vector3 GenerateNewPosition()
-    {
-        var point = new Vector3(UnityEngine.Random.value * 8-4, UnityEngine.Random.value * 8-4, 0);
-        while (!gameField.bounds.Contains(point))
-            point = new Vector3(UnityEngine.Random.value * 8-4, UnityEngine.Random.value * 8-4, 0);
-
-        return point;
     }
 
     public void FreezePosition()
@@ -113,7 +112,7 @@ public class Deer : MonoBehaviour
         if (other.name == "Deer(Clone)" 
             && !other.gameObject.GetComponent<Deer>().IsPairing
             && !this.IsPairing)
-            TargetPos = GenerateNewPosition();
+            TargetPos = DeerSpawner.GenerateNewPosition();
     }
 
     private void OnTriggerStay2D(Collider2D other) 

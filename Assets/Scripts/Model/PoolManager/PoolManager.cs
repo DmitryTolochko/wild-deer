@@ -8,6 +8,17 @@ public enum PoolObjectType
     Deer,
     Food,
     Booster,
+    CuttingPoacher,
+    KillerPoacher,
+    Wolf,
+    Wolverine,
+    ArcticFox,
+    Temperature,
+    Parasite,
+    Insects,
+    Lemming,
+    DirtyWater,
+    Garbage
 }
 
 [Serializable]
