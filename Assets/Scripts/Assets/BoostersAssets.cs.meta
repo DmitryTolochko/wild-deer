@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7695fbd99dd915846896e52a054bc537
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - foodSprite: {instanceID: 0}
+  - pinkTrapSprite: {instanceID: 0}
+  - protectiveCapSprite: {instanceID: 0}
+  - boosterPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

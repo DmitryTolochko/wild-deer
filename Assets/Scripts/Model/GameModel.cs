@@ -11,7 +11,7 @@ public class GameModel : MonoBehaviour
     public List<Deer> Deers { get; private set; }
     public Dictionary<BoosterType, IBooster> Boosters { get; private set; }
     public int Count => Deers.Count;
-    public int Balance { get; private set; }
+    public static int Balance = 1000;
     //public int DeersStressLevel => Deers.Sum(x => x.StressLevel);
 
     private List<GameObject> deersGameObjects;
@@ -47,11 +47,13 @@ public class GameModel : MonoBehaviour
             .FromJson<GameModel>(File.ReadAllText($"{Application.streamingAssetsPath}/progress.json"));
         Deers = loadedGame.Deers;
         Boosters = loadedGame.Boosters;
-        Balance = loadedGame.Balance;
+        //Balance = loadedGame.Balance;
     }
 
     private void SaveStatistics()
     {
         File.WriteAllText($"{Application.streamingAssetsPath}/progress.json", JsonUtility.ToJson(this));
     }
+
+
 }

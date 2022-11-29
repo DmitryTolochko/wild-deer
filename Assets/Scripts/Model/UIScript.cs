@@ -55,11 +55,11 @@ public class UIScript : MonoBehaviour
 
     public void ChangeSceneToTasks()
     {
-        SceneManager.LoadScene("TasksScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene("TasksScene");
     }
 
     public void ChangeSceneToShop()
     {
-        SceneManager.LoadScene("TasksScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene("ShopScene");
     }
 }

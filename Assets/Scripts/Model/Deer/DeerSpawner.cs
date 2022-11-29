@@ -118,6 +118,7 @@ public class DeerSpawner : MonoBehaviour
         PlaceDeer(deer);
         childDeers.Add(deer);
         deer.gameObject.GetComponent<Deer>().IsWaiting = false;
+        deer.gameObject.GetComponent<Deer>().ResetLifeBar();
         deer.gameObject.SetActive(true);
         DeerCount += 1;
         FemaleCount += deer.GetComponent<Deer>().DeerGender == Gender.Female ? 1 : 0;
