@@ -13,9 +13,11 @@ public class UIScript : MonoBehaviour
     public Text FemaleCount;
     public Text MaleCount;
     public static float StressLevel;
+    public Text MoneyCountElement;
 
     private void Start()
     {
+
         StressLevelBar = Resources
             .FindObjectsOfTypeAll<GameObject>()
             .FirstOrDefault(x => x.name == "StressLevelSlider")
@@ -51,6 +53,7 @@ public class UIScript : MonoBehaviour
     {
         FemaleCount.text = DeerSpawner.FemaleCount.ToString();
         MaleCount.text = DeerSpawner.MaleCount.ToString();
+        MoneyCountElement.text = GameModel.Balance.ToString();
     }
 
     public void ChangeSceneToTasks()

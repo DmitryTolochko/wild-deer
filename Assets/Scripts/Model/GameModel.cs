@@ -5,6 +5,7 @@ using System.Linq;
 using Model.Boosters;
 using ServiceInstances;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameModel : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class GameModel : MonoBehaviour
 
 
     private void Start()
-    {
+    { 
         GameField = Resources.FindObjectsOfTypeAll<GameObject>()
             .FirstOrDefault(x => x.name == "GameField")
             ?.GetComponent<PolygonCollider2D>();

@@ -162,7 +162,7 @@ public class Deer : MonoBehaviour
     private void Move()
     {
         float distanceToTarget = Vector3.Distance(transform.localPosition, TargetPos);
-        if (distanceToTarget < 0.5f && !IsWaiting)
+        if (distanceToTarget < 0.55f && !IsWaiting)
         {
             StartCoroutine(WaitAndChangeTargetPose(UnityEngine.Random.Range(0, 3)));
         }

@@ -10,7 +10,6 @@ public class TaskCard : MonoBehaviour
     private Text taskNameElement;
     private Image taskImageElement;
     private Text progressElement;
-    private Image doneIconElement;
 
     public bool IsNotActual;
     public int Count = 2;
@@ -25,7 +24,6 @@ public class TaskCard : MonoBehaviour
         taskNameElement = transform.Find("TaskName").GetComponent<Text>();
         taskImageElement = transform.Find("Image").GetComponent<Image>();
         progressElement = transform.Find("Progress").GetComponent<Text>();
-        doneIconElement = transform.Find("DoneIcon").GetComponent<Image>();
 
         getMoneyButton.onClick.AddListener(delegate() { OnButtonClick(); });
 
@@ -38,16 +36,13 @@ public class TaskCard : MonoBehaviour
         ChangeProgress(DoneCount);
         if (DoneCount == Count)
         {
-            doneIconElement.gameObject.SetActive(true);
             getMoneyButton.interactable = true;
-            getMoneyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("GetMoneyImg");
+            getMoneyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("GetMoneyButtonOn");
         }
     }
 
     public void ChangeTask(string taskName, int count, int price, Sprite image)
     {
-        doneIconElement.gameObject.SetActive(false);
-
         IsNotActual = false;
 
         taskNameElement.text = taskName;
@@ -57,7 +52,7 @@ public class TaskCard : MonoBehaviour
         Count = count;
 
         ChangeProgress(0);
-        getMoneyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("GetMoneyBlockedImg");
+        getMoneyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("GetMoneyButtonOff");
         getMoneyButton.interactable = false;
     }
 
@@ -70,7 +65,7 @@ public class TaskCard : MonoBehaviour
     public void OnButtonClick()
     {
         IsNotActual = true;
-        getMoneyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("GetMoneyCollectedImg");
+        getMoneyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("DoneButton");
         getMoneyButton.interactable = false;
 
         GameModel.Balance += price;

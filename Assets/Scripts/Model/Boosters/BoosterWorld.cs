@@ -16,15 +16,15 @@ public class BoosterWorld : MonoBehaviour
 
     public BoosterType Type { get; private set; }
 
-    private Transform Test;
+    private Transform UI;
 
     private void Start()
     {
         startPosition = transform.position;
         boosterCollider = GetComponent<BoxCollider2D>();
-        Test = Resources
+        UI = Resources
             .FindObjectsOfTypeAll<Canvas>()
-            .FirstOrDefault(x => x.name == "Canvas")?
+            .FirstOrDefault(x => x.name == "UI")?
             .transform;
 
         gameFieldBounds = Resources
@@ -54,7 +54,7 @@ public class BoosterWorld : MonoBehaviour
         if (gameFieldBounds.Distance(boosterCollider).distance < -0.5)
         {
             isPlaced = true;
-            transform.SetParent(Test);
+            transform.SetParent(UI);
 
             Destroy(transform.Find("itemAmount").GetComponent<Text>());
             Inventory.UseBooster(Type);

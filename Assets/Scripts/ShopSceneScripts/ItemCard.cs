@@ -51,7 +51,7 @@ public class ItemCard : MonoBehaviour
         itemNameElement.text = instance.ItemName;
         itemImageElement.sprite = instance.Image;
         descriptionElement.text = instance.Description;
-        inventoryCountElement.text = instance.InventoryCount.ToString();
+        inventoryCountElement.text = "В инвентаре: " + instance.InventoryCount.ToString();
         this.price = instance.Price;
         priceElement.text = price.ToString();
 
@@ -77,5 +77,6 @@ public class ItemCard : MonoBehaviour
         GameModel.Balance -= price;
         Cards.MoneyCountElement.text = GameModel.Balance.ToString();
         Cards.IsMoneyChanged = true;
+        //inventoryCountElement.text = "В инвентаре: " + instance.InventoryCount.ToString();
     }
 }

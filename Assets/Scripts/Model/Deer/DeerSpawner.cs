@@ -184,7 +184,6 @@ public class DeerSpawner : MonoBehaviour
         var point = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-5.0f, 5.0f), 0);
         while (Physics2D.OverlapCircle(point, 0f) != gameField)
             point = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-5.0f, 5.0f), 0);
-
         return point;
     }
 

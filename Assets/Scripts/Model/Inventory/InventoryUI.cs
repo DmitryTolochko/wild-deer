@@ -8,6 +8,7 @@ public class InventoryUI : MonoBehaviour
 {
     private Transform itemSlotContainer;
     public static InventoryUI Instance { get; private set; }
+    public float Offset = 125f;
 
 
     private void Awake()
@@ -36,7 +37,6 @@ public class InventoryUI : MonoBehaviour
         }
 
         var x = 0;
-        var offset = 141.5f;
         foreach (var item in Inventory.GetAllItems())
         {
             var itemType = item.Type;
@@ -44,7 +44,7 @@ public class InventoryUI : MonoBehaviour
             instance.GetComponent<BoosterWorld>().SetBoosterType(itemType);
             var itemSlotRectTransform = instance.GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
-            itemSlotRectTransform.anchoredPosition = new Vector2(x * offset, 0);
+            itemSlotRectTransform.anchoredPosition = new Vector2(x * Offset, 0);
             var image = itemSlotRectTransform.Find("image").GetComponent<Image>();
             image.sprite = BoostersAssets.GetSprite(itemType);
             var text = itemSlotRectTransform.Find("itemAmount").GetComponent<Text>();
