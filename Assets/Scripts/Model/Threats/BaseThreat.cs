@@ -13,7 +13,7 @@ public class BaseThreat : MonoBehaviour, IThreat
 
     public virtual int StressTime { get; set; }
     public virtual float StressLevel { get; set; }
-    public virtual ThreatStatus Status { get; set; }
+    public ThreatStatus Status { get; set; }
     public virtual GameObject TargetDeer { get; set; }
     public virtual Vector3 SpawnPoint { get; set; }
 

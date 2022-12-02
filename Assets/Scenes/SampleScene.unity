@@ -251,6 +251,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 540619585381277619, guid: 19242293da3e5df4bb0fab7316086e3f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 540619586669435549, guid: 19242293da3e5df4bb0fab7316086e3f, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -303,6 +307,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 540619586727398156, guid: 19242293da3e5df4bb0fab7316086e3f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 49
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19242293da3e5df4bb0fab7316086e3f, type: 3}
 --- !u!1 &207713751
@@ -344,7 +352,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 207713751}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 376b2974065051f4881e714e17f94580, type: 3}
   m_Name: 

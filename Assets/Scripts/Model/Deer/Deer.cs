@@ -9,7 +9,7 @@ public class Deer : MonoBehaviour
     public bool IsWaiting = false;
 
     private Rigidbody2D rb;
-    public Vector3 TargetPos = new Vector3();   
+    public Vector3 TargetPos = new Vector3();
 
     public bool IsIll = false;
     public bool IsHungry = false;
@@ -33,7 +33,7 @@ public class Deer : MonoBehaviour
             .FindObjectsOfTypeAll<GameObject>()
             .FirstOrDefault(x => x.name == "Main Camera")
             ?.GetComponent<Camera>();
-        
+
         transform.Find("DeerUI").gameObject.SetActive(true);
         transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(false);
         TimerBar = transform.Find("DeerUI").transform.Find("Slider").GetComponent<Slider>();
@@ -50,32 +50,34 @@ public class Deer : MonoBehaviour
     private void Update()
     {
         Move();
-        
-        if (IsIll)
-            StartCoroutine(Infection());
-        else if (!IsIll && flag)
-        {
-            StopCoroutine(Infection());
-            flag = false;
-        }
+
+        // if (IsIll)
+        //     StartCoroutine(Infection());
+        // else if (!IsIll && flag)
+        // {
+        //     StopCoroutine(Infection());
+        //     flag = false;
+        // }
         if (IsHungry)
             StartCoroutine(GetHungry());
         else if (!IsHungry && flag)
         {
             StopCoroutine(GetHungry());
+            Debug.Log("МЕНЯ ПОКОРМИЛИ ЕПТА");
             flag = false;
+            transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(false);
         }
-        if (IsThirsty)
-            StartCoroutine(GetThirsty());
-        else if (!IsThirsty && flag)
-        {
-            StopCoroutine(GetThirsty());
-            flag = false;
-        }
+        // if (IsThirsty)
+        //     StartCoroutine(GetThirsty());
+        // else if (!IsThirsty && flag)
+        // {
+        //     StopCoroutine(GetThirsty());
+        //     flag = false;
+        // }
 
         if (valuePerSecond != 0)
             ChangeTimerBar();
-        
+
         if (LifeBar.value >= 0.0017f)
             LifeBar.value -= 0.0017f * Time.deltaTime;
     }
@@ -104,7 +106,7 @@ public class Deer : MonoBehaviour
         CurrentAge = Age.Dead;
         print("Умер от заражения");
         StopCoroutine(GetOlder());
-        
+
         IsIll = false;
         valuePerSecond = 0;
         transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(false);
@@ -119,11 +121,14 @@ public class Deer : MonoBehaviour
         transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(true);
         valuePerSecond = 0.1f;
         yield return new WaitForSecondsRealtime(10);
-        CurrentAge = Age.Dead;
-        print("Умер от голода");
-        StopCoroutine(GetOlder());
+        if (IsHungry)
+        {
+            CurrentAge = Age.Dead;
+            print("Умер от голода");
+            StopCoroutine(GetOlder());
+            IsHungry = false;
+        }
         
-        IsHungry = false;
         valuePerSecond = 0;
         transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(false);
         TimerBar.value = 1;
@@ -140,7 +145,7 @@ public class Deer : MonoBehaviour
         CurrentAge = Age.Dead;
         print("Умер от жажды");
         StopCoroutine(GetOlder());
-        
+
         IsThirsty = false;
         valuePerSecond = 0;
         transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(false);
@@ -181,15 +186,15 @@ public class Deer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name == "Deer(Clone)" 
+        if (other.name == "Deer(Clone)"
             && !other.gameObject.GetComponent<Deer>().IsPairing
             && !this.IsPairing)
             TargetPos = DeerSpawner.GenerateNewPosition();
     }
 
-    private void OnTriggerStay2D(Collider2D other) 
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.name == "Deer(Clone)" 
+        if (other.name == "Deer(Clone)"
             && other.gameObject.GetComponent<Deer>().IsPairing
             && this.IsPairing
             && this.IsWaiting)
@@ -198,7 +203,7 @@ public class Deer : MonoBehaviour
             this.IsWaiting = false;
             other.gameObject.GetComponent<Deer>().IsPairing = false;
             this.IsPairing = false;
-        }        
+        }
     }
 
     private void OnMouseDown()

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Timers;
 using Model.Boosters;
 using ServiceInstances;
 
@@ -33,7 +34,7 @@ namespace Model.Inventory
                 items.Add(item);
             }
 
-            InventoryUI.Instance.RefreshInventoryItems();
+            ItemAdded?.Invoke();
         }
 
         public static void UseBooster(BoosterType type)
@@ -55,7 +56,7 @@ namespace Model.Inventory
                 break;
             }
 
-            InventoryUI.Instance.RefreshInventoryItems();
+            BoosterUsed?.Invoke();
         }
     }
 }

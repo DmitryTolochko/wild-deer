@@ -14,6 +14,7 @@
         // WaterFilter,
         Food,
         // Inhabitant
+        Water
     }
 
 }

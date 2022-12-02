@@ -1,6 +1,7 @@
 using Model.Inventory;
 using UnityEngine;
 using UnityEngine.UI;
+using Color = System.Drawing.Color;
 
 
 public class InventoryUI : MonoBehaviour
@@ -48,6 +49,7 @@ public class InventoryUI : MonoBehaviour
             image.sprite = BoostersAssets.GetSprite(itemType);
             var text = itemSlotRectTransform.Find("itemAmount").GetComponent<Text>();
             text.text = item.Amount > 1 ? $"x{item.Amount.ToString()}" : string.Empty;
+            text.color = new UnityEngine.Color(223, 235, 231);
             x++;
         }
     }
