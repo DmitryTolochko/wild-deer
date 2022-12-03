@@ -19,6 +19,13 @@ namespace Model.Inventory
             AddItem(new FoodBooster());
             AddItem(new ProtectiveCapBooster());
             AddItem(new PinkTrapBooster());
+            AddItem(new PinkTrapBooster());
+            AddItem(new PinkTrapBooster());
+            AddItem(new PinkTrapBooster());
+            AddItem(new PinkTrapBooster());
+            AddItem(new PinkTrapBooster());
+            AddItem(new PinkTrapBooster());
+            
         }
 
         public static void AddItem(IBooster booster)

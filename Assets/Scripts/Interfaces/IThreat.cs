@@ -12,9 +12,9 @@ public interface IThreat
     public ThreatStatus Status {get; set;}
 
     public GameObject TargetDeer {get; set;}
-    public Vector3 SpawnPoint {get; set;}
+    public Vector2 SpawnPoint {get; set;}
 
-    public void Move(Vector3 target, float moveSpeed);
+    public void Move(Vector2 target, float moveSpeed);
 
     public void OnCollisionEnter2D(Collision2D other);
 

@@ -17,10 +17,10 @@ namespace Model.Food
             rb = GetComponent<Rigidbody2D>();
         }
 
-        private void Update()
-        {
-            StartCoroutine(Grow());
-        }
+        // private void Update()
+        // {
+        //     StartCoroutine(Grow());
+        // }
 
         private void OnMouseDown()
         {
@@ -28,11 +28,11 @@ namespace Model.Food
             Inventory.Inventory.AddItem(new FoodBooster());
         }
 
-        private IEnumerator Grow()
-        {
-            yield return new WaitForSecondsRealtime(3);
-            isCollectable = true;
-        }
+        // private IEnumerator Grow()
+        // {
+        //     yield return new WaitForSecondsRealtime(3);
+        //     isCollectable = true;
+        // }
 
         public void ResetItem()
         {

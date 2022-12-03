@@ -35,7 +35,7 @@ public class PoolManager : Singleton<PoolManager>
 {
     [SerializeField] List<PoolInfo> listOfPool;
 
-    private Vector3 defaultPos = new Vector3(-100, -100, -100);
+    private Vector2 defaultPos = new Vector2(-100, -100);
 
     void Start()
     {
@@ -50,7 +50,7 @@ public class PoolManager : Singleton<PoolManager>
             GameObject obInstance = null;
             obInstance = Instantiate(info.prefab, info.container.transform);
             obInstance.gameObject.SetActive(false);
-            obInstance.transform.position = new Vector3(-100, -100, -100);
+            obInstance.transform.position = new Vector2(-100, -100);
             info.pool.Add(obInstance);
         }
     }

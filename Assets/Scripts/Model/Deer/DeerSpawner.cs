@@ -43,7 +43,7 @@ public class DeerSpawner : MonoBehaviour
 
     private void Update() 
     {
-        if (UIScript.StressLevel <= 0.25f)
+        if (GameModel.StressLevel <= 0.25f && GameModel.Deers.Count < 14)
         {
             if (ChildrenCountForGeneration == 0 
             && childDeers.Count == 0 
@@ -117,6 +117,7 @@ public class DeerSpawner : MonoBehaviour
         SetGender(deer);
         PlaceDeer(deer);
         childDeers.Add(deer);
+        GameModel.Deers.Add(deer);
         deer.gameObject.GetComponent<Deer>().IsWaiting = false;
         deer.gameObject.GetComponent<Deer>().ResetLifeBar();
         deer.gameObject.SetActive(true);
@@ -156,6 +157,7 @@ public class DeerSpawner : MonoBehaviour
         MaleCount -= deer.GetComponent<Deer>().DeerGender == Gender.Male ? 1 : 0;
         //deer.gameObject.GetComponent<Deer>().Initialize();  
         PoolManager.Instance.CoolObject(deer, type);
+        GameModel.Deers.Remove(deer);
     }
 
     private void SetGender(GameObject deer)
@@ -172,18 +174,17 @@ public class DeerSpawner : MonoBehaviour
     {
         deer.GetComponent<Deer>().speed = 3;
         deer.GetComponent<Deer>().TargetPos = GenerateNewPosition();
-        deer.transform.position = new Vector3(
+        deer.transform.position = new Vector2(
             deer.GetComponent<Deer>().TargetPos.x, 
-            deer.GetComponent<Deer>().TargetPos.y + 11, 
-            0);
+            deer.GetComponent<Deer>().TargetPos.y + 11);
         // print(deer.transform.position);
     }
 
-    public static Vector3 GenerateNewPosition()
+    public static Vector2 GenerateNewPosition()
     {
-        var point = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-5.0f, 5.0f), 0);
+        var point = new Vector2(Random.Range(-10.0f, 10.0f), Random.Range(-5.0f, 5.0f));
         while (Physics2D.OverlapCircle(point, 0f) != gameField)
-            point = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-5.0f, 5.0f), 0);
+            point = new Vector2(Random.Range(-10.0f, 10.0f), Random.Range(-5.0f, 5.0f));
         return point;
     }
 

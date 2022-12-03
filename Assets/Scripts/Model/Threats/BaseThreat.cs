@@ -15,7 +15,7 @@ public class BaseThreat : MonoBehaviour, IThreat
     public virtual float StressLevel { get; set; }
     public ThreatStatus Status { get; set; }
     public virtual GameObject TargetDeer { get; set; }
-    public virtual Vector3 SpawnPoint { get; set; }
+    public virtual Vector2 SpawnPoint { get; set; }
 
     private bool onGameField;
 
@@ -41,9 +41,9 @@ public class BaseThreat : MonoBehaviour, IThreat
         throw new System.NotImplementedException();
     }
 
-    public void Move(Vector3 target, float moveSpeed)
+    public void Move(Vector2 target, float moveSpeed)
     {
-        transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
     }
 
     public void FindNewTargetDeer()
@@ -61,9 +61,9 @@ public class BaseThreat : MonoBehaviour, IThreat
 
     public virtual IEnumerator AddStress(int time)
     {
-        UIScript.StressLevel += StressLevel;
+        GameModel.StressLevel += StressLevel;
         yield return new WaitForSecondsRealtime(time);
-        UIScript.StressLevel -= StressLevel;
+        GameModel.StressLevel -= StressLevel;
     }
 
     public virtual void CheckIntersectionOnGameField()
@@ -83,12 +83,12 @@ public class BaseThreat : MonoBehaviour, IThreat
         GetBoosterTypes();
         FindNewTargetDeer();
         SpawnPoint = ThreatSpawner.GenerateNewPosition();
-        transform.position = new Vector3(SpawnPoint.x, SpawnPoint.y + 11, 0);
+        transform.position = new Vector2(SpawnPoint.x, SpawnPoint.y + 11);
     }
 
     private void Update()
     {
-        var distanceToTarget = Vector3.Distance(transform.position, TargetDeer.transform.position);
+        var distanceToTarget = Vector2.Distance(transform.position, TargetDeer.transform.position);
 
         if (Status == ThreatStatus.Spawning)
             PlaceThreat();

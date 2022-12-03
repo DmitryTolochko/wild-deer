@@ -43,7 +43,7 @@ public class ItemCard : MonoBehaviour
         lockIconElement = transform.Find("Buy").transform.Find("LockIcon").GetComponent<Image>();
         inventoryCountElement = transform.Find("InventoryCount").GetComponent<Text>();
 
-        buyButton.onClick.AddListener(delegate() { OnButtonClick(); });
+        buyButton.onClick.AddListener(OnButtonClick);
     }
 
     public void ChangeItem(ItemInstance instance)

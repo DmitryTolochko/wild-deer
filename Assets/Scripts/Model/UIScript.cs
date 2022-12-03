@@ -12,7 +12,6 @@ public class UIScript : MonoBehaviour
     public Image StressLevelBar;
     public Text FemaleCount;
     public Text MaleCount;
-    public static float StressLevel;
     public Text MoneyCountElement;
 
     private void Start()
@@ -22,7 +21,6 @@ public class UIScript : MonoBehaviour
             .FindObjectsOfTypeAll<GameObject>()
             .FirstOrDefault(x => x.name == "StressLevelSlider")
             .GetComponent<Image>();
-        StressLevel = 0f;
 
         FemaleCount = Resources
             .FindObjectsOfTypeAll<GameObject>()
@@ -43,9 +41,9 @@ public class UIScript : MonoBehaviour
 
     private void RefreshStressLevel()
     {
-        if (StressLevelBar.fillAmount - 0.1f * Time.deltaTime > StressLevel)
+        if (StressLevelBar.fillAmount - 0.1f * Time.deltaTime > GameModel.StressLevel)
             StressLevelBar.fillAmount -= 0.1f * Time.deltaTime;
-        else if (StressLevelBar.fillAmount + 0.1f * Time.deltaTime < StressLevel)
+        else if (StressLevelBar.fillAmount + 0.1f * Time.deltaTime < GameModel.StressLevel)
             StressLevelBar.fillAmount += 0.1f * Time.deltaTime;
     }
 

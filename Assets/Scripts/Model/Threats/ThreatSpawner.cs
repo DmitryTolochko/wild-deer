@@ -65,12 +65,12 @@ public class ThreatSpawner : MonoBehaviour
         print(threats.Count);
     }
 
-    public static Vector3 GenerateNewPosition()
+    public static Vector2 GenerateNewPosition()
     {
-        var point = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-5.0f, 5.0f), 0);
+        var point = new Vector2(Random.Range(-10.0f, 10.0f), Random.Range(-5.0f, 5.0f));
         while (Physics2D.OverlapCircle(point, 0f) != spawnField_1
             && Physics2D.OverlapCircle(point, 0f) != spawnField_2)
-            point = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-5.0f, 5.0f), 0);
+            point = new Vector2(Random.Range(-10.0f, 10.0f), Random.Range(-5.0f, 5.0f));
         return point;
     }
 

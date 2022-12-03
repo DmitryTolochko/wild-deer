@@ -82,11 +82,13 @@ public class BoosterWorld : MonoBehaviour
             switch (Type)
             {
                 case BoosterType.Food:
-                    deer.IsHungry = false;
+                    deer.StopBuff(BuffType.Hunger);
+                    GameModel.StressLevel -= 0.05f;
                     Destroy(gameObject);
                     break;
                 case BoosterType.Water:
-                    deer.IsThirsty = false;
+                    deer.StopBuff(BuffType.Thirsty);
+                    GameModel.StressLevel -= 0.05f;
                     Destroy(gameObject);
                     break;
             }

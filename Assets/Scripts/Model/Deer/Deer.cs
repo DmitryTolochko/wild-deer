@@ -3,27 +3,31 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 
+public enum BuffType 
+{
+    No,
+    Ill,
+    Hunger,
+    Thirsty,
+}
+
 public class Deer : MonoBehaviour
 {
     public float speed;
     public bool IsWaiting = false;
 
     private Rigidbody2D rb;
-    public Vector3 TargetPos = new Vector3();
+    public Vector2 TargetPos = new Vector2();
+    private BuffType buffType;
 
-    public bool IsIll = false;
-    public bool IsHungry = false;
-    public bool IsThirsty = false;
     public bool IsPairing = false;
     public bool IsAVictim = false;
-
-    private bool flag = false;
 
     public Age CurrentAge;
     public Gender DeerGender;
 
-    private Slider TimerBar;
-    public Slider LifeBar;
+    private Slider timerBar;
+    private Slider lifeBar;
     private float valuePerSecond = 0;
 
     public void Start()
@@ -36,57 +40,35 @@ public class Deer : MonoBehaviour
 
         transform.Find("DeerUI").gameObject.SetActive(true);
         transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(false);
-        TimerBar = transform.Find("DeerUI").transform.Find("Slider").GetComponent<Slider>();
-        LifeBar = transform.Find("DeerUI").transform.Find("LifeBar").GetComponent<Slider>();
-        LifeBar.value = 1;
+        timerBar = transform.Find("DeerUI").transform.Find("Slider").GetComponent<Slider>();
+        lifeBar = transform.Find("DeerUI").transform.Find("LifeBar").GetComponent<Slider>();
+        lifeBar.value = 1;
     }
 
     public void ResetLifeBar()
     {
-        LifeBar = transform.Find("DeerUI").transform.Find("LifeBar").GetComponent<Slider>();
-        LifeBar.value = 1;
+        lifeBar = transform.Find("DeerUI").transform.Find("LifeBar").GetComponent<Slider>();
+        lifeBar.value = 1;
     }
 
     private void Update()
     {
         Move();
 
-        // if (IsIll)
-        //     StartCoroutine(Infection());
-        // else if (!IsIll && flag)
-        // {
-        //     StopCoroutine(Infection());
-        //     flag = false;
-        // }
-        if (IsHungry)
-            StartCoroutine(GetHungry());
-        else if (!IsHungry && flag)
-        {
-            StopCoroutine(GetHungry());
-            Debug.Log("МЕНЯ ПОКОРМИЛИ ЕПТА");
-            flag = false;
-            transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(false);
-        }
-        // if (IsThirsty)
-        //     StartCoroutine(GetThirsty());
-        // else if (!IsThirsty && flag)
-        // {
-        //     StopCoroutine(GetThirsty());
-        //     flag = false;
-        // }
-
         if (valuePerSecond != 0)
             ChangeTimerBar();
 
-        if (LifeBar.value >= 0.0017f)
-            LifeBar.value -= 0.0017f * Time.deltaTime;
+        if (lifeBar.value >= 0.0017f)
+            lifeBar.value -= 0.0017f * Time.deltaTime;
     }
 
     public IEnumerator GetOlder()
     {
         CurrentAge = Age.Child;
+        GetComponent<DeerAnimator>().ChangeSprite(CurrentAge, DeerGender);
         print("Ребёнок");
         yield return new WaitForSecondsRealtime(60);
+        GetComponent<DeerAnimator>().ChangeSprite(Age.Adult, DeerGender);
         CurrentAge = Age.CanMakeChild;
         print("Должен сделать детей");
         yield return new WaitForSecondsRealtime(25);
@@ -97,77 +79,65 @@ public class Deer : MonoBehaviour
         print("Умер");
     }
 
-    private IEnumerator Infection()
+    public IEnumerator GetBuff(BuffType newBuff)
     {
-        flag = true;
         transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(true);
-        valuePerSecond = 0.1f;
-        yield return new WaitForSecondsRealtime(10);
-        CurrentAge = Age.Dead;
-        print("Умер от заражения");
-        StopCoroutine(GetOlder());
+        buffType = newBuff;
 
-        IsIll = false;
-        valuePerSecond = 0;
-        transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(false);
-        TimerBar.value = 1;
-        flag = false;
-        StopCoroutine(Infection());
-    }
-
-    private IEnumerator GetHungry()
-    {
-        flag = true;
-        transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(true);
-        valuePerSecond = 0.1f;
-        yield return new WaitForSecondsRealtime(10);
-        if (IsHungry)
+        switch (newBuff)
         {
-            CurrentAge = Age.Dead;
-            print("Умер от голода");
-            StopCoroutine(GetOlder());
-            IsHungry = false;
+            case BuffType.Hunger:
+                valuePerSecond = 0.1f;
+                yield return new WaitForSecondsRealtime(10);
+                break;
+            case BuffType.Ill:
+                valuePerSecond = 0.06f;
+                yield return new WaitForSecondsRealtime(15);
+                break;
+            case BuffType.Thirsty:
+                valuePerSecond = 0.05f;
+                yield return new WaitForSecondsRealtime(20);
+                break;
         }
-        
-        valuePerSecond = 0;
-        transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(false);
-        TimerBar.value = 1;
-        flag = false;
-        StopCoroutine(GetHungry());
+        if (buffType != BuffType.No)
+            CurrentAge = Age.Dead;
+        buffType = BuffType.No;
+        ResetTimerBar();
     }
 
-    private IEnumerator GetThirsty()
+    public void StopBuff(BuffType newBuff)
     {
-        flag = true;
-        transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(true);
-        valuePerSecond = 0.1f;
-        yield return new WaitForSecondsRealtime(10);
-        CurrentAge = Age.Dead;
-        print("Умер от жажды");
-        StopCoroutine(GetOlder());
-
-        IsThirsty = false;
-        valuePerSecond = 0;
-        transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(false);
-        TimerBar.value = 1;
-        flag = false;
-        StopCoroutine(GetThirsty());
+        StopCoroutine(GetBuff(newBuff));
+        buffType = BuffType.No;
+        GameModel.StressLevel -= GameModel.StressLevel < 0.1f ? GameModel.StressLevel : 0.1f;
+        ResetTimerBar();        
     }
 
     private void ChangeTimerBar()
     {
-        TimerBar.value -= valuePerSecond * Time.deltaTime;
+        timerBar.value -= valuePerSecond * Time.deltaTime;
+    }
+
+    private void ResetTimerBar()
+    {
+        valuePerSecond = 0;
+        timerBar.value = 1;
+        transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(false);
+        GameModel.BuffedDeers.Remove(this.gameObject);
     }
 
     private void Move()
     {
-        float distanceToTarget = Vector3.Distance(transform.localPosition, TargetPos);
+        float distanceToTarget = Vector2.Distance(transform.localPosition, TargetPos);
+        // print(transform.position);
+        // print(TargetPos);
+        // print(distanceToTarget);
         if (distanceToTarget < 0.55f && !IsWaiting)
         {
             StartCoroutine(WaitAndChangeTargetPose(UnityEngine.Random.Range(0, 3)));
         }
         else if (!IsWaiting)
-            transform.position = Vector3.MoveTowards(transform.position, TargetPos, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, TargetPos, speed * Time.deltaTime);
     }
 
     private IEnumerator WaitAndChangeTargetPose(int time)
@@ -210,13 +180,4 @@ public class Deer : MonoBehaviour
     {
         print("Ура");
     }
-
-    // public void Heal()
-    // {
-    //     StopCoroutine(Infection());
-    //     IsIll = false;
-    //     valuePerSecond = 0;
-    //     transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(false);
-    //     TimerBar.value = 1;
-    // }
 }
