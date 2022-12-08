@@ -1,31 +1,27 @@
-using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using Model.Inventory;
 using ServiceInstances;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class BoosterWorld : MonoBehaviour
 {
-    private bool isPlaced;
     private Collider2D gameFieldBounds;
     private BoxCollider2D boosterCollider;
     private Vector3 startPosition;
     private Vector3 mousePositionOffset;
     private Vector3 GetMouseWorldPosition() => Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
     public BoosterType Type { get; private set; }
-
-    private Transform UI;
 
     private void Start()
     {
         startPosition = transform.position;
         boosterCollider = GetComponent<BoxCollider2D>();
-        UI = Resources
-            .FindObjectsOfTypeAll<Canvas>()
-            .FirstOrDefault(x => x.name == "UI")?
-            .transform;
 
         gameFieldBounds = Resources
             .FindObjectsOfTypeAll<GameObject>()
@@ -45,75 +41,100 @@ public class BoosterWorld : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (!isPlaced)
-            transform.position = GetMouseWorldPosition() + mousePositionOffset;
+        transform.position = GetMouseWorldPosition() + mousePositionOffset;
     }
 
     private void OnMouseUp()
     {
-        if (gameFieldBounds.Distance(boosterCollider).distance < -0.5)
-        {
-            isPlaced = true;
-            transform.SetParent(UI);
+        var trashCan = GameObject.Find("TrashCan");
+        var toTrashCanDistance = Vector2.Distance(
+            transform.position,
+            trashCan.transform.position
+        );
 
-            Destroy(transform.Find("itemAmount").GetComponent<Text>());
-            Inventory.UseBooster(Type);
+        if (toTrashCanDistance < 1)
+        {
+            Inventory.RemoveItem(Type);
+        }
+
+        if (gameFieldBounds.Distance(boosterCollider).distance > -0.5)
+        {
+            transform.position = startPosition;
+            transform.Find("itemAmount").gameObject.SetActive(true);
             return;
         }
 
-        transform.Find("itemAmount").gameObject.SetActive(true);
-        transform.position = startPosition;
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (!isPlaced)
+        switch (Type)
         {
-            return;
-        }
-
-        if (Type == BoosterType.ProtectiveCap)
-        {
-            return;
-        }
-
-        if (other.TryGetComponent<Deer>(out var deer))
-        {
-            switch (Type)
+            case BoosterType.ProtectiveCap:
             {
-                case BoosterType.Food:
-                    deer.StopBuff(BuffType.Hunger);
-                    GameModel.StressLevel -= 0.05f;
-                    Destroy(gameObject);
-                    break;
-                case BoosterType.Water:
-                    deer.StopBuff(BuffType.Thirsty);
-                    GameModel.StressLevel -= 0.05f;
-                    Destroy(gameObject);
-                    break;
+                Inventory.UseBooster(Type);
+                Destroy(gameObject);
+                break;
             }
+            case BoosterType.Food or BoosterType.Water:
+            {
+                var minDistance = 10e9f;
+                var deerToFeed = default(GameObject);
+                foreach (var deer in GameModel.Deers)
+                {
+                    var a = transform.position;
+                    var b = deer.transform.position;
+                    var currentDistance = Vector2.Distance(a, b);
+                    if (currentDistance < 1 && currentDistance < minDistance)
+                    {
+                        minDistance = currentDistance;
+                        deerToFeed = deer;
+                    }
+                }
 
-            return;
-        }
+                if (deerToFeed == null)
+                {
+                    transform.Find("itemAmount").gameObject.SetActive(true);
+                    transform.position = startPosition;
+                    break;
+                }
 
-        if (other.TryGetComponent<BaseThreat>(out var threat))
-        {
-            if (threat.BoosterTypes.Contains(Type))
-                threat.Status = ThreatStatus.Defeated;
-            Destroy(gameObject);
-        }
+                var deerComponent = deerToFeed.GetComponent<Deer>();
 
-        if (other.TryGetComponent<KillerPoacher>(out var killerPoacher))
-        {
-            killerPoacher.Status = ThreatStatus.Defeated;
-            Destroy(gameObject);
-            return;
-        }
+                switch (Type)
+                {
+                    case BoosterType.Food:
+                        Inventory.UseBooster(Type);
+                        deerComponent.StopBuff(BuffType.Hunger);
+                        GameModel.StressLevel -= 0.05f;
+                        Destroy(gameObject);
+                        break;
+                    case BoosterType.Water:
+                        Inventory.UseBooster(Type);
+                        deerComponent.StopBuff(BuffType.Thirsty);
+                        GameModel.StressLevel -= 0.05f;
+                        Destroy(gameObject);
+                        break;
+                }
 
-        if (other.TryGetComponent<ArcticFox>(out var arcticFox))
-        {
-            arcticFox.Status = ThreatStatus.Defeated;
-            Destroy(gameObject);
+                break;
+            }
+            case BoosterType.PinkTrap:
+            {
+                var threatToBeat = GameModel
+                    .Threats
+                    .FirstOrDefault();
+
+                if (threatToBeat == null || Vector2.Distance(transform.position, threatToBeat.transform.position) > 1)
+                {
+                    transform.Find("itemAmount").gameObject.SetActive(true);
+                    transform.position = startPosition;
+                    break;
+                }
+
+                var threatComponent = threatToBeat.GetComponent<BaseThreat>();
+                Inventory.UseBooster(Type);
+                threatComponent.Status = ThreatStatus.Defeated;
+                Destroy(gameObject);
+                GameModel.Threats.Clear();
+                break;
+            }
         }
     }
 }

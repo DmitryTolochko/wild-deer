@@ -841,6 +841,8 @@ GameObject:
   - component: {fileID: 706493191}
   - component: {fileID: 706493190}
   - component: {fileID: 706493189}
+  - component: {fileID: 706493192}
+  - component: {fileID: 706493193}
   m_Layer: 5
   m_Name: TrashCan
   m_TagString: Untagged
@@ -950,6 +952,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706493187}
   m_CullTransparentMesh: 1
+--- !u!114 &706493192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706493187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf9c9c9b4137d44a979296c366cd16d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &706493193
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706493187}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!4 &713959095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8343912683737445209, guid: ca234db9d02c09d418d225fa4ff9ad68, type: 3}
@@ -1164,6 +1204,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838352442}
   m_CullTransparentMesh: 1
+--- !u!1 &912468469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 912468471}
+  - component: {fileID: 912468470}
+  m_Layer: 0
+  m_Name: TrashCanAssets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &912468470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912468469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f03c482cc2d8493ba33508798c454365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trashCanIdle: {fileID: 21300000, guid: 2e038a62139d6334ca76042dae1bc835, type: 3}
+  trashCanHovered: {fileID: 21300000, guid: feb0a41926491c847a1ff497b221ccdb, type: 3}
+  trashCanPrefab: {fileID: 0}
+--- !u!4 &912468471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912468469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.082891, y: -0.42050153, z: 1643.4546}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1077965712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1178,6 +1265,10 @@ PrefabInstance:
     - target: {fileID: 8343912683737445191, guid: ca234db9d02c09d418d225fa4ff9ad68, type: 3}
       propertyPath: m_Name
       value: GameField
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343912683737445208, guid: ca234db9d02c09d418d225fa4ff9ad68, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8343912683737445208, guid: ca234db9d02c09d418d225fa4ff9ad68, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size

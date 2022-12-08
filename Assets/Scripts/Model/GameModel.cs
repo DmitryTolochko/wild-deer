@@ -5,13 +5,15 @@ using System.Linq;
 using Model.Boosters;
 using ServiceInstances;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameModel : MonoBehaviour
 {
     public static HashSet<GameObject> Deers = new HashSet<GameObject>();
+    public static HashSet<GameObject> Threats = new();
+    public static List<TaskInstance> ActualTasks = new List<TaskInstance>();
     public Dictionary<BoosterType, IBooster> Boosters { get; private set; }
-    //public int Count => Deers.Count;
     public static int Balance = 1000;
     public static Collider2D GameField;
     public static float StressLevel = 0;
@@ -19,15 +21,15 @@ public class GameModel : MonoBehaviour
     private bool IsBuffAffixed = false;
     public static HashSet<GameObject> BuffedDeers = new HashSet<GameObject>();
 
-
     private void Start()
-    { 
+    {
         StressLevel = 0f;
         GameField = Resources.FindObjectsOfTypeAll<GameObject>()
             .FirstOrDefault(x => x.name == "GameField")
             ?.GetComponent<PolygonCollider2D>();
         /*LoadStatistics();*/
         var kek = GameObject.Find("GameField");
+
         // PoolManager.FillPool(new PoolInfo
         // {
         //     amount = 15,
@@ -43,7 +45,7 @@ public class GameModel : MonoBehaviour
         }*/
     }
 
-    private void Update() 
+    private void Update()
     {
         HungerByStress();
     }
@@ -59,8 +61,10 @@ public class GameModel : MonoBehaviour
                 StartCoroutine(Deers.ElementAt(i).GetComponent<Deer>().GetBuff(BuffType.Hunger));
                 BuffedDeers.Add(Deers.ElementAt(i));
             }
+
             print("Голодные мы!");
         }
+
         if (BuffedDeers.Count == 0)
             IsBuffAffixed = false;
     }
@@ -86,6 +90,4 @@ public class GameModel : MonoBehaviour
     {
         File.WriteAllText($"{Application.streamingAssetsPath}/progress.json", JsonUtility.ToJson(this));
     }
-
-
 }

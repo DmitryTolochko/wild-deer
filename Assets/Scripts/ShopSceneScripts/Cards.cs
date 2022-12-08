@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
+using Model.Inventory;
+using ServiceInstances;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,10 +18,10 @@ public class Cards : MonoBehaviour
     private Button previousButton;
     private Button nextButton;
 
-    private void Start() 
+    private void Start()
     {
         backButton = transform.Find("BackButton").gameObject.GetComponent<Button>();
-        backButton.onClick.AddListener( delegate() { UnloadThisScene(); });
+        backButton.onClick.AddListener(delegate() { UnloadThisScene(); });
 
         previousButton = transform.Find("PreviousButton").gameObject.GetComponent<Button>();
         previousButton.onClick.AddListener(delegate() { MoveCardsLeft(); });
@@ -26,51 +29,55 @@ public class Cards : MonoBehaviour
         nextButton = transform.Find("NextButton").gameObject.GetComponent<Button>();
         nextButton.onClick.AddListener(delegate() { MoveCardsRight(); });
 
-        MoneyCountElement = GameObject.Find("MoneyCount").GetComponent<Text>();
+        MoneyCountElement = transform.Find("MoneyCount").GetComponent<Text>();
         MoneyCountElement.text = GameModel.Balance.ToString();
         print(backButton);
         SetCards();
     }
 
-    private void Update() 
+    private void Update()
     {
         if (IsMoneyChanged)
         {
             IsMoneyChanged = false;
-            transform.Find("FirstItem").GetComponent<ItemCard>().GetAccesToButton();
-            transform.Find("SecondItem").GetComponent<ItemCard>().GetAccesToButton();
-            transform.Find("ThirdItem").GetComponent<ItemCard>().GetAccesToButton();
+            transform.Find("FirstItem").GetComponent<ItemCard>().GetAccessToButton();
+            transform.Find("SecondItem").GetComponent<ItemCard>().GetAccessToButton();
+            transform.Find("ThirdItem").GetComponent<ItemCard>().GetAccessToButton();
         }
     }
 
     private void UnloadThisScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.UnloadSceneAsync("ShopScene");
+        Time.timeScale = 1;
     }
 
     private void SetCards()
     {
         nonActiveCards.Enqueue(new ItemInstance(
-            "Капкан", 
+            "Капкан",
             "Поможет вам в борьбе с браконьерами, волками и другими врагами.",
             30,
             0,
+            BoosterType.PinkTrap,
             Resources.Load<Sprite>("ItemBlock1")
         ));
 
         nonActiveCards.Enqueue(new ItemInstance(
-            "Еда", 
+            "Еда",
             "Нужна для того, чтобы кормить оленей.",
             30,
             0,
+            BoosterType.Food,
             Resources.Load<Sprite>("ItemBlock2")
         ));
 
         nonActiveCards.Enqueue(new ItemInstance(
-            "Барьер", 
+            "Барьер",
             "На время предотвращает все нападения.",
             100,
             0,
+            BoosterType.ProtectiveCap,
             Resources.Load<Sprite>("ItemBlock3")
         ));
 
@@ -84,6 +91,7 @@ public class Cards : MonoBehaviour
             var card = nonActiveCards.Dequeue();
             nonActiveCards.Enqueue(card);
         }
+
         var cards = nonActiveCards.ToArray();
         transform.Find("FirstItem").GetComponent<ItemCard>().ChangeItem(cards[0]);
         transform.Find("SecondItem").GetComponent<ItemCard>().ChangeItem(cards[1]);

@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using Model.Inventory;
+using ServiceInstances;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,13 +10,21 @@ public class ItemInstance
     public int Price;
     public int InventoryCount;
     public Sprite Image;
+    public BoosterType BoosterType;
 
-    public ItemInstance(string itemName, string description, int price, int inventoryCount, Sprite image)
+    public ItemInstance(
+        string itemName,
+        string description,
+        int price,
+        int inventoryCount,
+        BoosterType boosterType,
+        Sprite image)
     {
         ItemName = itemName;
         Description = description;
         Price = price;
         InventoryCount = inventoryCount;
+        BoosterType = boosterType;
         Image = image;
     }
 }
@@ -30,10 +38,11 @@ public class ItemCard : MonoBehaviour
     private Text descriptionElement;
     private Image lockIconElement;
     private Text inventoryCountElement;
+    private BoosterType boosterType;
 
     private int price;
 
-    private void Start() 
+    private void Start()
     {
         buyButton = transform.Find("Buy").gameObject.GetComponent<Button>();
         priceElement = transform.Find("Buy").transform.Find("Price").GetComponent<Text>();
@@ -48,17 +57,18 @@ public class ItemCard : MonoBehaviour
 
     public void ChangeItem(ItemInstance instance)
     {
+        boosterType = instance.BoosterType;
         itemNameElement.text = instance.ItemName;
         itemImageElement.sprite = instance.Image;
         descriptionElement.text = instance.Description;
-        inventoryCountElement.text = "В инвентаре: " + instance.InventoryCount.ToString();
-        this.price = instance.Price;
+        inventoryCountElement.text =
+            "В инвентаре: " + (Inventory.TryGetItem(boosterType, out var item) ? item.Amount : 0);
+        price = instance.Price;
         priceElement.text = price.ToString();
-
-        GetAccesToButton();
+        GetAccessToButton();
     }
 
-    public void GetAccesToButton()
+    public void GetAccessToButton()
     {
         if (GameModel.Balance < price)
         {
@@ -77,6 +87,11 @@ public class ItemCard : MonoBehaviour
         GameModel.Balance -= price;
         Cards.MoneyCountElement.text = GameModel.Balance.ToString();
         Cards.IsMoneyChanged = true;
+        Inventory.AddItem(boosterType);
+        inventoryCountElement.text = "В инвентаре: " + 
+                                     (Inventory.TryGetItem(boosterType, out var item) 
+                                         ? item.Amount 
+                                         : 0);
         //inventoryCountElement.text = "В инвентаре: " + instance.InventoryCount.ToString();
     }
 }

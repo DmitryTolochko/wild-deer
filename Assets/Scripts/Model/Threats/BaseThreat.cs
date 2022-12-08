@@ -5,12 +5,10 @@ using UnityEngine;
 using System.Linq;
 using Model.Boosters;
 
-public class BaseThreat : MonoBehaviour, IThreat
+public abstract class BaseThreat : MonoBehaviour, IThreat
 {
     public virtual ThreatType Type { get; set; }
-
-    public HashSet<BoosterType> BoosterTypes => new HashSet<BoosterType>();
-
+    public virtual HashSet<BoosterType> BoosterTypes => new();
     public virtual int StressTime { get; set; }
     public virtual float StressLevel { get; set; }
     public ThreatStatus Status { get; set; }

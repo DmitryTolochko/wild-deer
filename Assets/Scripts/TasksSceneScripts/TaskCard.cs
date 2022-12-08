@@ -3,8 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public class TaskInstance 
+{
+    public TaskType TaskType;
+    public string TaskName;
+    public bool IsNotActual;
+    public int Count;
+    public int DoneCount;
+    public int Price;
+    public Sprite Image;
+
+    public TaskInstance(TaskType taskType, string taskName, int count, int doneCount, int price, Sprite image)
+    {
+        TaskType = taskType;
+        TaskName = taskName;
+        IsNotActual = false;
+        Count = count;
+        DoneCount = doneCount;
+        Price = price;
+        Image = image;
+    }
+}
+
 public class TaskCard : MonoBehaviour
 {
+    private TaskInstance Instance;
     private Button getMoneyButton;
     private Text priceElement;
     private Text taskNameElement;
@@ -12,7 +35,7 @@ public class TaskCard : MonoBehaviour
     private Text progressElement;
 
     public bool IsNotActual;
-    public int Count = 2;
+    public int Count;
     public int DoneCount;
 
     private int price;
@@ -26,49 +49,45 @@ public class TaskCard : MonoBehaviour
         progressElement = transform.Find("Progress").GetComponent<Text>();
 
         getMoneyButton.onClick.AddListener(delegate() { OnButtonClick(); });
-
-        IsNotActual = true;
     }
 
     private void Update() 
     {
-        // отладка
-        ChangeProgress(DoneCount);
-        if (DoneCount == Count)
-        {
-            getMoneyButton.interactable = true;
-            getMoneyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("GetMoneyButtonOn");
-        }
+        if (Instance == null)
+            IsNotActual = true;
+        ChangeProgress();
     }
 
-    public void ChangeTask(string taskName, int count, int price, Sprite image)
+    public void ChangeTask(TaskInstance instance)
     {
         IsNotActual = false;
-
-        taskNameElement.text = taskName;
-        this.price = price;
+        this.Instance = instance;
+        taskNameElement.text = instance.TaskName;
+        price = instance.Price;
         priceElement.text = price.ToString();
-        taskImageElement.sprite = image;
-        Count = count;
+        taskImageElement.sprite = instance.Image;
+        Count = instance.Count;
+        DoneCount = instance.DoneCount;
 
-        ChangeProgress(0);
-        getMoneyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("GetMoneyButtonOff");
-        getMoneyButton.interactable = false;
+        ChangeProgress();
     }
 
-    public void ChangeProgress(int doneCount)
+    private void ChangeProgress()
     {
-        DoneCount = doneCount;
+        if (Instance != null)
+            Instance.DoneCount = Instance.DoneCount < DoneCount ? DoneCount : Instance.DoneCount;
         progressElement.text = DoneCount.ToString() + '/' + Count.ToString();
+        getMoneyButton.interactable = DoneCount >= Count;
     }
 
-    public void OnButtonClick()
+    private void OnButtonClick()
     {
         IsNotActual = true;
-        getMoneyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("DoneButton");
+        Instance.IsNotActual = true;
         getMoneyButton.interactable = false;
 
         GameModel.Balance += price;
         Tasks.MoneyCountElement.text = GameModel.Balance.ToString();
+        Instance = null;
     }
 }

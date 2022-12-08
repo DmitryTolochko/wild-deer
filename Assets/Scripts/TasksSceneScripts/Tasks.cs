@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public enum TaskType 
+public enum TaskType
 {
     CollectFood,
     DealWithThreat,
@@ -16,19 +15,19 @@ public enum TaskType
 
 public class Tasks : MonoBehaviour
 {
-    private HashSet<TaskCard> cards = new HashSet<TaskCard>();
+    private List<TaskCard> cards = new List<TaskCard>();
 
-    //public static int MoneyCount = 0;
     public static Text MoneyCountElement;
 
     private Button backButton;
+    private bool IsReloaded;
 
-    private void Start() 
+    private void Start()
     {
         backButton = transform.Find("BackButton").gameObject.GetComponent<Button>();
-        backButton.onClick.AddListener( delegate() { UnloadThisScene(); });
+        backButton.onClick.AddListener(delegate() { UnloadThisScene(); });
 
-        MoneyCountElement = GameObject.Find("MoneyCount").GetComponent<Text>();
+        MoneyCountElement = transform.Find("MoneyCount").GetComponent<Text>();
         MoneyCountElement.text = GameModel.Balance.ToString();
 
         cards.Add(transform.Find("TaskFirst").GetComponent<TaskCard>());
@@ -36,42 +35,62 @@ public class Tasks : MonoBehaviour
         cards.Add(transform.Find("TaskThird").GetComponent<TaskCard>());
     }
 
-    private void Update() 
+    private void Update()
     {
         foreach (var card in cards)
         {
             if (card.IsNotActual)
-                GetNewTask(card);
+                ReloadTasksCards();
+        }
+    }
+
+    public void ReloadTasksCards()
+    {
+        for (var i = 0; i < 3; i++)
+        {
+            if (GameModel.ActualTasks.Count == 3 && GameModel.ActualTasks[i].IsNotActual)
+            {
+                GameModel.ActualTasks[i] = GetNewTask();
+            }
+            else if (GameModel.ActualTasks.Count == 0)
+            {
+                GameModel.ActualTasks.Add(GetNewTask());
+                GameModel.ActualTasks.Add(GetNewTask());
+                GameModel.ActualTasks.Add(GetNewTask());
+            }
+
+            cards[i].ChangeTask(GameModel.ActualTasks[i]);
         }
     }
 
     public void UnloadThisScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.UnloadSceneAsync("TasksScene");
+        Time.timeScale = 1;
     }
 
-    private void GetNewTask(TaskCard card)
+    private static TaskInstance GetNewTask()
     {
         switch (Random.Range(0, 6))
         {
             case 0:
-                card.ChangeTask("Собрать ягель", Random.Range(1, 10), 6, Resources.Load<Sprite>("DeerIcon"));
-                break;
+                return new TaskInstance(TaskType.CollectFood, "Собрать ягель", Random.Range(1, 10), 0, 6,
+                    Resources.Load<Sprite>("DeerIcon"));
             case 1:
-                card.ChangeTask("Справиться с угрозой", Random.Range(1, 3), 10, Resources.Load<Sprite>("DeerIcon"));
-                break;
+                return new TaskInstance(TaskType.DealWithThreat, "Справиться с угрозой", Random.Range(1, 3), 0, 200,
+                    Resources.Load<Sprite>("DeerIcon"));
             case 2:
-                card.ChangeTask("Напоить оленя", Random.Range(1, 5), 15, Resources.Load<Sprite>("DeerIcon"));
-                break;
+                return new TaskInstance(TaskType.WaterDeer, "Напоить оленя", Random.Range(1, 5), 0, 50,
+                    Resources.Load<Sprite>("DeerIcon"));
             case 3:
-                card.ChangeTask("Накормить оленя", Random.Range(1, 5), 11, Resources.Load<Sprite>("DeerIcon"));
-                break;
+                return new TaskInstance(TaskType.FeedDeer, "Накормить оленя", Random.Range(1, 5), 0, 50,
+                    Resources.Load<Sprite>("DeerIcon"));
             case 4:
-                card.ChangeTask("Увеличте популяцию", Random.Range(1, 5), 25, Resources.Load<Sprite>("DeerIcon"));
-                break;
-            case 5:
-                card.ChangeTask("Примените капкан", Random.Range(1, 4), 6, Resources.Load<Sprite>("DeerIcon"));
-                break;
+                return new TaskInstance(TaskType.GainDeers, "Увеличте популяцию", Random.Range(1, 5), 0, 25,
+                    Resources.Load<Sprite>("DeerIcon"));
+            default:
+                return new TaskInstance(TaskType.ApplyTrap, "Примените капкан", Random.Range(1, 4), 0, 20,
+                    Resources.Load<Sprite>("DeerIcon"));
         }
     }
 }

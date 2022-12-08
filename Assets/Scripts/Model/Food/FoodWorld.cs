@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Model.Boosters;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Model.Food
@@ -11,6 +12,7 @@ namespace Model.Food
         public bool isCollectable = false;
 
         private Rigidbody2D rb;
+        public static event Action FoodCollected;
 
         private void Start()
         {
@@ -26,6 +28,7 @@ namespace Model.Food
         {
             isCollected = true;
             Inventory.Inventory.AddItem(new FoodBooster());
+            FoodCollected?.Invoke();
         }
 
         // private IEnumerator Grow()

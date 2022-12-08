@@ -16,7 +16,6 @@ public class UIScript : MonoBehaviour
 
     private void Start()
     {
-
         StressLevelBar = Resources
             .FindObjectsOfTypeAll<GameObject>()
             .FirstOrDefault(x => x.name == "StressLevelSlider")
@@ -56,11 +55,13 @@ public class UIScript : MonoBehaviour
 
     public void ChangeSceneToTasks()
     {
-        SceneManager.LoadScene("TasksScene");
+        SceneManager.LoadScene("TasksScene", LoadSceneMode.Additive);
+        Time.timeScale = 0;
     }
 
     public void ChangeSceneToShop()
     {
-        SceneManager.LoadScene("ShopScene");
+        SceneManager.LoadScene("ShopScene", LoadSceneMode.Additive);
+        Time.timeScale = 0;
     }
 }

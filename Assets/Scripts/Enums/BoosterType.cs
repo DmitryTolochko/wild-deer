@@ -3,17 +3,17 @@
     public enum BoosterType
     {
         PinkTrap,
-        // MeshTree,
-        // HiddenPit,
-        // SmellDecoy,
-        // DeerRobot,
-        // SnowFence,
+        MeshTree,
+        HiddenPit,
+        SmellDecoy,
+        DeerRobot,
+        SnowFence,
         ProtectiveCap,
-        // Medicines,
-        // HugeFan,
-        // WaterFilter,
+        Medicines,
+        HugeFan,
+        WaterFilter,
         Food,
-        // Inhabitant
+        Inhabitant,
         Water
     }
 

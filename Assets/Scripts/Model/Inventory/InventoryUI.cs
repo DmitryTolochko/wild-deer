@@ -1,5 +1,6 @@
 using Model.Inventory;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Color = System.Drawing.Color;
 
@@ -21,11 +22,24 @@ public class InventoryUI : MonoBehaviour
     {
         Inventory.ItemAdded += RefreshInventoryItems;
         Inventory.BoosterUsed += RefreshInventoryItems;
+        Inventory.ItemRemoved += RefreshInventoryItems;
+        /*SceneManager.activeSceneChanged += (arg0, scene) =>
+        {
+            if (scene.name == "SampleScene")
+            {
+                RefreshInventoryItems();
+            }
+        };*/
         RefreshInventoryItems();
     }
 
     public void RefreshInventoryItems()
     {
+        if (itemSlotContainer == null)
+        {
+            return;
+        }
+
         var boosterPrefab = BoostersAssets.Instance.boosterPrefab;
         foreach (var child in itemSlotContainer)
         {
@@ -48,6 +62,7 @@ public class InventoryUI : MonoBehaviour
             var image = itemSlotRectTransform.Find("image").GetComponent<Image>();
             image.sprite = BoostersAssets.GetSprite(itemType);
             var text = itemSlotRectTransform.Find("itemAmount").GetComponent<Text>();
+            text.gameObject.SetActive(true);
             text.text = item.Amount > 1 ? $"x{item.Amount.ToString()}" : string.Empty;
             text.color = new UnityEngine.Color(223, 235, 231);
             x++;

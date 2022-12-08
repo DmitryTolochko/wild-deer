@@ -6,18 +6,18 @@ using UnityEngine.WSA;
 
 namespace Model.Inventory
 {
-    public class Item
+    public class InventoryItem
     {
         public BoosterType Type { get; }
         public int Amount { get; set; }
 
-        public Item(BoosterType type)
+        public InventoryItem(BoosterType type)
         {
             Type = type;
             Amount = 1;
         }
 
-        public Item(BoosterType type, int amount)
+        public InventoryItem(BoosterType type, int amount)
         {
             Type = type;
             Amount = amount;
