@@ -20,9 +20,15 @@ public class TrainScript : MonoBehaviour
     {
         IsWindowActive = true;
         ModalWindow.SetActive(true);
-        ModalWindow.transform.Find("Panel").transform.Find("Header").GetComponent<Text>().text = header;
-        ModalWindow.transform.Find("Panel").transform.Find("Text").GetComponent<Text>().text = text;
-        ModalWindow.transform.Find("Panel").transform.Find("Button").GetComponent<Button>().onClick.AddListener(HideWindow);
+
+        var panelTransform = ModalWindow.transform.Find("Panel").transform;
+        panelTransform.Find("Header").GetComponent<Text>().text = header;
+        panelTransform.Find("Text").GetComponent<Text>().text = text;
+        panelTransform
+            .Find("Button")
+            .GetComponent<Button>()
+            .onClick
+            .AddListener(HideWindow);
         Time.timeScale = 0;
     }
 
@@ -34,7 +40,7 @@ public class TrainScript : MonoBehaviour
         IsWindowActive = false;
     }
 
-    private void Start() 
+    private void Start()
     {
         cam = GetComponent<Camera>();
         StartCoroutine(FisrtTwoWindows());
@@ -51,7 +57,7 @@ public class TrainScript : MonoBehaviour
         ShowWindow(lines[0].Split("___")[0], lines[0].Split("___")[1]);
         while (IsWindowActive)
             yield return false;
-        
+
         DeerSpawner.GenerateNew();
         while (GameModel.Deers.Count == 0)
             yield return false;
@@ -59,7 +65,7 @@ public class TrainScript : MonoBehaviour
         var deer = GameModel.Deers.First();
         while (Vector2.Distance(deer.transform.localPosition, deer.GetComponent<Deer>().TargetPos) > 0.55f)
             yield return false;
-        
+
         var i = 1;
         for (; i < 4; i++)
         {
@@ -67,7 +73,7 @@ public class TrainScript : MonoBehaviour
             while (IsWindowActive)
                 yield return false;
         }
-        
+
         //Еда
 
         FoodSpawner.IsWaiting = false;
@@ -76,18 +82,18 @@ public class TrainScript : MonoBehaviour
 
         FoodSpawner.IsWaiting = true;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
-
-        ModalWindow.transform.Find("Mask").gameObject.SetActive(true);
-        ModalWindow.transform.Find("Mask").GetComponent<Image>().sprite = Resources.Load<Sprite>("Food");
-        ModalWindow.transform.Find("Mask").transform.position = GameModel.FoodSpawned.First().transform.position;
-        ModalWindow.transform.Find("Mask").transform.localScale = GameModel.FoodSpawned.First().transform.localScale;
+        var mask = ModalWindow.transform.Find("Mask");
+        mask.gameObject.SetActive(true);
+        mask.GetComponent<Image>().sprite = Resources.Load<Sprite>("Food");
+        mask.transform.position = GameModel.FoodSpawned.First().transform.position;
+        mask.transform.localScale = GameModel.FoodSpawned.First().transform.localScale;
         //ShowObject(GameModel.FoodSpawned.First());
 
         //инвентарь
 
         while (GameModel.FoodSpawned.Count != 0)
             yield return false;
-        
+
         i++;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
         ShowObject(transform.Find("InventoryUI").transform.Find("InventoryBackground").gameObject);
@@ -95,16 +101,11 @@ public class TrainScript : MonoBehaviour
 
     private void ShowObject(GameObject otherObject)
     {
-        ModalWindow.transform.Find("Mask").gameObject.SetActive(true);
-        ModalWindow.transform.Find("Mask").transform.position = otherObject.transform.position;
-        ModalWindow.transform.Find("Mask").transform.localScale = otherObject.transform.localScale;
-        try
-        {
-            ModalWindow.transform.Find("Mask").GetComponent<Image>().sprite = otherObject.GetComponent<Image>().sprite;
-        }
-        catch (NullReferenceException)
-        {
-            ModalWindow.transform.Find("Mask").GetComponent<Image>().sprite = otherObject.GetComponent<SpriteRenderer>().sprite;
-        }
+        var mask = ModalWindow.transform.Find("Mask");
+        mask.gameObject.SetActive(true);
+        mask.transform.position = otherObject.transform.position;
+        var sprite = Resources.Load<Sprite>("InventoryPanel");
+        mask.GetComponent<Image>().sprite = sprite;
+        mask.GetComponent<RectTransform>().sizeDelta = sprite.rect.size * otherObject.transform.localScale;
     }
 }

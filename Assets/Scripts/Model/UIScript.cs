@@ -13,7 +13,7 @@ public class UIScript : MonoBehaviour
     public Text FemaleCount;
     public Text MaleCount;
     public Text MoneyCountElement;
-
+    
     private void Start()
     {
         StressLevelBar = Resources
