@@ -35,15 +35,15 @@ public class DeerSpawner : MonoBehaviour
             ?.GetComponent<PolygonCollider2D>();
 
         
-        StartCoroutine(CreateDeer(PoolObjectType.Deer));
-        StartCoroutine(CreateDeer(PoolObjectType.Deer));
-        childDeers.ElementAt(0).GetComponent<Deer>().DeerGender = Gender.Female;
-        childDeers.ElementAt(1).GetComponent<Deer>().DeerGender = Gender.Male;
+        // StartCoroutine(CreateDeer(PoolObjectType.Deer));
+        // StartCoroutine(CreateDeer(PoolObjectType.Deer));
+        // childDeers.ElementAt(0).GetComponent<Deer>().DeerGender = Gender.Female;
+        // childDeers.ElementAt(1).GetComponent<Deer>().DeerGender = Gender.Male;
     }
 
     private void Update() 
     {
-        if (GameModel.StressLevel <= 0.25f && GameModel.Deers.Count < 14)
+        if (!TrainScript.IsOn && GameModel.StressLevel <= 0.25f && GameModel.Deers.Count < 14)
         {
             if (ChildrenCountForGeneration == 0 
             && childDeers.Count == 0 
@@ -59,14 +59,12 @@ public class DeerSpawner : MonoBehaviour
                 if (ChildrenCountForGeneration > 0)
                 {
                     isStoped = true;
-                    print("1 создаем оленя");
                     BringTogetherParents();
                 }
                 else if (ChildrenCountForGeneration == 0 && IsSideDeerNeeded && SideDeerMessage == null)
                 {
                     ChildrenCountForGeneration += 1;
                     isStoped = true;
-                    print("2 вызов стороннего оленя");
                     ShowSideDeerMessage();
                     StartCoroutine(CreateDeer(PoolObjectType.Deer));
                     IsSideDeerNeeded = false;
@@ -74,12 +72,11 @@ public class DeerSpawner : MonoBehaviour
             }
             else if (parentDeers.Count < 2 
                 && childDeers.Count < 2 
-                && SideDeerMessage == null)
+                && SideDeerMessage == null
+                && Random.Range(1, 200) == 1)
             {
                 ChildrenCountForGeneration += 1;
-                print("убит");
                 isStoped = true;
-                print("вызов стороннего оленя при убийстве");
                 ShowSideDeerMessage();
                 StartCoroutine(CreateDeer(PoolObjectType.Deer));
                 IsSideDeerNeeded = false;

@@ -29,6 +29,7 @@ public class Deer : MonoBehaviour
     private Slider timerBar;
     private Slider lifeBar;
     private float valuePerSecond = 0;
+    private Image buffImage;
 
     public void Start()
     {
@@ -40,6 +41,7 @@ public class Deer : MonoBehaviour
 
         transform.Find("DeerUI").gameObject.SetActive(true);
         transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(false);
+        buffImage = transform.Find("DeerUI").transform.Find("Slider").transform.Find("BuffSprite").GetComponent<Image>();
         timerBar = transform.Find("DeerUI").transform.Find("Slider").GetComponent<Slider>();
         lifeBar = transform.Find("DeerUI").transform.Find("LifeBar").GetComponent<Slider>();
         lifeBar.value = 1;
@@ -88,14 +90,17 @@ public class Deer : MonoBehaviour
         {
             case BuffType.Hunger:
                 valuePerSecond = 0.1f;
+                buffImage.sprite = Resources.Load<Sprite>("HungerBuff");
                 yield return new WaitForSecondsRealtime(10);
                 break;
             case BuffType.Ill:
                 valuePerSecond = 0.06f;
+                buffImage.sprite = Resources.Load<Sprite>("InfectionBuff");
                 yield return new WaitForSecondsRealtime(15);
                 break;
             case BuffType.Thirsty:
                 valuePerSecond = 0.05f;
+                buffImage.sprite = Resources.Load<Sprite>("WaterBuff");
                 yield return new WaitForSecondsRealtime(20);
                 break;
         }

@@ -44,6 +44,11 @@ public class UIScript : MonoBehaviour
             StressLevelBar.fillAmount -= 0.1f * Time.deltaTime;
         else if (StressLevelBar.fillAmount + 0.1f * Time.deltaTime < GameModel.StressLevel)
             StressLevelBar.fillAmount += 0.1f * Time.deltaTime;
+
+        var r = StressLevelBar.fillAmount * 2;
+        var g = r < 1 ? 1 : (1 - StressLevelBar.fillAmount) * 2;
+        StressLevelBar.color = new Color(r, g, 0);
+        // print($"{r} {g}");
     }
 
     private void RefreshCounts()

@@ -60,7 +60,7 @@ public class Cards : MonoBehaviour
             30,
             0,
             BoosterType.PinkTrap,
-            Resources.Load<Sprite>("ItemBlock1")
+            Resources.Load<Sprite>("TrapIcon")
         ));
 
         nonActiveCards.Enqueue(new ItemInstance(
@@ -69,7 +69,7 @@ public class Cards : MonoBehaviour
             30,
             0,
             BoosterType.Food,
-            Resources.Load<Sprite>("ItemBlock2")
+            Resources.Load<Sprite>("FoodIcon")
         ));
 
         nonActiveCards.Enqueue(new ItemInstance(
@@ -78,7 +78,25 @@ public class Cards : MonoBehaviour
             100,
             0,
             BoosterType.ProtectiveCap,
-            Resources.Load<Sprite>("ItemBlock3")
+            Resources.Load<Sprite>("ProtectiveCapIcon")
+        ));
+
+        nonActiveCards.Enqueue(new ItemInstance(
+            "Лекарство",
+            "Лечит оленя.",
+            50,
+            0,
+            BoosterType.Medicines,
+            Resources.Load<Sprite>("MedicinesIcon")
+        ));
+
+        nonActiveCards.Enqueue(new ItemInstance(
+            "Вода",
+            "На время предотвращает все нападения.",
+            20,
+            0,
+            BoosterType.Water,
+            Resources.Load<Sprite>("WaterIcon")
         ));
 
         MoveCardsRight();

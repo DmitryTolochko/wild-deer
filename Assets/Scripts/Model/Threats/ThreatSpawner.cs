@@ -46,7 +46,17 @@ public class ThreatSpawner : MonoBehaviour
         } 
 
         CanArouseThreat = false;
-        yield return new WaitForSecondsRealtime(Random.Range(30, 40));
+        var count = GameModel.Deers.Count;
+        var time = 0;
+        if (count <= 3)
+            time = Random.Range(30, 40);
+        else if (count <= 6)
+            time = Random.Range(15, 25);
+        else if (count <= 9)
+            time = Random.Range(7, 15);
+        else if (count > 12)
+            time = Random.Range(3, 7);
+        yield return new WaitForSecondsRealtime(time);
         CanArouseThreat = true;
     }
 

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,9 +9,10 @@ using UnityEngine.UI;
 
 public class GameModel : MonoBehaviour
 {
-    public static HashSet<GameObject> Deers = new HashSet<GameObject>();
+    public static HashSet<GameObject> Deers = new();
     public static HashSet<GameObject> Threats = new();
-    public static List<TaskInstance> ActualTasks = new List<TaskInstance>();
+    public static List<TaskInstance> ActualTasks = new();
+    public static HashSet<GameObject> FoodSpawned = new();
     public Dictionary<BoosterType, IBooster> Boosters { get; private set; }
     public static int Balance = 1000;
     public static Collider2D GameField;
@@ -29,7 +29,7 @@ public class GameModel : MonoBehaviour
             ?.GetComponent<PolygonCollider2D>();
         /*LoadStatistics();*/
         var kek = GameObject.Find("GameField");
-
+        TrainScript.IsOn = true;
         // PoolManager.FillPool(new PoolInfo
         // {
         //     amount = 15,
@@ -47,10 +47,10 @@ public class GameModel : MonoBehaviour
 
     private void Update()
     {
-        HungerByStress();
+        GetBuffByStress();
     }
 
-    private void HungerByStress()
+    private void GetBuffByStress()
     {
         if (StressLevel >= 0.5f && !IsBuffAffixed)
         {
@@ -58,11 +58,21 @@ public class GameModel : MonoBehaviour
             var count = Deers.Count >= 3 ? 3 : Deers.Count;
             for (var i = 0; i < count; i++)
             {
-                StartCoroutine(Deers.ElementAt(i).GetComponent<Deer>().GetBuff(BuffType.Hunger));
+                switch (Random.Range(0, 3))
+                {
+                    case 0:
+                        StartCoroutine(Deers.ElementAt(i).GetComponent<Deer>().GetBuff(BuffType.Hunger));
+                        break;
+                    case 1:
+                        StartCoroutine(Deers.ElementAt(i).GetComponent<Deer>().GetBuff(BuffType.Ill));
+                        break;
+                    case 2:
+                        StartCoroutine(Deers.ElementAt(i).GetComponent<Deer>().GetBuff(BuffType.Thirsty));
+                        break;
+                }
+                
                 BuffedDeers.Add(Deers.ElementAt(i));
             }
-
-            print("Голодные мы!");
         }
 
         if (BuffedDeers.Count == 0)
