@@ -9,7 +9,7 @@ public class ThreatSpawner : MonoBehaviour
 
     private static Collider2D spawnField_2; 
     private static Collider2D spawnField_1; 
-    private bool CanArouseThreat = true;
+    public static bool CanArouseThreat = false;
     private void Start()
     {
         spawnField_2 = Resources.FindObjectsOfTypeAll<GameObject>()
@@ -26,6 +26,11 @@ public class ThreatSpawner : MonoBehaviour
         if (DeerSpawner.DeerCount > 1 && threats.Count < 1 && CanArouseThreat)
         {
             StartCoroutine(ArouseRandomThreat());                       
+        }
+        if (TrainScript.IsOn && CanArouseThreat)
+        {
+            StartCoroutine(CreateThreat(PoolObjectType.ArcticFox));
+            CanArouseThreat = false;
         }
     }
 

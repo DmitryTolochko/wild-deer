@@ -33,6 +33,8 @@ public class Tasks : MonoBehaviour
         cards.Add(transform.Find("TaskFirst").GetComponent<TaskCard>());
         cards.Add(transform.Find("TaskSecond").GetComponent<TaskCard>());
         cards.Add(transform.Find("TaskThird").GetComponent<TaskCard>());
+
+        ReloadTasksCards();
     }
 
     private void Update()

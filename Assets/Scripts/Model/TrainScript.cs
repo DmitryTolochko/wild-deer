@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TrainScript : MonoBehaviour
@@ -43,16 +44,12 @@ public class TrainScript : MonoBehaviour
     private void Start()
     {
         cam = GetComponent<Camera>();
-        StartCoroutine(FisrtTwoWindows());
+        StartCoroutine(StartTrain());
     }
 
-    public void StartTrain()
+    private IEnumerator StartTrain()
     {
-        FisrtTwoWindows();
-    }
-
-    private IEnumerator FisrtTwoWindows()
-    {
+        GameModel.Balance = 0;
         print("Обучение началось");
         ShowWindow(lines[0].Split("___")[0], lines[0].Split("___")[1]);
         while (IsWindowActive)
@@ -82,12 +79,8 @@ public class TrainScript : MonoBehaviour
 
         FoodSpawner.IsWaiting = true;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
-        var mask = ModalWindow.transform.Find("Mask");
-        mask.gameObject.SetActive(true);
-        mask.GetComponent<Image>().sprite = Resources.Load<Sprite>("Food");
-        mask.transform.position = GameModel.FoodSpawned.First().transform.position;
-        mask.transform.localScale = GameModel.FoodSpawned.First().transform.localScale;
-        //ShowObject(GameModel.FoodSpawned.First());
+        ShowObject(GameModel.FoodSpawned.First(), 
+            Resources.Load<Sprite>("Food"));
 
         //инвентарь
 
@@ -96,16 +89,77 @@ public class TrainScript : MonoBehaviour
 
         i++;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
-        ShowObject(transform.Find("InventoryUI").transform.Find("InventoryBackground").gameObject);
+        ShowObject(transform.Find("InventoryUI").transform.Find("InventoryBackground").gameObject, 
+            Resources.Load<Sprite>("InventoryPanel"));
+
+        //голод
+
+        StartCoroutine(GameModel.Deers.First().GetComponent<Deer>().GetBuff(BuffType.Hunger));
+        yield return new WaitForSecondsRealtime(3);
+        i++;
+        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
+        while (GameModel.Deers.First().GetComponent<Deer>().BuffType == BuffType.Hunger)
+            yield return false;
+        
+        //задания
+
+        i++;
+        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
+        ShowObject(transform.Find("TasksButton").gameObject, 
+            transform.Find("TasksButton").GetComponent<Image>().sprite, true);
+
+        while (SceneManager.sceneCount == 1)
+            yield return false;
+        
+        
+        i++;
+        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
+
+        while (IsWindowActive)//(GameModel.Balance == 0)
+            yield return false;
+
+        i++;
+        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
+
+        while (SceneManager.sceneCount > 1)
+            yield return false;
+
+        // песец
+
+        ThreatSpawner.CanArouseThreat = true;
+        yield return new WaitForSecondsRealtime(5);
+
+        i++;
+        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
+
+        while (IsWindowActive)
+            yield return false;
+
+        // магазин
+
+        i++;
+        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
+        ShowObject(transform.Find("ShopButton").gameObject, 
+            transform.Find("ShopButton").GetComponent<Image>().sprite, true);
+
+        while (SceneManager.sceneCount == 1)
+            yield return false;
+
+        i++;
+        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
     }
 
-    private void ShowObject(GameObject otherObject)
+    private void ShowObject(GameObject otherObject, Sprite sprite, bool isUI=false)
     {
         var mask = ModalWindow.transform.Find("Mask");
         mask.gameObject.SetActive(true);
         mask.transform.position = otherObject.transform.position;
-        var sprite = Resources.Load<Sprite>("InventoryPanel");
         mask.GetComponent<Image>().sprite = sprite;
-        mask.GetComponent<RectTransform>().sizeDelta = sprite.rect.size * otherObject.transform.localScale;
+        mask.GetComponent<RectTransform>().sizeDelta = 
+            isUI 
+            ? otherObject.GetComponent<RectTransform>().sizeDelta 
+            : new Vector2(sprite.rect.size.x * 0.85f, sprite.rect.size.y * 0.8f);
+
+        mask.GetComponent<RectTransform>().localScale = otherObject.transform.localScale;
     }
 }
