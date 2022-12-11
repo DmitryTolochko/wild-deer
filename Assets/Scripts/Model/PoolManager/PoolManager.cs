@@ -18,7 +18,8 @@ public enum PoolObjectType
     Insects,
     Lemming,
     DirtyWater,
-    Garbage
+    Garbage,
+    Water
 }
 
 [Serializable]

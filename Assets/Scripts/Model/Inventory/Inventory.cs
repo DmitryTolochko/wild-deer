@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Timers;
 using Model.Boosters;
 using ServiceInstances;
 using UnityEngine.SceneManagement;
@@ -14,7 +13,7 @@ namespace Model.Inventory
         public static IEnumerable<InventoryItem> GetAllItems() => items;
         public static event Action ItemAdded;
         public static event Action ItemRemoved;
-        public static event Action BoosterUsed;
+        public static event Action<BoosterType> BoosterUsed;
 
         static Inventory()
         {
@@ -108,7 +107,7 @@ namespace Model.Inventory
                 break;
             }
 
-            BoosterUsed?.Invoke();
+            BoosterUsed?.Invoke(type);
         }
     }
 }

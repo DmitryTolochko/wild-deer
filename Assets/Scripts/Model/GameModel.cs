@@ -30,6 +30,8 @@ public class GameModel : MonoBehaviour
         /*LoadStatistics();*/
         var kek = GameObject.Find("GameField");
         TrainScript.IsOn = true;
+
+
         // PoolManager.FillPool(new PoolInfo
         // {
         //     amount = 15,
@@ -70,7 +72,7 @@ public class GameModel : MonoBehaviour
                         StartCoroutine(Deers.ElementAt(i).GetComponent<Deer>().GetBuff(BuffType.Thirsty));
                         break;
                 }
-                
+
                 BuffedDeers.Add(Deers.ElementAt(i));
             }
         }
@@ -79,13 +81,13 @@ public class GameModel : MonoBehaviour
             IsBuffAffixed = false;
     }
 
-    // private void SortDeersLayers()
-    // {
-    //     foreach (var deer in Deers)
-    //     {
-
-    //     }
-    // }
+    public void FillActualTasksEvents()
+    {
+        foreach (var task in ActualTasks)
+        {
+            
+        }
+    }
 
     private void LoadStatistics()
     {

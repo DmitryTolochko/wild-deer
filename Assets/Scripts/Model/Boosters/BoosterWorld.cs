@@ -72,7 +72,7 @@ public class BoosterWorld : MonoBehaviour
                 Destroy(gameObject);
                 break;
             }
-            case BoosterType.Food or BoosterType.Water:
+            case BoosterType.Food or BoosterType.Water or BoosterType.Medicines:
             {
                 var minDistance = 10e9f;
                 var deerToFeed = default(GameObject);
@@ -88,7 +88,7 @@ public class BoosterWorld : MonoBehaviour
                     }
                 }
 
-                if (deerToFeed == null)
+                if (deerToFeed == null || deerToFeed.GetComponent<Deer>().BuffType == BuffType.No)
                 {
                     transform.Find("itemAmount").gameObject.SetActive(true);
                     transform.position = startPosition;
@@ -108,6 +108,12 @@ public class BoosterWorld : MonoBehaviour
                     case BoosterType.Water:
                         Inventory.UseBooster(Type);
                         deerComponent.StopBuff(BuffType.Thirsty);
+                        GameModel.StressLevel -= 0.05f;
+                        Destroy(gameObject);
+                        break;
+                    case BoosterType.Medicines:
+                        Inventory.UseBooster(Type);
+                        deerComponent.StopBuff(BuffType.Ill);
                         GameModel.StressLevel -= 0.05f;
                         Destroy(gameObject);
                         break;

@@ -33,7 +33,6 @@ public class Tasks : MonoBehaviour
         cards.Add(transform.Find("TaskFirst").GetComponent<TaskCard>());
         cards.Add(transform.Find("TaskSecond").GetComponent<TaskCard>());
         cards.Add(transform.Find("TaskThird").GetComponent<TaskCard>());
-
         ReloadTasksCards();
     }
 
@@ -88,7 +87,7 @@ public class Tasks : MonoBehaviour
                 return new TaskInstance(TaskType.FeedDeer, "Накормить оленя", Random.Range(1, 5), 0, 50,
                     Resources.Load<Sprite>("DeerIcon"));
             case 4:
-                return new TaskInstance(TaskType.GainDeers, "Увеличте популяцию", Random.Range(1, 5), 0, 25,
+                return new TaskInstance(TaskType.GainDeers, "Увеличьте популяцию", Random.Range(1, 5), 0, 25,
                     Resources.Load<Sprite>("DeerIcon"));
             default:
                 return new TaskInstance(TaskType.ApplyTrap, "Примените капкан", Random.Range(1, 4), 0, 20,

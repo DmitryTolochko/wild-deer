@@ -7,6 +7,8 @@ public class BoostersAssets : MonoBehaviour
     public Sprite foodSprite;
     public Sprite pinkTrapSprite;
     public Sprite protectiveCapSprite;
+    public Sprite medicinesSprite;
+    public Sprite waterBucketSprite;
 
     public Transform boosterPrefab;
     
@@ -21,7 +23,9 @@ public class BoostersAssets : MonoBehaviour
         {
             BoosterType.Food => Instance.foodSprite,
             BoosterType.PinkTrap => Instance.pinkTrapSprite,
-            BoosterType.ProtectiveCap => Instance.protectiveCapSprite
+            BoosterType.ProtectiveCap => Instance.protectiveCapSprite,
+            BoosterType.Medicines => Instance.medicinesSprite,
+            BoosterType.Water => Instance.waterBucketSprite
         };
     }
 }

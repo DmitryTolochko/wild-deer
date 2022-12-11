@@ -21,7 +21,7 @@ public class InventoryUI : MonoBehaviour
     private void Start()
     {
         Inventory.ItemAdded += RefreshInventoryItems;
-        Inventory.BoosterUsed += RefreshInventoryItems;
+        Inventory.BoosterUsed += type => RefreshInventoryItems();
         Inventory.ItemRemoved += RefreshInventoryItems;
         /*SceneManager.activeSceneChanged += (arg0, scene) =>
         {

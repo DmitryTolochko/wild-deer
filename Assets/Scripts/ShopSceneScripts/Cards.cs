@@ -92,7 +92,7 @@ public class Cards : MonoBehaviour
 
         nonActiveCards.Enqueue(new ItemInstance(
             "Вода",
-            "На время предотвращает все нападения.",
+            "Служит для утоления жажды оленя.",
             20,
             0,
             BoosterType.Water,
