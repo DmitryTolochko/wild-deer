@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Model.Inventory;
+using ServiceInstances;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TaskInstance 
+public class TaskInstance
 {
     public TaskType TaskType;
     public string TaskName;
@@ -22,6 +26,43 @@ public class TaskInstance
         DoneCount = doneCount;
         Price = price;
         Image = image;
+
+        HandleTaskEvent();
+    }
+
+    private void HandleTaskEvent()
+    {
+        switch (TaskType)
+        {
+            case TaskType.ApplyTrap:
+                Inventory.BoosterUsed += _ => IncrementDoneCount();
+                break;
+            case TaskType.CollectFood:
+                FoodWorld.FoodCollected += _ => IncrementDoneCount();
+                break;
+            case TaskType.FeedDeer:
+                Deer.DeerFed += IncrementDoneCount;
+                break;
+            case TaskType.GainDeers:
+                DeerSpawner.DeerSpawned += IncrementDoneCount;
+                break;
+            case TaskType.WaterDeer:
+                Deer.DeerDrank += IncrementDoneCount;
+                break;
+            case TaskType.DealWithThreat:
+                BaseThreat.ThreatDefeated += IncrementDoneCount;
+                break;
+        }
+    }
+
+
+    private void IncrementDoneCount()
+    {
+        Debug.Log("ПРОГРЕСС +1 ЕПТА");
+        if (DoneCount < Count)
+        {
+            DoneCount++;
+        }
     }
 }
 
@@ -40,7 +81,7 @@ public class TaskCard : MonoBehaviour
 
     private int price;
 
-    private void Start() 
+    private void Start()
     {
         getMoneyButton = transform.Find("GetMoney").gameObject.GetComponent<Button>();
         priceElement = transform.Find("Money").GetComponent<Text>();
@@ -51,7 +92,7 @@ public class TaskCard : MonoBehaviour
         getMoneyButton.onClick.AddListener(delegate() { OnButtonClick(); });
     }
 
-    private void Update() 
+    private void Update()
     {
         if (Instance == null)
             IsNotActual = true;
@@ -61,7 +102,7 @@ public class TaskCard : MonoBehaviour
     public void ChangeTask(TaskInstance instance)
     {
         IsNotActual = false;
-        this.Instance = instance;
+        Instance = instance;
         taskNameElement.text = instance.TaskName;
         price = instance.Price;
         priceElement.text = price.ToString();

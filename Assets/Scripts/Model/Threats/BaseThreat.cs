@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using ServiceInstances;
@@ -11,11 +12,26 @@ public abstract class BaseThreat : MonoBehaviour, IThreat
     public virtual HashSet<BoosterType> BoosterTypes => new();
     public virtual int StressTime { get; set; }
     public virtual float StressLevel { get; set; }
-    public ThreatStatus Status { get; set; }
+
+    public ThreatStatus Status
+    {
+        get => status;
+        set
+        {
+            status = value;
+            if (status == ThreatStatus.Defeated)
+            {
+                ThreatDefeated?.Invoke();
+            }
+        }
+    }
+
     public virtual GameObject TargetDeer { get; set; }
     public virtual Vector2 SpawnPoint { get; set; }
 
     private bool onGameField;
+    private ThreatStatus status;
+    public static event Action ThreatDefeated;
 
     public virtual void OnCollisionEnter2D(Collision2D other)
     {

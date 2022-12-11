@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
-public enum BuffType 
+public enum BuffType
 {
     No,
     Ill,
@@ -18,7 +20,7 @@ public class Deer : MonoBehaviour
 
     private Rigidbody2D rb;
     public Vector2 TargetPos = new Vector2();
-    private BuffType buffType;
+    public BuffType BuffType;
 
     public bool IsPairing = false;
     public bool IsAVictim = false;
@@ -30,6 +32,9 @@ public class Deer : MonoBehaviour
     private Slider lifeBar;
     private float valuePerSecond = 0;
     private Image buffImage;
+    public static event Action DeerFed;
+    public static event Action DeerHealed;
+    public static event Action DeerDrank;
 
     public void Start()
     {
@@ -41,7 +46,8 @@ public class Deer : MonoBehaviour
 
         transform.Find("DeerUI").gameObject.SetActive(true);
         transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(false);
-        buffImage = transform.Find("DeerUI").transform.Find("Slider").transform.Find("BuffSprite").GetComponent<Image>();
+        buffImage = transform.Find("DeerUI").transform.Find("Slider").transform.Find("BuffSprite")
+            .GetComponent<Image>();
         timerBar = transform.Find("DeerUI").transform.Find("Slider").GetComponent<Slider>();
         lifeBar = transform.Find("DeerUI").transform.Find("LifeBar").GetComponent<Slider>();
         lifeBar.value = 1;
@@ -84,7 +90,7 @@ public class Deer : MonoBehaviour
     public IEnumerator GetBuff(BuffType newBuff)
     {
         transform.Find("DeerUI").transform.Find("Slider").gameObject.SetActive(true);
-        buffType = newBuff;
+        BuffType = newBuff;
 
         switch (newBuff)
         {
@@ -104,18 +110,33 @@ public class Deer : MonoBehaviour
                 yield return new WaitForSecondsRealtime(20);
                 break;
         }
-        if (buffType != BuffType.No)
+
+        if (BuffType != BuffType.No)
             CurrentAge = Age.Dead;
-        buffType = BuffType.No;
+        BuffType = BuffType.No;
         ResetTimerBar();
     }
 
     public void StopBuff(BuffType newBuff)
     {
         StopCoroutine(GetBuff(newBuff));
-        buffType = BuffType.No;
+        BuffType = BuffType.No;
+
+        switch (newBuff)
+        {
+            case BuffType.Hunger:
+                DeerFed?.Invoke();
+                break;
+            case BuffType.Ill:
+                DeerHealed?.Invoke();
+                break;
+            case BuffType.Thirsty:
+                DeerDrank?.Invoke();
+                break;
+        }
+
         GameModel.StressLevel -= GameModel.StressLevel < 0.1f ? GameModel.StressLevel : 0.1f;
-        ResetTimerBar();        
+        ResetTimerBar();
     }
 
     private void ChangeTimerBar()
