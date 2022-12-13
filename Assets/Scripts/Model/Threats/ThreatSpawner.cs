@@ -23,14 +23,14 @@ public class ThreatSpawner : MonoBehaviour
 
     private void Update() 
     {
-        if (DeerSpawner.DeerCount > 1 && threats.Count < 1 && CanArouseThreat)
-        {
-            StartCoroutine(ArouseRandomThreat());                       
-        }
         if (TrainScript.IsOn && CanArouseThreat)
         {
             StartCoroutine(CreateThreat(PoolObjectType.ArcticFox));
             CanArouseThreat = false;
+        }
+        if (DeerSpawner.DeerCount > 1 && threats.Count < 1 && CanArouseThreat)
+        {
+            StartCoroutine(ArouseRandomThreat());                       
         }
     }
 

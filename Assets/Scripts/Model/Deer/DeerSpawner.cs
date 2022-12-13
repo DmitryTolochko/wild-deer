@@ -47,7 +47,7 @@ public class DeerSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (!TrainScript.IsOn && GameModel.StressLevel <= 0.25f && GameModel.Deers.Count < 14)
+        if (!TrainScript.IsOn && GameModel.StressLevel <= 0.5f && GameModel.Deers.Count < 14)
         {
             if (ChildrenCountForGeneration == 0
                 && childDeers.Count == 0

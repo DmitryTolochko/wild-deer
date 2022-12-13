@@ -8,7 +8,7 @@ public class FoodSpawner : MonoBehaviour
     private Collider2D spawnField_1;
     private Collider2D spawnField_2;
     private const int MaxFoodItemsCount = 5;
-    public static bool IsWaiting = true;
+    public static bool IsWaiting = false;
 
     private void Start()
     {

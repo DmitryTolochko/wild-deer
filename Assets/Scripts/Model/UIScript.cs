@@ -10,6 +10,9 @@ using UnityEngine.UI;
 public class UIScript : MonoBehaviour
 {
     public Image StressLevelBar;
+    public Image Smile;
+
+    private float NegativeStressLevel = 0;
     public Text FemaleCount;
     public Text MaleCount;
     public Text MoneyCountElement;
@@ -30,25 +33,36 @@ public class UIScript : MonoBehaviour
             .FindObjectsOfTypeAll<GameObject>()
             .FirstOrDefault(x => x.name == "MaleCount")
             .GetComponent<Text>();
+
+        Smile = transform.Find("StressLevel").transform.Find("Smile").GetComponent<Image>();
     }
 
     private void Update()
     {
         RefreshStressLevel();
         RefreshCounts();
+        
     }
 
     private void RefreshStressLevel()
     {
-        if (StressLevelBar.fillAmount - 0.1f * Time.deltaTime > GameModel.StressLevel)
-            StressLevelBar.fillAmount -= 0.1f * Time.deltaTime;
-        else if (StressLevelBar.fillAmount + 0.1f * Time.deltaTime < GameModel.StressLevel)
-            StressLevelBar.fillAmount += 0.1f * Time.deltaTime;
+        if (NegativeStressLevel - 0.1f * Time.deltaTime > GameModel.StressLevel)
+        {
+            NegativeStressLevel -= 0.1f * Time.deltaTime;
+            RefreshSmile();
+        }
+        else if (NegativeStressLevel + 0.1f * Time.deltaTime < GameModel.StressLevel)
+        {
+            NegativeStressLevel += 0.1f * Time.deltaTime;
+            RefreshSmile();
+        }
 
-        var r = StressLevelBar.fillAmount * 2;
-        var g = r < 1 ? 1 : (1 - StressLevelBar.fillAmount) * 2;
+
+        StressLevelBar.fillAmount = 1 - NegativeStressLevel;
+
+        var g = StressLevelBar.fillAmount * 2;
+        var r = g < 1 ? 1 : (1 - StressLevelBar.fillAmount) * 2;
         StressLevelBar.color = new Color(r, g, 0);
-        // print($"{r} {g}");
     }
 
     private void RefreshCounts()
@@ -58,15 +72,26 @@ public class UIScript : MonoBehaviour
         MoneyCountElement.text = GameModel.Balance.ToString();
     }
 
+    private void RefreshSmile()
+    {
+        if (StressLevelBar.fillAmount >=0.66f)
+            Smile.sprite = Resources.Load<Sprite>("GoodSmile");
+        else if (StressLevelBar.fillAmount >= 0.33f)
+            Smile.sprite = Resources.Load<Sprite>("MiddleSmile");
+        else
+            Smile.sprite = Resources.Load<Sprite>("BadSmile");
+
+    }
+
     public void ChangeSceneToTasks()
     {
-        SceneManager.LoadScene("TasksScene", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("TasksScene", LoadSceneMode.Additive);
         Time.timeScale = 0;
     }
 
     public void ChangeSceneToShop()
     {
-        SceneManager.LoadScene("ShopScene", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("ShopScene", LoadSceneMode.Additive);
         Time.timeScale = 0;
     }
 }

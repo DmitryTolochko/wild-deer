@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public enum TaskType
 {
@@ -10,7 +11,8 @@ public enum TaskType
     WaterDeer,
     FeedDeer,
     GainDeers,
-    ApplyTrap
+    ApplyTrap,
+    //HealDeer
 }
 
 public class Tasks : MonoBehaviour
@@ -55,7 +57,14 @@ public class Tasks : MonoBehaviour
             }
             else if (GameModel.ActualTasks.Count == 0)
             {
-                GameModel.ActualTasks.Add(GetNewTask());
+                GameModel.ActualTasks.Add(new TaskInstance(
+                    TaskType.CollectFood, 
+                    "Собрать ягель", 
+                    1, 
+                    1, 
+                    200,
+                    Resources.Load<Sprite>("DeerIcon")));
+
                 GameModel.ActualTasks.Add(GetNewTask());
                 GameModel.ActualTasks.Add(GetNewTask());
             }
@@ -70,27 +79,48 @@ public class Tasks : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private static TaskInstance GetNewTask()
+    private TaskInstance GetNewTask()
     {
+        while (true)
+        {
+            var task = GetNextTask();
+            if (GameModel.ActualTasks.Any(x => x.TaskType == task.TaskType))
+                continue;
+            return task;
+        }
+    }
+
+    private static TaskInstance GetNextTask()
+    {
+        var num = 0;
         switch (Random.Range(0, 6))
         {
             case 0:
-                return new TaskInstance(TaskType.CollectFood, "Собрать ягель", Random.Range(1, 10), 0, 6,
+                num = Random.Range(1, 10);
+                return new TaskInstance(TaskType.CollectFood, "Собрать ягель", num, 0, 50 * num,
                     Resources.Load<Sprite>("DeerIcon"));
             case 1:
-                return new TaskInstance(TaskType.DealWithThreat, "Справиться с угрозой", Random.Range(1, 3), 0, 200,
+                num = Random.Range(1, 3);
+                return new TaskInstance(TaskType.DealWithThreat, "Справиться с угрозой", num, 0, 200 * num,
                     Resources.Load<Sprite>("DeerIcon"));
             case 2:
-                return new TaskInstance(TaskType.WaterDeer, "Напоить оленя", Random.Range(1, 5), 0, 50,
+                num = Random.Range(1, 5);
+                return new TaskInstance(TaskType.WaterDeer, "Напоить оленя", num, 0, 50 * num,
                     Resources.Load<Sprite>("DeerIcon"));
             case 3:
-                return new TaskInstance(TaskType.FeedDeer, "Накормить оленя", Random.Range(1, 5), 0, 50,
+                num = Random.Range(1, 5);
+                return new TaskInstance(TaskType.FeedDeer, "Накормить оленя", num, 0, 50 * num,
                     Resources.Load<Sprite>("DeerIcon"));
             case 4:
-                return new TaskInstance(TaskType.GainDeers, "Увеличьте популяцию", Random.Range(1, 5), 0, 25,
+                num = Random.Range(1, 5);
+                return new TaskInstance(TaskType.GainDeers, "Увеличьте популяцию", num, 0, 25 * num,
                     Resources.Load<Sprite>("DeerIcon"));
+            // case 5:
+            //     return new TaskInstance(TaskType.HealDeer, "Вылечить оленя", Random.Range(1, 2), 0, 50,
+            //         Resources.Load<Sprite>("DeerIcon"));
             default:
-                return new TaskInstance(TaskType.ApplyTrap, "Примените капкан", Random.Range(1, 4), 0, 20,
+                num = Random.Range(1, 4);
+                return new TaskInstance(TaskType.ApplyTrap, "Примените капкан", num, 0, 20 * num,
                     Resources.Load<Sprite>("DeerIcon"));
         }
     }

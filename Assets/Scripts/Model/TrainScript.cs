@@ -50,6 +50,7 @@ public class TrainScript : MonoBehaviour
     private IEnumerator StartTrain()
     {
         GameModel.Balance = 0;
+        WaterSpawner.IsWaiting = true;
         print("Обучение началось");
         ShowWindow(lines[0].Split("___")[0], lines[0].Split("___")[1]);
         while (IsWindowActive)
@@ -104,6 +105,7 @@ public class TrainScript : MonoBehaviour
         //задания
 
         i++;
+        NotificationScript.IsHidden = false;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
         ShowObject(transform.Find("TasksButton").gameObject, 
             transform.Find("TasksButton").GetComponent<Image>().sprite, true);
@@ -111,26 +113,21 @@ public class TrainScript : MonoBehaviour
         while (SceneManager.sceneCount == 1)
             yield return false;
         
-        
-        i++;
-        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
-
-        while (IsWindowActive)//(GameModel.Balance == 0)
-            yield return false;
-
-        i++;
-        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
+        //открываем окно заданий
+        TasksTrainScript.IsOn = true;
 
         while (SceneManager.sceneCount > 1)
             yield return false;
 
+        i = 11;
         // песец
 
         ThreatSpawner.CanArouseThreat = true;
         yield return new WaitForSecondsRealtime(5);
 
-        i++;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
+        ShowObject(GameModel.Threats.First(), 
+            Resources.Load<Sprite>("ArcticFox"));
 
         while (IsWindowActive)
             yield return false;
@@ -145,8 +142,35 @@ public class TrainScript : MonoBehaviour
         while (SceneManager.sceneCount == 1)
             yield return false;
 
+        ShopTrainScript.IsOn = true;
+
+        while (SceneManager.sceneCount > 1)
+            yield return false;
+        
+        // Конец обучения
+
+        i = 16;
+        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
+
+        while (GameModel.Threats.Count != 0)
+            yield return false;
+
         i++;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
+        while (IsWindowActive)
+            yield return false;
+        
+        i++;
+        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
+        while (IsWindowActive)
+            yield return false;
+        
+        //
+
+        IsOn = false;
+        ThreatSpawner.CanArouseThreat = true;
+        FoodSpawner.IsWaiting = false;
+        WaterSpawner.IsWaiting = false;
     }
 
     private void ShowObject(GameObject otherObject, Sprite sprite, bool isUI=false)

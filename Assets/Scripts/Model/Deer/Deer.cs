@@ -36,6 +36,8 @@ public class Deer : MonoBehaviour
     public static event Action DeerHealed;
     public static event Action DeerDrank;
 
+    private GameObject TargetPoint;
+
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -51,6 +53,10 @@ public class Deer : MonoBehaviour
         timerBar = transform.Find("DeerUI").transform.Find("Slider").GetComponent<Slider>();
         lifeBar = transform.Find("DeerUI").transform.Find("LifeBar").GetComponent<Slider>();
         lifeBar.value = 1;
+
+        TargetPoint = transform.Find("TargetPoint").gameObject;
+
+        //StartCoroutine(GetBuff());
     }
 
     public void ResetLifeBar()
@@ -68,6 +74,7 @@ public class Deer : MonoBehaviour
 
         if (lifeBar.value >= 0.0017f)
             lifeBar.value -= 0.0017f * Time.deltaTime;
+
     }
 
     public IEnumerator GetOlder()
@@ -110,16 +117,62 @@ public class Deer : MonoBehaviour
                 yield return new WaitForSecondsRealtime(20);
                 break;
         }
-        if (buffType != BuffType.No)
+        if (BuffType != BuffType.No)
+        {
             CurrentAge = Age.Dead;
+        }
         BuffType = BuffType.No;
         ResetTimerBar();
     }
 
+    private IEnumerator GetBuff()
+    {
+        switch (Random.Range(0, 2))
+        {
+            case 0:
+                StartCoroutine(GetBuff(BuffType.Hunger));
+                break;
+            case 1:
+                StartCoroutine(GetBuff(BuffType.Thirsty));
+                break;
+        }
+        GameModel.BuffedDeers.Add(this.gameObject);
+
+        var start = Time.time;
+        var timeInterval = Random.Range(10, 15);
+        while (start + timeInterval != Time.time)
+            yield return false;
+
+        print("yes");
+        StartCoroutine(GetBuff());
+    }
+
+    // public void StopBuff(BuffType newBuff)
+    // {
+    //     StopCoroutine(GetBuff(newBuff));
+    //     BuffType = BuffType.No;
+    //     GameModel.StressLevel -= GameModel.StressLevel < 0.1f ? GameModel.StressLevel : 0.1f;
+    //     ResetTimerBar();
+    // }
+
     public void StopBuff(BuffType newBuff)
     {
         StopCoroutine(GetBuff(newBuff));
-        buffType = BuffType.No;
+        BuffType = BuffType.No;
+
+        switch (newBuff)
+        {
+            case BuffType.Hunger:
+                DeerFed?.Invoke();
+                break;
+            case BuffType.Ill:
+                DeerHealed?.Invoke();
+                break;
+            case BuffType.Thirsty:
+                DeerDrank?.Invoke();
+                break;
+        }
+
         GameModel.StressLevel -= GameModel.StressLevel < 0.1f ? GameModel.StressLevel : 0.1f;
         ResetTimerBar();
     }
@@ -143,6 +196,7 @@ public class Deer : MonoBehaviour
         // print(transform.position);
         // print(TargetPos);
         // print(distanceToTarget);
+        TargetPoint.transform.position = TargetPos;
         if (distanceToTarget < 0.55f && !IsWaiting)
         {
             StartCoroutine(WaitAndChangeTargetPose(UnityEngine.Random.Range(0, 3)));

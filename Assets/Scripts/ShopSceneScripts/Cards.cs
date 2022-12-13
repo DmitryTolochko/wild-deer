@@ -55,27 +55,27 @@ public class Cards : MonoBehaviour
     private void SetCards()
     {
         nonActiveCards.Enqueue(new ItemInstance(
-            "Капкан",
-            "Поможет вам в борьбе с браконьерами, волками и другими врагами.",
-            30,
-            0,
-            BoosterType.PinkTrap,
-            Resources.Load<Sprite>("TrapIcon")
-        ));
-
-        nonActiveCards.Enqueue(new ItemInstance(
             "Еда",
             "Нужна для того, чтобы кормить оленей.",
-            30,
+            20,
             0,
             BoosterType.Food,
             Resources.Load<Sprite>("FoodIcon")
         ));
 
         nonActiveCards.Enqueue(new ItemInstance(
+            "Капкан",
+            "Поможет вам в борьбе с браконьерами, волками и другими врагами.",
+            50,
+            0,
+            BoosterType.PinkTrap,
+            Resources.Load<Sprite>("TrapIcon")
+        ));
+
+        nonActiveCards.Enqueue(new ItemInstance(
             "Барьер",
             "На время предотвращает все нападения.",
-            100,
+            150,
             0,
             BoosterType.ProtectiveCap,
             Resources.Load<Sprite>("ProtectiveCapIcon")
@@ -93,7 +93,7 @@ public class Cards : MonoBehaviour
         nonActiveCards.Enqueue(new ItemInstance(
             "Вода",
             "Служит для утоления жажды оленя.",
-            20,
+            25,
             0,
             BoosterType.Water,
             Resources.Load<Sprite>("WaterIcon")

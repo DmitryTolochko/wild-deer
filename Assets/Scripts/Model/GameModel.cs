@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -80,14 +81,7 @@ public class GameModel : MonoBehaviour
         if (BuffedDeers.Count == 0)
             IsBuffAffixed = false;
     }
-
-    public void FillActualTasksEvents()
-    {
-        foreach (var task in ActualTasks)
-        {
-            
-        }
-    }
+    
 
     private void LoadStatistics()
     {

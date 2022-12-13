@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class DeerAnimator : MonoBehaviour
 {
+    private SpriteRenderer SpriteRenderer;
+
+    private void Start() 
+    {
+        SpriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+    }
     private void Update() 
     {
-        transform.Find("Sprite").GetComponent<SpriteRenderer>().flipX = 
+        SpriteRenderer.flipX = 
             GetComponent<Deer>().TargetPos.x > transform.position.x;
+
+        SpriteRenderer.sortingOrder = (int)(transform.position.y * (-10));
     }
 
     public void ChangeSprite(Age age, Gender gender)
@@ -15,11 +23,11 @@ public class DeerAnimator : MonoBehaviour
         switch (age)
         {
             case Age.Child:
-                transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = 
+                SpriteRenderer.sprite = 
                 Resources.Load<Sprite>("YoungDeer");
                 break;
             case Age.Adult:
-                transform.Find("Sprite").GetComponent<SpriteRenderer>().sprite = 
+                SpriteRenderer.sprite = 
                 gender == Gender.Male 
                 ? Resources.Load<Sprite>("MaleDeer")
                 : Resources.Load<Sprite>("FemaleDeer");
