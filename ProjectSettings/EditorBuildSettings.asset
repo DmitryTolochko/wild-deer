@@ -18,4 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TasksScene.unity
     guid: 7225250a4dcd3c949860406bf540f650
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 4c960ae1251cc104d9eaced146b2dc39, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 3dd3a6eec87575a4dad5c6060e90ae8c, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 1340b9d6d8348b140842221312337222, type: 2}

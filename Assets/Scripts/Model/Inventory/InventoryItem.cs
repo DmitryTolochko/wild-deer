@@ -2,25 +2,21 @@
 using Model.Boosters;
 using ServiceInstances;
 using UnityEngine;
-using UnityEngine.WSA;
 
-namespace Model.Inventory
+public class InventoryItem
 {
-    public class InventoryItem
+    public BoosterType Type { get; }
+    public int Amount { get; set; }
+
+    public InventoryItem(BoosterType type)
     {
-        public BoosterType Type { get; }
-        public int Amount { get; set; }
+        Type = type;
+        Amount = 1;
+    }
 
-        public InventoryItem(BoosterType type)
-        {
-            Type = type;
-            Amount = 1;
-        }
-
-        public InventoryItem(BoosterType type, int amount)
-        {
-            Type = type;
-            Amount = amount;
-        }
+    public InventoryItem(BoosterType type, int amount)
+    {
+        Type = type;
+        Amount = amount;
     }
 }

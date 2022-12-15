@@ -82,14 +82,14 @@ public class Deer : MonoBehaviour
         CurrentAge = Age.Child;
         GetComponent<DeerAnimator>().ChangeSprite(CurrentAge, DeerGender);
         print("Ребёнок");
-        yield return new WaitForSecondsRealtime(60);
+        yield return new WaitForSeconds(60);
         GetComponent<DeerAnimator>().ChangeSprite(Age.Adult, DeerGender);
         CurrentAge = Age.CanMakeChild;
         print("Должен сделать детей");
-        yield return new WaitForSecondsRealtime(25);
+        yield return new WaitForSeconds(25);
         CurrentAge = Age.Adult;
         print("Взрослый");
-        yield return new WaitForSecondsRealtime(515);
+        yield return new WaitForSeconds(515);
         CurrentAge = Age.Dead;
         print("Умер");
     }
@@ -104,17 +104,17 @@ public class Deer : MonoBehaviour
             case BuffType.Hunger:
                 valuePerSecond = 0.1f;
                 buffImage.sprite = Resources.Load<Sprite>("HungerBuff");
-                yield return new WaitForSecondsRealtime(10);
+                yield return new WaitForSeconds(10);
                 break;
             case BuffType.Ill:
                 valuePerSecond = 0.06f;
                 buffImage.sprite = Resources.Load<Sprite>("InfectionBuff");
-                yield return new WaitForSecondsRealtime(15);
+                yield return new WaitForSeconds(15);
                 break;
             case BuffType.Thirsty:
                 valuePerSecond = 0.05f;
                 buffImage.sprite = Resources.Load<Sprite>("WaterBuff");
-                yield return new WaitForSecondsRealtime(20);
+                yield return new WaitForSeconds(20);
                 break;
         }
         if (BuffType != BuffType.No)

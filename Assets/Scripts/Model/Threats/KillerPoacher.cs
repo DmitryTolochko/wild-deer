@@ -17,7 +17,10 @@ public class KillerPoacher : BaseThreat
     {
         var distanceToTarget = Vector2.Distance(transform.position, SpawnPoint);
         if (distanceToTarget > 0.5f)
+        {
             Move(SpawnPoint, 3);
+            TargetPoint.transform.position = SpawnPoint;
+        }
         else
         {
             Status = ThreatStatus.Spawned;

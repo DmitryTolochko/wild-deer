@@ -9,7 +9,7 @@ public class ThreatSpawner : MonoBehaviour
 
     private static Collider2D spawnField_2; 
     private static Collider2D spawnField_1; 
-    public static bool CanArouseThreat = false;
+    public static bool CanArouseThreat = true;
     private void Start()
     {
         spawnField_2 = Resources.FindObjectsOfTypeAll<GameObject>()

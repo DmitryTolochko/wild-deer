@@ -11,7 +11,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Deers
   - Water
   - UI
   - 
@@ -20,7 +20,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - ModalWindow
   - 
   - 
   - 
@@ -41,9 +41,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
+  - name: BG
+    uniqueID: 2221849009
     locked: 0
   - name: Deers
-    uniqueID: 627424665
+    uniqueID: 377105385
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0

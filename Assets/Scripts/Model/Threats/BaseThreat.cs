@@ -90,6 +90,8 @@ public abstract class BaseThreat : MonoBehaviour, IThreat
         }
     }
 
+    public GameObject TargetPoint;
+
     public virtual void Start()
     {
         onGameField = false;
@@ -97,6 +99,7 @@ public abstract class BaseThreat : MonoBehaviour, IThreat
         GetBoosterTypes();
         FindNewTargetDeer();
         SpawnPoint = ThreatSpawner.GenerateNewPosition();
+        TargetPoint.transform.position = SpawnPoint;
         transform.position = new Vector2(SpawnPoint.x, SpawnPoint.y + 11);
     }
 

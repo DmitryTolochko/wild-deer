@@ -10,13 +10,17 @@ public class ArcticFox : BaseThreat
         Type = ThreatType.ArcticFox;
         StressTime = 120;
         StressLevel = 0.25f;
+        
     }
 
     public override void PlaceThreat()
     {
         var distanceToTarget = Vector2.Distance(transform.position, SpawnPoint);
         if (distanceToTarget > 0.5f)
+        {
             Move(SpawnPoint, 3);
+            TargetPoint.transform.position = SpawnPoint;
+        }
         else
         {
             Status = ThreatStatus.Spawned;

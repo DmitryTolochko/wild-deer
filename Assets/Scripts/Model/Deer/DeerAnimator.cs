@@ -4,33 +4,42 @@ using UnityEngine;
 
 public class DeerAnimator : MonoBehaviour
 {
-    private SpriteRenderer SpriteRenderer;
+    private SpriteRenderer spriteRenderer;
+
+    public Sprite YoungDeer;
+    public Sprite MaleDeer;
+    public Sprite FemaleDeer;
+
+    private Deer deer;
 
     private void Start() 
     {
-        SpriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+        spriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+        deer = GetComponent<Deer>();
     }
     private void Update() 
     {
-        SpriteRenderer.flipX = 
-            GetComponent<Deer>().TargetPos.x > transform.position.x;
+        spriteRenderer.flipX = deer.TargetPos.x > transform.position.x;
 
-        SpriteRenderer.sortingOrder = (int)(transform.position.y * (-10));
+        spriteRenderer.sortingOrder = (int)(transform.position.y * (-10));
     }
 
     public void ChangeSprite(Age age, Gender gender)
     {
+        if (spriteRenderer is null)
+            spriteRenderer = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+        
         switch (age)
         {
             case Age.Child:
-                SpriteRenderer.sprite = 
-                Resources.Load<Sprite>("YoungDeer");
+                print(YoungDeer);
+                spriteRenderer.sprite = YoungDeer;
                 break;
             case Age.Adult:
-                SpriteRenderer.sprite = 
-                gender == Gender.Male 
-                ? Resources.Load<Sprite>("MaleDeer")
-                : Resources.Load<Sprite>("FemaleDeer");
+                spriteRenderer.sprite = 
+                    gender == Gender.Male 
+                        ? MaleDeer
+                        : FemaleDeer;
                 break;
         }
     }
