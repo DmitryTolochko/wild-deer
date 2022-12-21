@@ -11,7 +11,7 @@ public class TrainScript : MonoBehaviour
 {
     public static bool IsOn;
     private bool IsWindowActive;
-    private string file;// = Application.streamingAssetsPath + "/TrainText.txt";
+    private string file; // = Application.streamingAssetsPath + "/TrainText.txt";
     private List<string> lines;
 
     public GameObject ModalWindow;
@@ -41,32 +41,32 @@ public class TrainScript : MonoBehaviour
         IsWindowActive = false;
     }
 
-    private void Start()
-    {
-        lines = new List<string> {"Добро пожаловать!___Вы - сотрудник организации по защите природы и диких животных. Вам предстоит развить и защитить стадо оленей!",
-                                        "Знакомство___На северо-западе Восточного Таймыра обнаружен детеныш Rangifer tarandus - Северный Олень.", 
-                                        "Знакомство___Ваша задача помочь олененку выжить в суровых условиях и увеличить стадо. ",
-                                        "Знакомство___Объект должен быть под постоянным наблюдением, поэтому мы расставили по периметру камеры видеонаблюдения, это облегчит выполнение миссии.",
-                                        "Еда___Северные олени в основном питаются ягелем - разновидностью лишайника. Соберите ягель, нажав по нему",
-                                        "Инвентарь___Внизу экрана расположен ИНВЕНТАРЬ. В нем хранятся все твои предметы",
-                                        "Олень проголодался!___Смотри, олень хочет есть! Перетащи на него собранный тобой ранее ягель, чтобы покормить.",
-                                        "Задания___Смотри, появилась красная точка. Давай посмотрим, что там! Нажми на кнопку в левом нижнем углу",
-                                        "Задания___Это список Заданий. Здесь отображаются задачи, выполняя которые, ты можешь получить вознаграждение, которое тебе точно пригодится позже.",
-                                        "Задания___Смотри, одно из заданий ты уже выполнил, забери свою награду.",
-                                        "Задания___Теперь вернись на главный экран",
-                                        "Внимание!___Первая встреча с хищником! Нужно защитить олененка! ",
-                                        "Внимание!___Зайди в магазин, чтобы купить необходимый предмет, который поможет нам справиться с нависшей угрозой!",
-                                        "Магазин___Здесь ты можешь приобрести всё необходимое, главное чтобы хватило денег.",
-                                        "Магазин___Сейчас тебе нужен капкан. Купи его!",
-                                        "Магазин___Скорее возвращайся к нашему оленю!",
-                                        "Капкан___Чтобы применить капкан, переведи его на песца",
-                                        "Отлично!___Теперь подведём итог. Выполняй задания чтобы получать деньги.",
-                                        "Отлично!___Когда появится какой-то недоброжелатель - скорее покупай нужный инвентарь и применяй его!",
-                                        "Отлично!___И не забывай, что олени хотят есть и пить, а ещё могут болеть."};
-
-        ModalWindow = transform.Find("ModalWindow").gameObject;
-        StartCoroutine(StartTrain());
-    }
+    // private void Start()
+    // {
+    //     lines = new List<string> {"Добро пожаловать!___Вы - сотрудник организации по защите природы и диких животных. Вам предстоит развить и защитить стадо оленей!",
+    //                                     "Знакомство___На северо-западе Восточного Таймыра обнаружен детеныш Rangifer tarandus - Северный Олень.", 
+    //                                     "Знакомство___Ваша задача помочь олененку выжить в суровых условиях и увеличить стадо. ",
+    //                                     "Знакомство___Объект должен быть под постоянным наблюдением, поэтому мы расставили по периметру камеры видеонаблюдения, это облегчит выполнение миссии.",
+    //                                     "Еда___Северные олени в основном питаются ягелем - разновидностью лишайника. Соберите ягель, нажав по нему",
+    //                                     "Инвентарь___Внизу экрана расположен ИНВЕНТАРЬ. В нем хранятся все твои предметы",
+    //                                     "Олень проголодался!___Смотри, олень хочет есть! Перетащи на него собранный тобой ранее ягель, чтобы покормить.",
+    //                                     "Задания___Смотри, появилась красная точка. Давай посмотрим, что там! Нажми на кнопку в левом нижнем углу",
+    //                                     "Задания___Это список Заданий. Здесь отображаются задачи, выполняя которые, ты можешь получить вознаграждение, которое тебе точно пригодится позже.",
+    //                                     "Задания___Смотри, одно из заданий ты уже выполнил, забери свою награду.",
+    //                                     "Задания___Теперь вернись на главный экран",
+    //                                     "Внимание!___Первая встреча с хищником! Нужно защитить олененка! ",
+    //                                     "Внимание!___Зайди в магазин, чтобы купить необходимый предмет, который поможет нам справиться с нависшей угрозой!",
+    //                                     "Магазин___Здесь ты можешь приобрести всё необходимое, главное чтобы хватило денег.",
+    //                                     "Магазин___Сейчас тебе нужен капкан. Купи его!",
+    //                                     "Магазин___Скорее возвращайся к нашему оленю!",
+    //                                     "Капкан___Чтобы применить капкан, переведи его на песца",
+    //                                     "Отлично!___Теперь подведём итог. Выполняй задания чтобы получать деньги.",
+    //                                     "Отлично!___Когда появится какой-то недоброжелатель - скорее покупай нужный инвентарь и применяй его!",
+    //                                     "Отлично!___И не забывай, что олени хотят есть и пить, а ещё могут болеть."};
+    //
+    //     ModalWindow = transform.Find("ModalWindow").gameObject;
+    //     StartCoroutine(StartTrain());
+    // }
 
     private IEnumerator StartTrain()
     {
@@ -104,7 +104,7 @@ public class TrainScript : MonoBehaviour
 
         FoodSpawner.IsWaiting = true;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
-        ShowObject(GameModel.FoodSpawned.First(), 
+        ShowObject(GameModel.FoodSpawned.First(),
             Resources.Load<Sprite>("Food"));
 
         //инвентарь
@@ -114,7 +114,7 @@ public class TrainScript : MonoBehaviour
 
         i++;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
-        ShowObject(transform.Find("InventoryUI").transform.Find("InventoryBackground").gameObject, 
+        ShowObject(transform.Find("InventoryUI").transform.Find("InventoryBackground").gameObject,
             Resources.Load<Sprite>("InventoryPanel"));
 
         //голод
@@ -125,18 +125,18 @@ public class TrainScript : MonoBehaviour
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
         while (GameModel.Deers.First().GetComponent<Deer>().BuffType == BuffType.Hunger)
             yield return new WaitForSeconds(0);
-        
+
         //задания
 
         i++;
         NotificationScript.IsHidden = false;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
-        ShowObject(transform.Find("TasksButton").gameObject, 
+        ShowObject(transform.Find("TasksButton").gameObject,
             transform.Find("TasksButton").GetComponent<Image>().sprite, true);
 
         while (SceneManager.sceneCount == 1)
             yield return new WaitForSeconds(0);
-        
+
         //открываем окно заданий
         TasksTrainScript.IsOn = true;
 
@@ -150,7 +150,7 @@ public class TrainScript : MonoBehaviour
         yield return new WaitForSecondsRealtime(5);
 
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
-        ShowObject(GameModel.Threats.First(), 
+        ShowObject(GameModel.CurrentThreat,
             Resources.Load<Sprite>("ArcticFox"));
 
         while (IsWindowActive)
@@ -160,7 +160,7 @@ public class TrainScript : MonoBehaviour
 
         i++;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
-        ShowObject(transform.Find("ShopButton").gameObject, 
+        ShowObject(transform.Find("ShopButton").gameObject,
             transform.Find("ShopButton").GetComponent<Image>().sprite, true);
 
         while (SceneManager.sceneCount == 1)
@@ -170,25 +170,25 @@ public class TrainScript : MonoBehaviour
 
         while (SceneManager.sceneCount > 1)
             yield return new WaitForSeconds(0);
-        
+
         // Конец обучения
 
         i = 16;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
 
-        while (GameModel.Threats.Count != 0)
+        while (GameModel.CurrentThreat != null)
             yield return new WaitForSeconds(0);
 
         i++;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
         while (IsWindowActive)
             yield return new WaitForSeconds(0);
-        
+
         i++;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
         while (IsWindowActive)
             yield return new WaitForSeconds(0);
-        
+
         //
 
         IsOn = false;
@@ -197,16 +197,16 @@ public class TrainScript : MonoBehaviour
         WaterSpawner.IsWaiting = false;
     }
 
-    private void ShowObject(GameObject otherObject, Sprite sprite, bool isUI=false)
+    private void ShowObject(GameObject otherObject, Sprite sprite, bool isUI = false)
     {
         var mask = ModalWindow.transform.Find("Mask");
         mask.gameObject.SetActive(true);
         mask.transform.position = otherObject.transform.position;
         mask.GetComponent<Image>().sprite = sprite;
-        mask.GetComponent<RectTransform>().sizeDelta = 
-            isUI 
-            ? otherObject.GetComponent<RectTransform>().sizeDelta 
-            : new Vector2(sprite.rect.size.x * 0.85f, sprite.rect.size.y * 0.8f);
+        mask.GetComponent<RectTransform>().sizeDelta =
+            isUI
+                ? otherObject.GetComponent<RectTransform>().sizeDelta
+                : new Vector2(sprite.rect.size.x * 0.85f, sprite.rect.size.y * 0.8f);
 
         mask.GetComponent<RectTransform>().localScale = otherObject.transform.localScale;
     }

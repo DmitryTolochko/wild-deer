@@ -9,9 +9,10 @@ public class BoostersAssets : MonoBehaviour
     public Sprite protectiveCapSprite;
     public Sprite medicinesSprite;
     public Sprite waterBucketSprite;
-
     public Transform boosterPrefab;
-    
+    public Transform protectiveCapBoosterPrefab;
+
+
     private void Awake()
     {
         Instance = this;

@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine;
 using System.Linq;
+using System.Timers;
+using ServiceInstances;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -39,7 +41,7 @@ public class Deer : MonoBehaviour
     private GameObject TargetPoint;
 
     public bool IsSpawned;
-
+    
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -74,7 +76,6 @@ public class Deer : MonoBehaviour
 
         if (lifeBar.value >= 0.0017f)
             lifeBar.value -= 0.0017f * Time.deltaTime;
-
     }
 
     public IEnumerator GetOlder()
@@ -117,10 +118,12 @@ public class Deer : MonoBehaviour
                 yield return new WaitForSeconds(20);
                 break;
         }
+
         if (BuffType != BuffType.No)
         {
             CurrentAge = Age.Dead;
         }
+
         BuffType = BuffType.No;
         ResetTimerBar();
     }
@@ -136,6 +139,7 @@ public class Deer : MonoBehaviour
                 StartCoroutine(GetBuff(BuffType.Thirsty));
                 break;
         }
+
         GameModel.BuffedDeers.Add(this.gameObject);
 
         var start = Time.time;
@@ -192,9 +196,10 @@ public class Deer : MonoBehaviour
 
     private void Move()
     {
-        float distanceToTarget = Vector2.Distance(transform.localPosition, TargetPos);
+        var distanceToTarget = Vector2.Distance(transform.localPosition, TargetPos);
+        print(distanceToTarget);
         TargetPoint.transform.position = TargetPos;
-        if (distanceToTarget < 0.55f && !IsWaiting)
+        if (distanceToTarget < 0.65f && !IsWaiting)
         {
             StartCoroutine(WaitAndChangeTargetPose(UnityEngine.Random.Range(0, 3)));
         }

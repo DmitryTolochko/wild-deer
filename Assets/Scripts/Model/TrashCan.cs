@@ -10,6 +10,7 @@ public class TrashCan : MonoBehaviour
 {
     private TrashCanAssets trashCanAssets;
     private Image image;
+
     private void Start()
     {
         trashCanAssets = TrashCanAssets.Instance;
@@ -18,6 +19,11 @@ public class TrashCan : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.gameObject.TryGetComponent<ProtectiveCapBehavior>(out var cap))
+        {
+            return;
+        }
+
         image.sprite = trashCanAssets.trashCanHovered;
     }
 

@@ -10,7 +10,6 @@ public class ArcticFox : BaseThreat
         Type = ThreatType.ArcticFox;
         StressTime = 120;
         StressLevel = 0.25f;
-        
     }
 
     public override void PlaceThreat()
@@ -24,7 +23,7 @@ public class ArcticFox : BaseThreat
         else
         {
             Status = ThreatStatus.Spawned;
-            GameModel.Threats.Add(gameObject);
+            GameModel.CurrentThreat = gameObject;
         }
     }
 

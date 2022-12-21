@@ -1,11 +1,8 @@
-using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using Model.Inventory;
 using ServiceInstances;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -17,12 +14,12 @@ public class BoosterWorld : MonoBehaviour
     private Vector3 mousePositionOffset;
     private Vector3 GetMouseWorldPosition() => Camera.main.ScreenToWorldPoint(Input.mousePosition);
     public BoosterType Type { get; private set; }
+    private Timer capTimer;
 
     private void Start()
     {
         startPosition = transform.position;
         boosterCollider = GetComponent<BoxCollider2D>();
-
         gameFieldBounds = Resources
             .FindObjectsOfTypeAll<GameObject>()
             .FirstOrDefault(x => x.name == "GameField")!.GetComponent<PolygonCollider2D>();
@@ -57,17 +54,29 @@ public class BoosterWorld : MonoBehaviour
             Inventory.RemoveItem(Type);
         }
 
-        if (gameFieldBounds.Distance(boosterCollider).distance > -0.5)
+        var toReturnDistanceLimit = Type == BoosterType.ProtectiveCap ? -3 : -0.5;
+        if (gameFieldBounds.Distance(boosterCollider).distance > toReturnDistanceLimit && Type != BoosterType.PinkTrap)
         {
-            transform.position = startPosition;
-            transform.Find("itemAmount").gameObject.SetActive(true);
-            return;
+            ReturnBoosterToInventory();
         }
 
         switch (Type)
         {
             case BoosterType.ProtectiveCap:
             {
+                var toPlaceParent = GameObject.Find("GamePlay").transform;
+                if (toPlaceParent.Find("ProtectiveCap(Clone)"))
+                {
+                    ReturnBoosterToInventory();
+                    return;
+                }
+
+                var capTransform = Instantiate(
+                    BoostersAssets
+                        .Instance
+                        .protectiveCapBoosterPrefab,
+                    toPlaceParent);
+                capTransform.position = new Vector3(0, 3.25f, 0);
                 Inventory.UseBooster(Type);
                 Destroy(gameObject);
                 break;
@@ -90,16 +99,23 @@ public class BoosterWorld : MonoBehaviour
 
                 if (deerToFeed == null || deerToFeed.GetComponent<Deer>().BuffType == BuffType.No)
                 {
-                    transform.Find("itemAmount").gameObject.SetActive(true);
-                    transform.position = startPosition;
-                    break;
+                    ReturnBoosterToInventory();
+                    return;
                 }
 
                 var deerComponent = deerToFeed.GetComponent<Deer>();
 
+                var toUseBoosterType = GameModel.GetBoosterTypeByBuffType(deerComponent.BuffType);
+                if (toUseBoosterType != Type)
+                {
+                    ReturnBoosterToInventory();
+                    return;
+                }
+
                 switch (Type)
                 {
                     case BoosterType.Food:
+
                         Inventory.UseBooster(Type);
                         deerComponent.StopBuff(BuffType.Hunger);
                         GameModel.StressLevel -= 0.05f;
@@ -123,25 +139,28 @@ public class BoosterWorld : MonoBehaviour
             }
             case BoosterType.PinkTrap:
             {
-                var threatToBeat = GameModel
-                    .Threats
-                    .FirstOrDefault();
+                var threatToBeat = GameModel.CurrentThreat;
 
                 if (threatToBeat == null || Vector2.Distance(transform.position, threatToBeat.transform.position) > 1)
                 {
-                    transform.Find("itemAmount").gameObject.SetActive(true);
-                    transform.position = startPosition;
-                    break;
+                    ReturnBoosterToInventory();
+                    return;
                 }
 
                 var threatComponent = threatToBeat.GetComponent<BaseThreat>();
                 Inventory.UseBooster(Type);
                 threatComponent.Status = ThreatStatus.Defeated;
                 Destroy(gameObject);
-                GameModel.Threats.Clear();
+                GameModel.CurrentThreat = null;
                 break;
             }
         }
+    }
+
+    private void ReturnBoosterToInventory()
+    {
+        transform.Find("itemAmount").gameObject.SetActive(true);
+        transform.position = startPosition;
     }
 }
 

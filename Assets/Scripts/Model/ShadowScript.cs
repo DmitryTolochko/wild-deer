@@ -11,13 +11,15 @@ public class ShadowScript : MonoBehaviour
     public float OffsetY;
     public float OffsetX;
 
+    private float previousDistance = 10e9f;
     private SpriteRenderer spriteRenderer;
-    private void Start() 
+
+    private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void Update() 
+    private void Update()
     {
         if (IsSpawning)
         {
@@ -25,12 +27,12 @@ public class ShadowScript : MonoBehaviour
                 MyObject.transform.position,
                 TargetPoint.transform.position
             );
-            var scale = (1 - distance/11);
-            transform.position =  new Vector2(
+            var scale = (1 - distance / 11);
+            transform.position = new Vector2(
                 TargetPoint.transform.position.x - OffsetX,
                 TargetPoint.transform.position.y - OffsetY
             );
-            
+
             spriteRenderer.color = new Color(
                 spriteRenderer.color.r,
                 spriteRenderer.color.g,
@@ -44,8 +46,10 @@ public class ShadowScript : MonoBehaviour
                 scale
             );
 
-            if (distance <= 0.55f)
+            if (distance > previousDistance)
                 IsSpawning = false;
+
+            previousDistance = distance;
         }
     }
 }

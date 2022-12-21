@@ -52,13 +52,15 @@ public class TaskInstance
             case TaskType.DealWithThreat:
                 BaseThreat.ThreatDefeated += IncrementDoneCount;
                 break;
+            /*case TaskType.HealDeer:
+                Deer.DeerHealed += IncrementDoneCount;
+                break;*/
         }
     }
 
 
     private void IncrementDoneCount()
     {
-        Debug.Log("ПРОГРЕСС +1 ЕПТА");
         if (DoneCount < Count)
         {
             DoneCount++;

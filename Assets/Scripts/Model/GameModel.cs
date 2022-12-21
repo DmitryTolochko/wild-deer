@@ -4,14 +4,16 @@ using System.IO;
 using System.Linq;
 using Model.Boosters;
 using ServiceInstances;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Timer = System.Timers.Timer;
 
 public class GameModel : MonoBehaviour
 {
     public static HashSet<GameObject> Deers = new();
-    public static HashSet<GameObject> Threats = new();
+    public static GameObject CurrentThreat;
     public static List<TaskInstance> ActualTasks = new();
     public static HashSet<GameObject> FoodSpawned = new();
     public Dictionary<BoosterType, IBooster> Boosters { get; private set; }
@@ -30,9 +32,7 @@ public class GameModel : MonoBehaviour
             ?.GetComponent<PolygonCollider2D>();
         /*LoadStatistics();*/
         var kek = GameObject.Find("GameField");
-        TrainScript.IsOn = true;
-
-
+        // TrainScript.IsOn = true;
         // PoolManager.FillPool(new PoolInfo
         // {
         //     amount = 15,
@@ -81,7 +81,7 @@ public class GameModel : MonoBehaviour
         if (BuffedDeers.Count == 0)
             IsBuffAffixed = false;
     }
-    
+
 
     private void LoadStatistics()
     {
@@ -95,5 +95,15 @@ public class GameModel : MonoBehaviour
     private void SaveStatistics()
     {
         File.WriteAllText($"{Application.streamingAssetsPath}/progress.json", JsonUtility.ToJson(this));
+    }
+
+    public static BoosterType GetBoosterTypeByBuffType(BuffType buffType)
+    {
+        return buffType switch
+        {
+            BuffType.Hunger => BoosterType.Food,
+            BuffType.Ill => BoosterType.Medicines,
+            BuffType.Thirsty => BoosterType.Water
+        };
     }
 }

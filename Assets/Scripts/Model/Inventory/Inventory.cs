@@ -17,16 +17,16 @@ namespace Model.Inventory
 
         static Inventory()
         {
-            // AddItem(new FoodBooster());
-            // AddItem(new FoodBooster());
-            // AddItem(new FoodBooster());
-            // AddItem(new FoodBooster());
-            // AddItem(new ProtectiveCapBooster());
-            // AddItem(new ProtectiveCapBooster());
-            // AddItem(new ProtectiveCapBooster());
-            // AddItem(new PinkTrapBooster());
-            // AddItem(new PinkTrapBooster());
-            // AddItem(new PinkTrapBooster());
+            AddItem(new FoodBooster());
+            AddItem(new FoodBooster());
+            AddItem(new FoodBooster());
+            AddItem(new FoodBooster());
+            AddItem(new ProtectiveCapBooster());
+            AddItem(new ProtectiveCapBooster());
+            AddItem(new ProtectiveCapBooster());
+            AddItem(new PinkTrapBooster());
+            AddItem(new PinkTrapBooster());
+            AddItem(new PinkTrapBooster());
         }
 
         public static void AddItem(BoosterType boosterType)
@@ -79,7 +79,6 @@ namespace Model.Inventory
             }
 
             ItemRemoved?.Invoke();
-            
         }
 
         public static bool TryGetItem(BoosterType type, out InventoryItem item)

@@ -24,7 +24,7 @@ public class KillerPoacher : BaseThreat
         else
         {
             Status = ThreatStatus.Spawned;
-            GameModel.Threats.Add(gameObject);
+            GameModel.CurrentThreat = gameObject;
         }
     }
 
