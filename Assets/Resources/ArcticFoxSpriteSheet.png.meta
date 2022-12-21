@@ -1,0 +1,957 @@
+fileFormatVersion: 2
+guid: cd132ad37924ccd41879933049af26e5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 1771
+        width: 453
+        height: 245
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26df2d9e1a8e3de46b82016ef9b1ba83
+      internalID: -920546166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 1770
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdb63019cfe85174db4547ccd7b76bf5
+      internalID: 1581764795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 1668
+        y: 1770
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f2961e1e161ddd46a57bfaf97a88b73
+      internalID: 1470478606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 2404
+        y: 1771
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84f3dfff38743294997189642719621e
+      internalID: -856676660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 3142
+        y: 1771
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3798b941b1d07f48a2d7eba48c58916
+      internalID: -1504182265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 3878
+        y: 1773
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a64a22ec4b88b5429e2c32e3278e004
+      internalID: 2002389599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 3875
+        y: 1355
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f77d2ff80345a2648b0ad5f731d4fd48
+      internalID: -886861888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 1359
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9062857082e1bf4b88225e17b64b51d
+      internalID: 1942330747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 1360
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e946e1fa2c4df4847a2fae6d2290434b
+      internalID: -1944134763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 3140
+        y: 1354
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 076e95b1a9b48dc49a1f7d57b584f4a0
+      internalID: 210730964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 1667
+        y: 1356
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f3b65533b0559144a90c712a963801f
+      internalID: 1517418070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 2402
+        y: 1356
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8a535a2681249a48b6927c17191dba2
+      internalID: -1706390667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 942
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5294f05381a20a498abe5a95955636d
+      internalID: -475399433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 942
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c89186104699d74496af5e15dce6b85
+      internalID: 140281460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 1668
+        y: 942
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e33744a23e5c49478c35a19311e28ef
+      internalID: 1312637254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 2403
+        y: 942
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6647a2733e2e4040906085db0acb607
+      internalID: -1359723978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 3141
+        y: 944
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36a1e252eaa658e40a1230bb4dc406eb
+      internalID: 2008881125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 3875
+        y: 946
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40c28b90030f77c448e3be4a3fd59dba
+      internalID: 1732852483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 534
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c20e7c0fdd9c905458c7029ea1cb6358
+      internalID: 1526127186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 2404
+        y: 530
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc68a34c0dd951342819e0cfc537b747
+      internalID: -541961625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_230
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 536
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14708a43b18f0204c84f74501ea904e9
+      internalID: -387189813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 3875
+        y: 527
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afe99c90fb681f34091eb36b75130cbb
+      internalID: -1253741134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 532
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49700e6e237e8d247a6319e1d2a133c5
+      internalID: -1043485080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 3140
+        y: 528
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3165def8c0a28ba44be0e31bc3163396
+      internalID: -382827725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ArcticFoxSpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 114
+        width: 453
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a0dedc8c5aba2f4eb7e8bd431d1fef9
+      internalID: -1462334210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      ArcticFoxSpriteSheet_72: 2000347876
+      ArcticFoxSpriteSheet_12: -886861888
+      ArcticFoxSpriteSheet_143: -1178360966
+      ArcticFoxSpriteSheet_105: 796387088
+      ArcticFoxSpriteSheet_77: 2104147389
+      ArcticFoxSpriteSheet_100: 1005271864
+      ArcticFoxSpriteSheet_93: 1344055632
+      ArcticFoxSpriteSheet_288: -1963722398
+      ArcticFoxSpriteSheet_217: -824543051
+      ArcticFoxSpriteSheet_6: 2002389599
+      ArcticFoxSpriteSheet_197: -1901199320
+      ArcticFoxSpriteSheet_250: 1658024521
+      ArcticFoxSpriteSheet_216: 1280658731
+      ArcticFoxSpriteSheet_248: 60896722
+      ArcticFoxSpriteSheet_251: 190584708
+      ArcticFoxSpriteSheet_22: -541961625
+      ArcticFoxSpriteSheet_155: -1425283941
+      ArcticFoxSpriteSheet_209: 1677592483
+      ArcticFoxSpriteSheet_273: -1513082203
+      ArcticFoxSpriteSheet_301: 1821820999
+      ArcticFoxSpriteSheet_76: -528568954
+      ArcticFoxSpriteSheet_135: -1159664852
+      ArcticFoxSpriteSheet_207: -2104879794
+      ArcticFoxSpriteSheet_185: 1110223545
+      ArcticFoxSpriteSheet_261: 1665896707
+      ArcticFoxSpriteSheet_205: -409403569
+      ArcticFoxSpriteSheet_103: 1065760454
+      ArcticFoxSpriteSheet_87: 2044839582
+      ArcticFoxSpriteSheet_286: -1020097377
+      ArcticFoxSpriteSheet_125: 1936480089
+      ArcticFoxSpriteSheet_47: 1408848873
+      ArcticFoxSpriteSheet_219: -789667251
+      ArcticFoxSpriteSheet_131: 676611523
+      ArcticFoxSpriteSheet_69: 1641916990
+      ArcticFoxSpriteSheet_16: -1359723978
+      ArcticFoxSpriteSheet_204: 2131709735
+      ArcticFoxSpriteSheet_0: 414424174
+      ArcticFoxSpriteSheet_191: 1988263633
+      ArcticFoxSpriteSheet_141: -604261784
+      ArcticFoxSpriteSheet_138: -317648984
+      ArcticFoxSpriteSheet_41: -2003479277
+      ArcticFoxSpriteSheet_62: 518617130
+      ArcticFoxSpriteSheet_40: 119481221
+      ArcticFoxSpriteSheet_126: 1021475300
+      ArcticFoxSpriteSheet_255: 1660141893
+      ArcticFoxSpriteSheet_32: -1364199586
+      ArcticFoxSpriteSheet_139: -1351945755
+      ArcticFoxSpriteSheet_257: -854095541
+      ArcticFoxSpriteSheet_7: 1942330747
+      ArcticFoxSpriteSheet_294: -1439503038
+      ArcticFoxSpriteSheet_282: 2098402418
+      ArcticFoxSpriteSheet_28: -1772259657
+      ArcticFoxSpriteSheet_264: 229302464
+      ArcticFoxSpriteSheet_186: -625954364
+      ArcticFoxSpriteSheet_74: -1153838724
+      ArcticFoxSpriteSheet_117: -981315024
+      ArcticFoxSpriteSheet_304: -378230032
+      ArcticFoxSpriteSheet_10: -1706390667
+      ArcticFoxSpriteSheet_4: -856676660
+      ArcticFoxSpriteSheet_107: -1364922445
+      ArcticFoxSpriteSheet_184: -1184624866
+      ArcticFoxSpriteSheet_275: 1181552468
+      ArcticFoxSpriteSheet_21: -1043485080
+      ArcticFoxSpriteSheet_199: -1487187471
+      ArcticFoxSpriteSheet_243: -1594217439
+      ArcticFoxSpriteSheet_156: -249877967
+      ArcticFoxSpriteSheet_148: -851867957
+      ArcticFoxSpriteSheet_278: 601890585
+      ArcticFoxSpriteSheet_99: 1650325584
+      ArcticFoxSpriteSheet_66: 1314917550
+      ArcticFoxSpriteSheet_295: 367755175
+      ArcticFoxSpriteSheet_188: 1487030820
+      ArcticFoxSpriteSheet_160: -349249991
+      ArcticFoxSpriteSheet_5: -1504182265
+      ArcticFoxSpriteSheet_194: -58644301
+      ArcticFoxSpriteSheet_3: 1470478606
+      ArcticFoxSpriteSheet_245: 1198566154
+      ArcticFoxSpriteSheet_151: -1860350699
+      ArcticFoxSpriteSheet_283: 677704606
+      ArcticFoxSpriteSheet_303: 1458890660
+      ArcticFoxSpriteSheet_287: -725226634
+      ArcticFoxSpriteSheet_1: -920546166
+      ArcticFoxSpriteSheet_183: 1899244869
+      ArcticFoxSpriteSheet_158: 56363531
+      ArcticFoxSpriteSheet_293: -93920327
+      ArcticFoxSpriteSheet_281: 1741722769
+      ArcticFoxSpriteSheet_221: -709030104
+      ArcticFoxSpriteSheet_52: -1857637144
+      ArcticFoxSpriteSheet_42: 881275930
+      ArcticFoxSpriteSheet_86: 1870824194
+      ArcticFoxSpriteSheet_270: -2072029608
+      ArcticFoxSpriteSheet_268: -1012000327
+      ArcticFoxSpriteSheet_108: 116476908
+      ArcticFoxSpriteSheet_262: 187626083
+      ArcticFoxSpriteSheet_112: -242062567
+      ArcticFoxSpriteSheet_291: -945156732
+      ArcticFoxSpriteSheet_123: 1054031117
+      ArcticFoxSpriteSheet_137: 1285929757
+      ArcticFoxSpriteSheet_48: -1663507515
+      ArcticFoxSpriteSheet_147: -745779129
+      ArcticFoxSpriteSheet_53: -758653279
+      ArcticFoxSpriteSheet_236: -1304854515
+      ArcticFoxSpriteSheet_201: -1021131221
+      ArcticFoxSpriteSheet_26: -174097961
+      ArcticFoxSpriteSheet_172: 1558739420
+      ArcticFoxSpriteSheet_106: 1590734221
+      ArcticFoxSpriteSheet_104: 442176998
+      ArcticFoxSpriteSheet_187: 1559211969
+      ArcticFoxSpriteSheet_224: 546829873
+      ArcticFoxSpriteSheet_30: -1361880361
+      ArcticFoxSpriteSheet_267: -1724289455
+      ArcticFoxSpriteSheet_253: -1590700104
+      ArcticFoxSpriteSheet_150: 1746171704
+      ArcticFoxSpriteSheet_241: -2067469758
+      ArcticFoxSpriteSheet_292: -623892983
+      ArcticFoxSpriteSheet_165: -787929841
+      ArcticFoxSpriteSheet_239: -2103530220
+      ArcticFoxSpriteSheet_272: -1389666355
+      ArcticFoxSpriteSheet_102: -220082001
+      ArcticFoxSpriteSheet_63: 1633088720
+      ArcticFoxSpriteSheet_192: 109553512
+      ArcticFoxSpriteSheet_218: 1723113948
+      ArcticFoxSpriteSheet_57: 1439133668
+      ArcticFoxSpriteSheet_82: 623863910
+      ArcticFoxSpriteSheet_113: -802000641
+      ArcticFoxSpriteSheet_181: 1185306354
+      ArcticFoxSpriteSheet_302: -1014420274
+      ArcticFoxSpriteSheet_232: 1857020521
+      ArcticFoxSpriteSheet_289: -650662219
+      ArcticFoxSpriteSheet_266: 887299775
+      ArcticFoxSpriteSheet_258: -1543347054
+      ArcticFoxSpriteSheet_265: 1219229838
+      ArcticFoxSpriteSheet_34: -1575405321
+      ArcticFoxSpriteSheet_109: -487731941
+      ArcticFoxSpriteSheet_2: 1581764795
+      ArcticFoxSpriteSheet_252: -106026947
+      ArcticFoxSpriteSheet_111: 1750218780
+      ArcticFoxSpriteSheet_79: 1031947428
+      ArcticFoxSpriteSheet_140: -1207969121
+      ArcticFoxSpriteSheet_153: 1061337947
+      ArcticFoxSpriteSheet_17: 2008881125
+      ArcticFoxSpriteSheet_115: -1194147058
+      ArcticFoxSpriteSheet_256: 171925664
+      ArcticFoxSpriteSheet_166: 877329619
+      ArcticFoxSpriteSheet_64: 442105496
+      ArcticFoxSpriteSheet_128: 1871119358
+      ArcticFoxSpriteSheet_223: -1918645682
+      ArcticFoxSpriteSheet_70: -298183948
+      ArcticFoxSpriteSheet_110: 87074856
+      ArcticFoxSpriteSheet_146: 104915917
+      ArcticFoxSpriteSheet_279: -818923846
+      ArcticFoxSpriteSheet_8: -1944134763
+      ArcticFoxSpriteSheet_233: -1901910971
+      ArcticFoxSpriteSheet_167: 30349590
+      ArcticFoxSpriteSheet_240: 1695657485
+      ArcticFoxSpriteSheet_134: 1477619512
+      ArcticFoxSpriteSheet_127: -1510959952
+      ArcticFoxSpriteSheet_285: 1887285850
+      ArcticFoxSpriteSheet_200: 347363834
+      ArcticFoxSpriteSheet_78: 1852612524
+      ArcticFoxSpriteSheet_211: 763579155
+      ArcticFoxSpriteSheet_169: -336387773
+      ArcticFoxSpriteSheet_142: -48801761
+      ArcticFoxSpriteSheet_271: -1899974704
+      ArcticFoxSpriteSheet_220: 1593971439
+      ArcticFoxSpriteSheet_132: -803765863
+      ArcticFoxSpriteSheet_120: -463238659
+      ArcticFoxSpriteSheet_171: 409250335
+      ArcticFoxSpriteSheet_144: -1929383571
+      ArcticFoxSpriteSheet_280: 805616959
+      ArcticFoxSpriteSheet_226: 339231518
+      ArcticFoxSpriteSheet_88: 1807072929
+      ArcticFoxSpriteSheet_244: -856426904
+      ArcticFoxSpriteSheet_274: -1158111905
+      ArcticFoxSpriteSheet_119: 182121596
+      ArcticFoxSpriteSheet_277: -1598094958
+      ArcticFoxSpriteSheet_168: 1818661328
+      ArcticFoxSpriteSheet_20: -1248293172
+      ArcticFoxSpriteSheet_114: -483987819
+      ArcticFoxSpriteSheet_230: -387189813
+      ArcticFoxSpriteSheet_215: 1906693793
+      ArcticFoxSpriteSheet_306: 379293273
+      ArcticFoxSpriteSheet_195: 1238913424
+      ArcticFoxSpriteSheet_15: 1312637254
+      ArcticFoxSpriteSheet_122: 123248640
+      ArcticFoxSpriteSheet_208: 1510946901
+      ArcticFoxSpriteSheet_298: -1303320937
+      ArcticFoxSpriteSheet_290: -1566330730
+      ArcticFoxSpriteSheet_235: 1620502905
+      ArcticFoxSpriteSheet_259: -497972489
+      ArcticFoxSpriteSheet_231: -2140741502
+      ArcticFoxSpriteSheet_136: -284519424
+      ArcticFoxSpriteSheet_49: 1081896491
+      ArcticFoxSpriteSheet_145: -1495234784
+      ArcticFoxSpriteSheet_38: 406441180
+      ArcticFoxSpriteSheet_300: -555483779
+      ArcticFoxSpriteSheet_75: 1635694770
+      ArcticFoxSpriteSheet_101: -179641271
+      ArcticFoxSpriteSheet_247: 1168204944
+      ArcticFoxSpriteSheet_174: -433242018
+      ArcticFoxSpriteSheet_81: -308083788
+      ArcticFoxSpriteSheet_67: 1993593670
+      ArcticFoxSpriteSheet_116: 766167982
+      ArcticFoxSpriteSheet_24: -1253741134
+      ArcticFoxSpriteSheet_162: -90541727
+      ArcticFoxSpriteSheet_214: 300679816
+      ArcticFoxSpriteSheet_54: -1378409144
+      ArcticFoxSpriteSheet_61: 1043257087
+      ArcticFoxSpriteSheet_50: 1802693406
+      ArcticFoxSpriteSheet_58: 675770849
+      ArcticFoxSpriteSheet_11: 210730964
+      ArcticFoxSpriteSheet_89: -1344903799
+      ArcticFoxSpriteSheet_269: -1834152546
+      ArcticFoxSpriteSheet_229: -1517866845
+      ArcticFoxSpriteSheet_213: 1297184659
+      ArcticFoxSpriteSheet_23: -382827725
+      ArcticFoxSpriteSheet_35: 46924827
+      ArcticFoxSpriteSheet_92: -782367938
+      ArcticFoxSpriteSheet_173: -335069078
+      ArcticFoxSpriteSheet_189: 1672194054
+      ArcticFoxSpriteSheet_18: 1732852483
+      ArcticFoxSpriteSheet_44: -1069446276
+      ArcticFoxSpriteSheet_90: 253814945
+      ArcticFoxSpriteSheet_157: 366634642
+      ArcticFoxSpriteSheet_45: 67219291
+      ArcticFoxSpriteSheet_95: 351092028
+      ArcticFoxSpriteSheet_206: 378113074
+      ArcticFoxSpriteSheet_234: 1793642593
+      ArcticFoxSpriteSheet_177: -1868535045
+      ArcticFoxSpriteSheet_39: 513424770
+      ArcticFoxSpriteSheet_159: -1799616636
+      ArcticFoxSpriteSheet_175: 1658910261
+      ArcticFoxSpriteSheet_263: -1587412217
+      ArcticFoxSpriteSheet_170: 781651439
+      ArcticFoxSpriteSheet_97: -1414355378
+      ArcticFoxSpriteSheet_210: 760462185
+      ArcticFoxSpriteSheet_228: -37170570
+      ArcticFoxSpriteSheet_249: -570642083
+      ArcticFoxSpriteSheet_254: -941193042
+      ArcticFoxSpriteSheet_276: 1383425809
+      ArcticFoxSpriteSheet_19: 1526127186
+      ArcticFoxSpriteSheet_37: -853190350
+      ArcticFoxSpriteSheet_73: -901730113
+      ArcticFoxSpriteSheet_14: 140281460
+      ArcticFoxSpriteSheet_182: -302783875
+      ArcticFoxSpriteSheet_227: 2119803887
+      ArcticFoxSpriteSheet_296: 251898034
+      ArcticFoxSpriteSheet_59: 1922571918
+      ArcticFoxSpriteSheet_305: 1007451346
+      ArcticFoxSpriteSheet_13: -475399433
+      ArcticFoxSpriteSheet_133: -1318360163
+      ArcticFoxSpriteSheet_193: 656519762
+      ArcticFoxSpriteSheet_9: 1517418070
+      ArcticFoxSpriteSheet_80: 1401393313
+      ArcticFoxSpriteSheet_260: 1154863606
+      ArcticFoxSpriteSheet_121: 1405626037
+      ArcticFoxSpriteSheet_212: -371479098
+      ArcticFoxSpriteSheet_130: -1304164286
+      ArcticFoxSpriteSheet_36: 1434111459
+      ArcticFoxSpriteSheet_118: 1831715462
+      ArcticFoxSpriteSheet_129: -1256598700
+      ArcticFoxSpriteSheet_60: 2035595951
+      ArcticFoxSpriteSheet_55: 1054163612
+      ArcticFoxSpriteSheet_190: 408282188
+      ArcticFoxSpriteSheet_91: 1461135069
+      ArcticFoxSpriteSheet_202: -1111805761
+      ArcticFoxSpriteSheet_65: -1092519106
+      ArcticFoxSpriteSheet_237: -230556572
+      ArcticFoxSpriteSheet_164: -1311427657
+      ArcticFoxSpriteSheet_152: 842584488
+      ArcticFoxSpriteSheet_46: 1786939602
+      ArcticFoxSpriteSheet_51: 163230515
+      ArcticFoxSpriteSheet_198: -354266031
+      ArcticFoxSpriteSheet_33: 588561119
+      ArcticFoxSpriteSheet_203: -267014010
+      ArcticFoxSpriteSheet_149: -1304813109
+      ArcticFoxSpriteSheet_25: -1462334210
+      ArcticFoxSpriteSheet_43: 211288881
+      ArcticFoxSpriteSheet_297: 1644972471
+      ArcticFoxSpriteSheet_284: 1799076629
+      ArcticFoxSpriteSheet_71: 1840416162
+      ArcticFoxSpriteSheet_154: 226190334
+      ArcticFoxSpriteSheet_196: 1169978427
+      ArcticFoxSpriteSheet_68: 1415665553
+      ArcticFoxSpriteSheet_124: 550193251
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,901 @@
+fileFormatVersion: 2
+guid: 35ac18c43451f3d409f2fd3690bfb1ca
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 15257
+        width: 1104
+        height: 943
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33afe298629d79944ac9d27838054d62
+      internalID: 566168966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 2331
+        y: 15282
+        width: 1100
+        height: 918
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceea96943ea9a4640876114f7d6184b2
+      internalID: 1759091488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 14214
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: badd324c3a6a178419b51000a5535a0e
+      internalID: -194302477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 2332
+        y: 14209
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e086217302e9bc049990597c5880cacc
+      internalID: 1890750558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 13129
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2adf87f0352f134b8cf7da0a3b4bb90
+      internalID: 1302574828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 13134
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2612f9f33504a54baa89024701159ab
+      internalID: -565922622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 12052
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccd7cd97e737fc9428567123342b60b6
+      internalID: 363234203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 2333
+        y: 12070
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e82ed3c50053b9948842f936085d4312
+      internalID: 1971973182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 10975
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22e72edd548443e4daeca357a5447302
+      internalID: 1659097884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 2324
+        y: 10960
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bab6fe7a8c24677468ba95effc04517c
+      internalID: 390675670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 9878
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b1769005fa302d49bb02ccbd23bd175
+      internalID: -462313351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 2324
+        y: 9876
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c484a12874f3f542933293bbab6cff8
+      internalID: 107457841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 8801
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f79a0befe95ed0f4b8bdb3d0c9648a50
+      internalID: -1777460986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 2325
+        y: 8799
+        width: 1131
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75028113fc3346a4da65ecd55cc354a8
+      internalID: -1402405536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 7717
+        width: 1154
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 404f4190d7f726142b746adea61adfa3
+      internalID: -404262095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 2322
+        y: 7710
+        width: 1167
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37b0515930544244fa097a28e26bdfd7
+      internalID: -1192006591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 6626
+        width: 1163
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec584fe1213223149894914fe2d10587
+      internalID: 1516945239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 2331
+        y: 6623
+        width: 1144
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dec66812141c3af4f9227fee002062d1
+      internalID: 284446667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 5535
+        width: 1140
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a668e902f0fba654a9f3a267a20b3289
+      internalID: -1370579747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 2331
+        y: 5525
+        width: 1126
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22e3388254d1755419ea0840d30fc341
+      internalID: 1295791687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 4438
+        width: 1112
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a2751b219149bb45bb8eabe86daddfd
+      internalID: 43054599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 2338
+        y: 4433
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12998a4dca115a64bb8b6140eac11df1
+      internalID: 1279944592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 3350
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da52e93b902e7ae4b823810dfecd87a9
+      internalID: 1154867744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 2329
+        y: 3349
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03af36acf6d62b24f8f450abaa7c3e44
+      internalID: 680561734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 2274
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a555b2de1c792694b9d322a9127e9588
+      internalID: 1832577309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 2327
+        y: 2276
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cf615875ce885243a10981c979196d2
+      internalID: -1165496701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 1207
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94c1653729d460c40b7696fba38115be
+      internalID: -37372555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 2336
+        y: 1207
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e83a60424d3948f41bfc9351b87e90af
+      internalID: 1032069188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 135
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 372d1afa2c1169148a45ef3d206bc718
+      internalID: -113318681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FemaleDeerSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 2383
+        y: 113
+        width: 1104
+        height: 949
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3705aa1768b9f4408fabfed83192d64
+      internalID: 1062158107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      FemaleDeerSpriteSheet_132: -586179749
+      FemaleDeerSpriteSheet_117: 1035363103
+      FemaleDeerSpriteSheet_22: 1279944592
+      FemaleDeerSpriteSheet_122: 2051180832
+      FemaleDeerSpriteSheet_133: 56392346
+      FemaleDeerSpriteSheet_135: 276232865
+      FemaleDeerSpriteSheet_139: 1080034576
+      FemaleDeerSpriteSheet_0: 1062158107
+      FemaleDeerSpriteSheet_121: 680607220
+      FemaleDeerSpriteSheet_75: 650549706
+      FemaleDeerSpriteSheet_66: 1126271067
+      FemaleDeerSpriteSheet_43: 783157028
+      FemaleDeerSpriteSheet_118: -732867413
+      FemaleDeerSpriteSheet_129: 2098608802
+      FemaleDeerSpriteSheet_124: -463939618
+      FemaleDeerSpriteSheet_83: 571630808
+      FemaleDeerSpriteSheet_53: 1327355454
+      FemaleDeerSpriteSheet_7: 363234203
+      FemaleDeerSpriteSheet_72: 24150639
+      FemaleDeerSpriteSheet_101: -712113867
+      FemaleDeerSpriteSheet_92: -1030734121
+      FemaleDeerSpriteSheet_56: -980255706
+      FemaleDeerSpriteSheet_58: -1242695778
+      FemaleDeerSpriteSheet_27: -1165496701
+      FemaleDeerSpriteSheet_41: -1859777869
+      FemaleDeerSpriteSheet_127: -1889633975
+      FemaleDeerSpriteSheet_1: 566168966
+      FemaleDeerSpriteSheet_120: -176767006
+      FemaleDeerSpriteSheet_18: 284446667
+      FemaleDeerSpriteSheet_131: -620270404
+      FemaleDeerSpriteSheet_99: -1271053481
+      FemaleDeerSpriteSheet_134: 1160223725
+      FemaleDeerSpriteSheet_73: -340220371
+      FemaleDeerSpriteSheet_30: 1032069188
+      FemaleDeerSpriteSheet_61: 1118184292
+      FemaleDeerSpriteSheet_36: -1817090177
+      FemaleDeerSpriteSheet_87: 1183339816
+      FemaleDeerSpriteSheet_138: -83646584
+      FemaleDeerSpriteSheet_115: 329717408
+      FemaleDeerSpriteSheet_78: -1878219866
+      FemaleDeerSpriteSheet_103: 499788211
+      FemaleDeerSpriteSheet_111: 569552111
+      FemaleDeerSpriteSheet_9: 1659097884
+      FemaleDeerSpriteSheet_69: 213351057
+      FemaleDeerSpriteSheet_60: 1955491211
+      FemaleDeerSpriteSheet_77: -1709726096
+      FemaleDeerSpriteSheet_143: -2121056746
+      FemaleDeerSpriteSheet_10: 390675670
+      FemaleDeerSpriteSheet_14: -1402405536
+      FemaleDeerSpriteSheet_104: 1397770964
+      FemaleDeerSpriteSheet_65: 1567837642
+      FemaleDeerSpriteSheet_116: 1754954881
+      FemaleDeerSpriteSheet_84: 188686826
+      FemaleDeerSpriteSheet_81: 1210009343
+      FemaleDeerSpriteSheet_3: -194302477
+      FemaleDeerSpriteSheet_26: 1832577309
+      FemaleDeerSpriteSheet_49: 1649190554
+      FemaleDeerSpriteSheet_108: 926138034
+      FemaleDeerSpriteSheet_48: 1536511137
+      FemaleDeerSpriteSheet_110: 1143932538
+      FemaleDeerSpriteSheet_19: -1370579747
+      FemaleDeerSpriteSheet_107: 255114005
+      FemaleDeerSpriteSheet_74: 15746867
+      FemaleDeerSpriteSheet_82: -134396426
+      FemaleDeerSpriteSheet_35: 495636917
+      FemaleDeerSpriteSheet_85: 1811840480
+      FemaleDeerSpriteSheet_2: 1759091488
+      FemaleDeerSpriteSheet_91: 1719531418
+      FemaleDeerSpriteSheet_109: -561080804
+      FemaleDeerSpriteSheet_16: -1192006591
+      FemaleDeerSpriteSheet_112: -2107362853
+      FemaleDeerSpriteSheet_54: -1340866371
+      FemaleDeerSpriteSheet_33: 1147908878
+      FemaleDeerSpriteSheet_90: 587289386
+      FemaleDeerSpriteSheet_130: -340895314
+      FemaleDeerSpriteSheet_97: -838049256
+      FemaleDeerSpriteSheet_71: 889525423
+      FemaleDeerSpriteSheet_45: -1199062325
+      FemaleDeerSpriteSheet_8: 1971973182
+      FemaleDeerSpriteSheet_25: 680561734
+      FemaleDeerSpriteSheet_38: -439180760
+      FemaleDeerSpriteSheet_145: 654875700
+      FemaleDeerSpriteSheet_144: 1351816448
+      FemaleDeerSpriteSheet_4: 1890750558
+      FemaleDeerSpriteSheet_76: 987637285
+      FemaleDeerSpriteSheet_29: -37372555
+      FemaleDeerSpriteSheet_39: 336999987
+      FemaleDeerSpriteSheet_67: 400890504
+      FemaleDeerSpriteSheet_23: 1154867744
+      FemaleDeerSpriteSheet_119: -1192747844
+      FemaleDeerSpriteSheet_21: 43054599
+      FemaleDeerSpriteSheet_140: 1154732226
+      FemaleDeerSpriteSheet_46: 219710002
+      FemaleDeerSpriteSheet_34: 1214466570
+      FemaleDeerSpriteSheet_57: 1663640782
+      FemaleDeerSpriteSheet_40: 1787892538
+      FemaleDeerSpriteSheet_51: -1008382141
+      FemaleDeerSpriteSheet_24: -1642463025
+      FemaleDeerSpriteSheet_136: -1846572873
+      FemaleDeerSpriteSheet_98: 1600940002
+      FemaleDeerSpriteSheet_13: -1777460986
+      FemaleDeerSpriteSheet_63: -101227924
+      FemaleDeerSpriteSheet_6: -565922622
+      FemaleDeerSpriteSheet_31: -113318681
+      FemaleDeerSpriteSheet_12: 107457841
+      FemaleDeerSpriteSheet_42: 1942803980
+      FemaleDeerSpriteSheet_20: 1295791687
+      FemaleDeerSpriteSheet_11: -462313351
+      FemaleDeerSpriteSheet_32: 805019064
+      FemaleDeerSpriteSheet_100: -68162464
+      FemaleDeerSpriteSheet_123: -1104723806
+      FemaleDeerSpriteSheet_94: 1218168736
+      FemaleDeerSpriteSheet_50: -196854851
+      FemaleDeerSpriteSheet_142: -1953621937
+      FemaleDeerSpriteSheet_17: 1516945239
+      FemaleDeerSpriteSheet_47: -1525854466
+      FemaleDeerSpriteSheet_96: 567442625
+      FemaleDeerSpriteSheet_105: -560679660
+      FemaleDeerSpriteSheet_15: -404262095
+      FemaleDeerSpriteSheet_5: 1302574828
+      FemaleDeerSpriteSheet_59: -406419130
+      FemaleDeerSpriteSheet_137: -133345925
+      FemaleDeerSpriteSheet_86: 1663833668
+      FemaleDeerSpriteSheet_126: -25174302
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

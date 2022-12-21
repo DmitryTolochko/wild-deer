@@ -77,7 +77,6 @@ public class ThreatSpawner : MonoBehaviour
 
         PoolManager.Instance.CoolObject(threat, type);
         threats.Remove(threat);
-        print(threats.Count);
     }
 
     public static Vector2 GenerateNewPosition()

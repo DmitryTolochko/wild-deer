@@ -119,6 +119,7 @@ public class DeerSpawner : MonoBehaviour
         StartCoroutine(deer.GetComponent<Deer>().GetOlder());
         SetGender(deer);
         PlaceDeer(deer);
+        deer.gameObject.GetComponent<Deer>().IsSpawned = false;
         childDeers.Add(deer);
         GameModel.Deers.Add(deer);
         deer.gameObject.GetComponent<Deer>().IsWaiting = false;
@@ -181,7 +182,7 @@ public class DeerSpawner : MonoBehaviour
 
     private void PlaceDeer(GameObject deer)
     {
-        deer.GetComponent<Deer>().speed = 3;
+        deer.GetComponent<Deer>().Speed = 3;
         deer.GetComponent<Deer>().TargetPos = GenerateNewPosition();
         deer.transform.position = new Vector2(
             deer.GetComponent<Deer>().TargetPos.x,

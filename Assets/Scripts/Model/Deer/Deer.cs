@@ -15,7 +15,7 @@ public enum BuffType
 
 public class Deer : MonoBehaviour
 {
-    public float speed;
+    public float Speed;
     public bool IsWaiting = false;
 
     private Rigidbody2D rb;
@@ -38,6 +38,8 @@ public class Deer : MonoBehaviour
 
     private GameObject TargetPoint;
 
+    public bool IsSpawned;
+
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -55,8 +57,6 @@ public class Deer : MonoBehaviour
         lifeBar.value = 1;
 
         TargetPoint = transform.Find("TargetPoint").gameObject;
-
-        //StartCoroutine(GetBuff());
     }
 
     public void ResetLifeBar()
@@ -193,24 +193,23 @@ public class Deer : MonoBehaviour
     private void Move()
     {
         float distanceToTarget = Vector2.Distance(transform.localPosition, TargetPos);
-        // print(transform.position);
-        // print(TargetPos);
-        // print(distanceToTarget);
         TargetPoint.transform.position = TargetPos;
         if (distanceToTarget < 0.55f && !IsWaiting)
         {
             StartCoroutine(WaitAndChangeTargetPose(UnityEngine.Random.Range(0, 3)));
         }
         else if (!IsWaiting)
-            transform.position = Vector2.MoveTowards(transform.position, TargetPos, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, TargetPos, Speed * Time.deltaTime);
     }
 
     private IEnumerator WaitAndChangeTargetPose(int time)
     {
         IsWaiting = true;
-        yield return new WaitForSecondsRealtime(time);
+        IsSpawned = true;
+        Speed = 0;
+        yield return new WaitForSeconds(time);
         TargetPos = DeerSpawner.GenerateNewPosition();
-        speed = Random.Range(0.2f, 2f);
+        Speed = Random.Range(0.65f, 1.7f);
         IsWaiting = false;
     }
 

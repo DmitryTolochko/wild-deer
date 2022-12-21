@@ -1,0 +1,855 @@
+fileFormatVersion: 2
+guid: a57a80a0d58b14e409c3301d7ad6956b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1692
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8f46719f9b64334b8d734493e0aada3
+      internalID: 1187345916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 1693
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23f28b1a25b5fc54bb474b5e27b9c2ba
+      internalID: -926283883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 1692
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8844729f855033346adeebea0177740e
+      internalID: -393764786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 1694
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146d79e871e0e7d479c34c1dc9753170
+      internalID: 616034269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 2020
+        y: 1694
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d2b08ff60847864aa8eeaa5722bec6d
+      internalID: 1724709271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 2502
+        y: 1693
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 012d7cfe684a6b34d9c1d8f9da5b8ca1
+      internalID: 1971659978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 1280
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ee873652ab37bb4ab086917d069b040
+      internalID: -397516999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 1281
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d1f5fe3a52594f4e8706e9151fb162a
+      internalID: -205725209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 1280
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39563cbb2f2a1344fa5813acea7f72b4
+      internalID: -1184387784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 1279
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8201b209ad08e7a4fb4a13e3dbe65db9
+      internalID: -1867604692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 2019
+        y: 1279
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d365e83e778266d4085df5b21b9a4f7a
+      internalID: -804904657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 2501
+        y: 1278
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c87b4878b8f1554097605ca3bad156e
+      internalID: 298953814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 872
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aae57a24125a3b43840912d46e71706
+      internalID: -464331054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 2019
+        y: 879
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea505d44282671744a986863dd567245
+      internalID: -1285602371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 2504
+        y: 885
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911aab786f4009546afb9d75b723909a
+      internalID: -1496260346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 864
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf929533f89670e4bbca0345bcca9c65
+      internalID: 1931717479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 867
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3b36c4dcffcc8d4fbff17b5ebc962fd
+      internalID: 1471437899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 874
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79fcfcb574137e843ab3449185e5317a
+      internalID: 754089867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 465
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24237ee034a701140b544f3c51d74920
+      internalID: 1766835044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 459
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b22351c8502d6ae49876d3ebfceb618c
+      internalID: 2022414944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 463
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f0195b222f661c4fb97c04b11b46aa9
+      internalID: -1868803738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 1539
+        y: 457
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e461a3d3d0ac4b848b5bfc18c405df89
+      internalID: 1530778903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 2020
+        y: 455
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 434155ea0ff9cc94db704bd573d10a78
+      internalID: 1476263186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 2501
+        y: 453
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0c8ed9a7f47e0a4aa24e75a47ae6005
+      internalID: 1053051272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PoacherSpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 37
+        width: 263
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75629756eb13317489dff32ec8f03990
+      internalID: 1023809977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      PoacherSpriteSheet_43: -1093584
+      PoacherSpriteSheet_161: -1836507040
+      PoacherSpriteSheet_143: -683985894
+      PoacherSpriteSheet_28: -1547194661
+      PoacherSpriteSheet_73: -1336676205
+      PoacherSpriteSheet_109: 513485541
+      PoacherSpriteSheet_15: -464331054
+      PoacherSpriteSheet_90: -841312368
+      PoacherSpriteSheet_1: 1187345916
+      PoacherSpriteSheet_91: 2132057977
+      PoacherSpriteSheet_42: 1190078019
+      PoacherSpriteSheet_195: 1150002018
+      PoacherSpriteSheet_8: -205725209
+      PoacherSpriteSheet_167: -1811168986
+      PoacherSpriteSheet_140: 1733285220
+      PoacherSpriteSheet_36: 914120522
+      PoacherSpriteSheet_152: 1911630117
+      PoacherSpriteSheet_100: 601227603
+      PoacherSpriteSheet_14: 1471437899
+      PoacherSpriteSheet_144: -881084489
+      PoacherSpriteSheet_160: 32455397
+      PoacherSpriteSheet_200: 1763318293
+      PoacherSpriteSheet_122: 977288023
+      PoacherSpriteSheet_147: -1515200610
+      PoacherSpriteSheet_178: -875813101
+      PoacherSpriteSheet_125: -1892229030
+      PoacherSpriteSheet_182: 266807508
+      PoacherSpriteSheet_180: 1449341900
+      PoacherSpriteSheet_38: -49282426
+      PoacherSpriteSheet_11: -804904657
+      PoacherSpriteSheet_35: 2060378439
+      PoacherSpriteSheet_130: -2095014997
+      PoacherSpriteSheet_68: -1154931145
+      PoacherSpriteSheet_105: -427112723
+      PoacherSpriteSheet_69: 1656021717
+      PoacherSpriteSheet_3: -393764786
+      PoacherSpriteSheet_153: 256178808
+      PoacherSpriteSheet_170: 2137174525
+      PoacherSpriteSheet_120: 734228519
+      PoacherSpriteSheet_19: 1766835044
+      PoacherSpriteSheet_114: 774402750
+      PoacherSpriteSheet_5: 1724709271
+      PoacherSpriteSheet_164: 2145599744
+      PoacherSpriteSheet_128: -1242490574
+      PoacherSpriteSheet_141: 802290130
+      PoacherSpriteSheet_127: -745346784
+      PoacherSpriteSheet_126: 1402765522
+      PoacherSpriteSheet_162: -200667004
+      PoacherSpriteSheet_99: -545822794
+      PoacherSpriteSheet_171: -1000876023
+      PoacherSpriteSheet_12: 298953814
+      PoacherSpriteSheet_72: -718997698
+      PoacherSpriteSheet_129: 1002993120
+      PoacherSpriteSheet_95: 1177973456
+      PoacherSpriteSheet_157: -146800211
+      PoacherSpriteSheet_115: 891215311
+      PoacherSpriteSheet_9: -1184387784
+      PoacherSpriteSheet_13: 1931717479
+      PoacherSpriteSheet_83: 371856700
+      PoacherSpriteSheet_60: 622591713
+      PoacherSpriteSheet_94: 2104897878
+      PoacherSpriteSheet_16: 754089867
+      PoacherSpriteSheet_65: -1586948954
+      PoacherSpriteSheet_110: 111983128
+      PoacherSpriteSheet_107: 1803621076
+      PoacherSpriteSheet_193: -150242019
+      PoacherSpriteSheet_45: 708127214
+      PoacherSpriteSheet_106: -96087960
+      PoacherSpriteSheet_175: 1118812720
+      PoacherSpriteSheet_7: -397516999
+      PoacherSpriteSheet_148: -1807116883
+      PoacherSpriteSheet_132: 758366166
+      PoacherSpriteSheet_78: -154007561
+      PoacherSpriteSheet_75: 226360148
+      PoacherSpriteSheet_135: -283332958
+      PoacherSpriteSheet_123: -765194524
+      PoacherSpriteSheet_44: -1899247983
+      PoacherSpriteSheet_159: -1535550047
+      PoacherSpriteSheet_166: -15022618
+      PoacherSpriteSheet_117: -105348278
+      PoacherSpriteSheet_163: -1973559824
+      PoacherSpriteSheet_86: -1806805731
+      PoacherSpriteSheet_56: -1197499044
+      PoacherSpriteSheet_54: -1248432160
+      PoacherSpriteSheet_96: 221787873
+      PoacherSpriteSheet_186: 949609309
+      PoacherSpriteSheet_198: 2120282749
+      PoacherSpriteSheet_113: 735888744
+      PoacherSpriteSheet_149: 1400910853
+      PoacherSpriteSheet_103: 1076624488
+      PoacherSpriteSheet_2: -926283883
+      PoacherSpriteSheet_111: 1560062783
+      PoacherSpriteSheet_74: -663926591
+      PoacherSpriteSheet_55: -746488491
+      PoacherSpriteSheet_32: -863741292
+      PoacherSpriteSheet_183: 853902348
+      PoacherSpriteSheet_146: -672639398
+      PoacherSpriteSheet_184: 2084763581
+      PoacherSpriteSheet_145: -995385335
+      PoacherSpriteSheet_64: -877961682
+      PoacherSpriteSheet_158: 448581471
+      PoacherSpriteSheet_59: 1954076310
+      PoacherSpriteSheet_124: -1087882724
+      PoacherSpriteSheet_155: 601846477
+      PoacherSpriteSheet_150: 1269404542
+      PoacherSpriteSheet_190: -1978983287
+      PoacherSpriteSheet_142: -91934494
+      PoacherSpriteSheet_168: 1474183062
+      PoacherSpriteSheet_37: -2002628259
+      PoacherSpriteSheet_6: 1971659978
+      PoacherSpriteSheet_17: -1285602371
+      PoacherSpriteSheet_71: 1039134775
+      PoacherSpriteSheet_119: -940246003
+      PoacherSpriteSheet_22: 1530778903
+      PoacherSpriteSheet_25: 1023809977
+      PoacherSpriteSheet_121: 1831103556
+      PoacherSpriteSheet_46: 688495866
+      PoacherSpriteSheet_23: 1476263186
+      PoacherSpriteSheet_104: 686657712
+      PoacherSpriteSheet_18: -1496260346
+      PoacherSpriteSheet_131: -1878981413
+      PoacherSpriteSheet_29: 1066042971
+      PoacherSpriteSheet_30: -2143180664
+      PoacherSpriteSheet_188: -2046712664
+      PoacherSpriteSheet_98: 330648526
+      PoacherSpriteSheet_4: 616034269
+      PoacherSpriteSheet_82: -1694374863
+      PoacherSpriteSheet_108: -1032427866
+      PoacherSpriteSheet_156: -979393293
+      PoacherSpriteSheet_34: -347853425
+      PoacherSpriteSheet_26: -613446058
+      PoacherSpriteSheet_63: 1376462152
+      PoacherSpriteSheet_80: 1415592957
+      PoacherSpriteSheet_20: -1868803738
+      PoacherSpriteSheet_194: -2118017221
+      PoacherSpriteSheet_76: -1687893113
+      PoacherSpriteSheet_41: -1098298032
+      PoacherSpriteSheet_181: -1418572514
+      PoacherSpriteSheet_21: 2022414944
+      PoacherSpriteSheet_77: 1614419142
+      PoacherSpriteSheet_169: -12502409
+      PoacherSpriteSheet_196: 381174755
+      PoacherSpriteSheet_165: -1612599630
+      PoacherSpriteSheet_191: -525597200
+      PoacherSpriteSheet_102: 572058622
+      PoacherSpriteSheet_61: 576391480
+      PoacherSpriteSheet_62: -1558051144
+      PoacherSpriteSheet_70: -144299676
+      PoacherSpriteSheet_118: 755195340
+      PoacherSpriteSheet_179: -817357774
+      PoacherSpriteSheet_101: -1351261251
+      PoacherSpriteSheet_116: -664277499
+      PoacherSpriteSheet_201: 1394429205
+      PoacherSpriteSheet_112: 690854023
+      PoacherSpriteSheet_176: 1535517810
+      PoacherSpriteSheet_197: -1549739784
+      PoacherSpriteSheet_52: 1855680173
+      PoacherSpriteSheet_39: 151790475
+      PoacherSpriteSheet_66: 455167844
+      PoacherSpriteSheet_177: 1280853014
+      PoacherSpriteSheet_79: 1358600493
+      PoacherSpriteSheet_174: -651680890
+      PoacherSpriteSheet_57: 216090918
+      PoacherSpriteSheet_58: -764105532
+      PoacherSpriteSheet_67: -640460132
+      PoacherSpriteSheet_151: -356852225
+      PoacherSpriteSheet_10: -1867604692
+      PoacherSpriteSheet_92: 212009041
+      PoacherSpriteSheet_93: 1515550569
+      PoacherSpriteSheet_33: -1972913245
+      PoacherSpriteSheet_27: -13900746
+      PoacherSpriteSheet_0: 1903378178
+      PoacherSpriteSheet_187: 1725343467
+      PoacherSpriteSheet_185: -1254112186
+      PoacherSpriteSheet_24: 1053051272
+      PoacherSpriteSheet_199: -1338684570
+      PoacherSpriteSheet_31: 1373013605
+      PoacherSpriteSheet_154: 13756084
+      PoacherSpriteSheet_189: -262775402
+      PoacherSpriteSheet_97: 1090113031
+      PoacherSpriteSheet_40: -987806654
+      PoacherSpriteSheet_172: -2039714529
+      PoacherSpriteSheet_173: -1793762166
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
