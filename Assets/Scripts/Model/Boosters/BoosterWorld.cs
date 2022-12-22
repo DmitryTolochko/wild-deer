@@ -16,6 +16,8 @@ public class BoosterWorld : MonoBehaviour
     public BoosterType Type { get; private set; }
     private Timer capTimer;
 
+    private BoosterSound boosterSound;
+
     private void Start()
     {
         startPosition = transform.position;
@@ -23,6 +25,8 @@ public class BoosterWorld : MonoBehaviour
         gameFieldBounds = Resources
             .FindObjectsOfTypeAll<GameObject>()
             .FirstOrDefault(x => x.name == "GameField")!.GetComponent<PolygonCollider2D>();
+
+        boosterSound = GetComponent<BoosterSound>();
     }
 
     public void SetBoosterType(BoosterType type)
@@ -78,6 +82,7 @@ public class BoosterWorld : MonoBehaviour
                     toPlaceParent);
                 capTransform.position = new Vector3(0, 3.25f, 0);
                 Inventory.UseBooster(Type);
+                boosterSound.ChangeSoundAndPlay();
                 Destroy(gameObject);
                 break;
             }
@@ -115,22 +120,24 @@ public class BoosterWorld : MonoBehaviour
                 switch (Type)
                 {
                     case BoosterType.Food:
-
                         Inventory.UseBooster(Type);
                         deerComponent.StopBuff(BuffType.Hunger);
                         GameModel.StressLevel -= 0.05f;
+                        boosterSound.ChangeSoundAndPlay();
                         Destroy(gameObject);
                         break;
                     case BoosterType.Water:
                         Inventory.UseBooster(Type);
                         deerComponent.StopBuff(BuffType.Thirsty);
                         GameModel.StressLevel -= 0.05f;
+                        boosterSound.ChangeSoundAndPlay();
                         Destroy(gameObject);
                         break;
                     case BoosterType.Medicines:
                         Inventory.UseBooster(Type);
                         deerComponent.StopBuff(BuffType.Ill);
                         GameModel.StressLevel -= 0.05f;
+                        boosterSound.ChangeSoundAndPlay();
                         Destroy(gameObject);
                         break;
                 }
@@ -150,6 +157,7 @@ public class BoosterWorld : MonoBehaviour
                 var threatComponent = threatToBeat.GetComponent<BaseThreat>();
                 Inventory.UseBooster(Type);
                 threatComponent.Status = ThreatStatus.Defeated;
+                boosterSound.ChangeSoundAndPlay();
                 Destroy(gameObject);
                 GameModel.CurrentThreat = null;
                 break;
@@ -159,6 +167,7 @@ public class BoosterWorld : MonoBehaviour
 
     private void ReturnBoosterToInventory()
     {
+        boosterSound.ChangeSoundAndPlay(true);
         transform.Find("itemAmount").gameObject.SetActive(true);
         transform.position = startPosition;
     }

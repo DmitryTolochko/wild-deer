@@ -48,6 +48,7 @@ public class Cards : MonoBehaviour
 
     private void UnloadThisScene()
     {
+        UIScript.OnCloseOtherScene = true;
         SceneManager.UnloadSceneAsync("ShopScene");
         Time.timeScale = 1;
     }
@@ -56,7 +57,7 @@ public class Cards : MonoBehaviour
     {
         nonActiveCards.Enqueue(new ItemInstance(
             "Еда",
-            "Нужна для того, чтобы кормить оленей.",
+            "Для кормления",
             20,
             0,
             BoosterType.Food,
@@ -65,7 +66,7 @@ public class Cards : MonoBehaviour
 
         nonActiveCards.Enqueue(new ItemInstance(
             "Капкан",
-            "Поможет вам в борьбе с браконьерами, волками и другими врагами.",
+            "Против врагов",
             50,
             0,
             BoosterType.PinkTrap,
@@ -74,7 +75,7 @@ public class Cards : MonoBehaviour
 
         nonActiveCards.Enqueue(new ItemInstance(
             "Барьер",
-            "На время предотвращает все нападения.",
+            "Временно от всех",
             150,
             0,
             BoosterType.ProtectiveCap,
@@ -83,7 +84,7 @@ public class Cards : MonoBehaviour
 
         nonActiveCards.Enqueue(new ItemInstance(
             "Лекарство",
-            "Лечит оленя.",
+            "Лечит оленя",
             50,
             0,
             BoosterType.Medicines,
@@ -92,7 +93,7 @@ public class Cards : MonoBehaviour
 
         nonActiveCards.Enqueue(new ItemInstance(
             "Вода",
-            "Служит для утоления жажды оленя.",
+            "Утоляет жажду",
             25,
             0,
             BoosterType.Water,

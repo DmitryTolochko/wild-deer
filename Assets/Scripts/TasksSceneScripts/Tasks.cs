@@ -75,6 +75,7 @@ public class Tasks : MonoBehaviour
 
     public void UnloadThisScene()
     {
+        UIScript.OnCloseOtherScene = true;
         SceneManager.UnloadSceneAsync("TasksScene");
         Time.timeScale = 1;
     }

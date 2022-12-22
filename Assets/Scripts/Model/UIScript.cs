@@ -16,9 +16,14 @@ public class UIScript : MonoBehaviour
     public Text FemaleCount;
     public Text MaleCount;
     public Text MoneyCountElement;
+
+    private AudioSource audioSource;
+    public static bool OnCloseOtherScene;
     
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         StressLevelBar = Resources
             .FindObjectsOfTypeAll<GameObject>()
             .FirstOrDefault(x => x.name == "StressLevelSlider")
@@ -41,7 +46,11 @@ public class UIScript : MonoBehaviour
     {
         RefreshStressLevel();
         RefreshCounts();
-        
+        if (OnCloseOtherScene)
+        {
+            OnCloseOtherScene = false;
+            audioSource.Play();
+        }
     }
 
     private void RefreshStressLevel()

@@ -68,7 +68,8 @@ public class ThreatSpawner : MonoBehaviour
     private IEnumerator CreateThreat(PoolObjectType type)
     {
         var threat = PoolManager.Instance.GetPoolObject(type);
-        threat.gameObject.SetActive(true);
+        threat.SetActive(true);
+        threat.transform.Find("Shadow").GetComponent<ShadowScript>().IsSpawning = true;
         threats.Add(threat);
         InitializeThreat(type, threat);
 

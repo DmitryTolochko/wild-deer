@@ -16,7 +16,7 @@ public class KillerPoacher : BaseThreat
     public override void PlaceThreat()
     {
         var distanceToTarget = Vector2.Distance(transform.position, SpawnPoint);
-        if (distanceToTarget > 0.5f)
+        if (distanceToTarget > 0.65f)
         {
             Move(SpawnPoint, 3);
             TargetPoint.transform.position = SpawnPoint;

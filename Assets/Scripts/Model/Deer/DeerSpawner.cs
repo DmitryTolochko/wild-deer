@@ -115,30 +115,33 @@ public class DeerSpawner : MonoBehaviour
         ChildrenCountForGeneration -= 1;
         isStoped = false;
 
-        GameObject deer = PoolManager.Instance.GetPoolObject(type);
-        StartCoroutine(deer.GetComponent<Deer>().GetOlder());
-        SetGender(deer);
-        PlaceDeer(deer);
-        deer.gameObject.GetComponent<Deer>().IsSpawned = false;
+        var deer = PoolManager.Instance.GetPoolObject(type);
+        var deerScript = deer.GetComponent<Deer>(); 
+        
+        StartCoroutine(deerScript.GetOlder());
+        SetGender(deer, deerScript);
+        PlaceDeer(deer, deerScript);
+        deerScript.IsSpawned = false;
         childDeers.Add(deer);
         GameModel.Deers.Add(deer);
-        deer.gameObject.GetComponent<Deer>().IsWaiting = false;
-        deer.gameObject.GetComponent<Deer>().ResetLifeBar();
-        deer.gameObject.SetActive(true);
+        deerScript.IsWaiting = false;
+        deerScript.ResetLifeBar();
+        deer.transform.Find("Shadow").GetComponent<ShadowScript>().IsSpawning = true;
+        deer.SetActive(true);
         DeerCount += 1;
         DeerSpawned?.Invoke();
-        FemaleCount += deer.GetComponent<Deer>().DeerGender == Gender.Female ? 1 : 0;
-        MaleCount += deer.GetComponent<Deer>().DeerGender == Gender.Male ? 1 : 0;
+        FemaleCount += deerScript.DeerGender == Gender.Female ? 1 : 0;
+        MaleCount += deerScript.DeerGender == Gender.Male ? 1 : 0;
         while (true)
         {
-            if (deer.GetComponent<Deer>().CurrentAge == Age.CanMakeChild)
+            if (deerScript.CurrentAge == Age.CanMakeChild)
             {
                 parentDeers.Add(deer);
                 childDeers.Remove(deer);
                 break;
             }
 
-            if (deer.GetComponent<Deer>().CurrentAge == Age.Dead)
+            if (deerScript.CurrentAge == Age.Dead)
             {
                 childDeers.Remove(deer);
                 break;
@@ -149,8 +152,8 @@ public class DeerSpawner : MonoBehaviour
 
         while (true)
         {
-            if (deer.GetComponent<Deer>().CurrentAge == Age.Adult
-                || deer.GetComponent<Deer>().CurrentAge == Age.Dead)
+            if (deerScript.CurrentAge == Age.Adult
+                || deerScript.CurrentAge == Age.Dead)
             {
                 parentDeers.Remove(deer);
                 break;
@@ -159,34 +162,36 @@ public class DeerSpawner : MonoBehaviour
             yield return new WaitForSecondsRealtime(0);
         }
 
-        while (deer.GetComponent<Deer>().CurrentAge != Age.Dead)
+        while (deerScript.CurrentAge != Age.Dead)
             yield return new WaitForSecondsRealtime(0);
 
         DeerCount -= 1;
-        FemaleCount -= deer.GetComponent<Deer>().DeerGender == Gender.Female ? 1 : 0;
-        MaleCount -= deer.GetComponent<Deer>().DeerGender == Gender.Male ? 1 : 0;
+        FemaleCount -= deerScript.DeerGender == Gender.Female ? 1 : 0;
+        MaleCount -= deerScript.DeerGender == Gender.Male ? 1 : 0;
         //deer.gameObject.GetComponent<Deer>().Initialize();  
         PoolManager.Instance.CoolObject(deer, type);
         GameModel.Deers.Remove(deer);
     }
 
-    private void SetGender(GameObject deer)
+    private void SetGender(GameObject deer, Deer deerScript)
     {
         if (childDeers.Count == 0)
-            deer.gameObject.GetComponent<Deer>().DeerGender =
+            deerScript.DeerGender =
                 UnityEngine.Random.Range(0, 1) > 0.5f ? Gender.Female : Gender.Male;
         else
-            deer.gameObject.GetComponent<Deer>().DeerGender =
+            deerScript.DeerGender =
                 childDeers.Last().GetComponent<Deer>().DeerGender == Gender.Female ? Gender.Male : Gender.Female;
+        
+        //deer.GetComponent<DeerAnimator>().ChangeSprite(deerScript.CurrentAge, deerScript.DeerGender);
     }
 
-    private void PlaceDeer(GameObject deer)
+    private void PlaceDeer(GameObject deer, Deer deerScript)
     {
-        deer.GetComponent<Deer>().Speed = 3;
-        deer.GetComponent<Deer>().TargetPos = GenerateNewPosition();
+        deerScript.Speed = 3;
+        deerScript.TargetPos = GenerateNewPosition();
         deer.transform.position = new Vector2(
-            deer.GetComponent<Deer>().TargetPos.x,
-            deer.GetComponent<Deer>().TargetPos.y + 11);
+            deerScript.TargetPos.x,
+            deerScript.TargetPos.y + 11);
         // print(deer.transform.position);
     }
 
@@ -200,7 +205,6 @@ public class DeerSpawner : MonoBehaviour
 
     private void ShowSideDeerMessage()
     {
-        print(SideDeerMessagePrefab);
         SideDeerMessage = Instantiate(SideDeerMessagePrefab);
         Time.timeScale = 0;
     }

@@ -41,7 +41,7 @@ public class Deer : MonoBehaviour
     private GameObject TargetPoint;
 
     public bool IsSpawned;
-    
+    public float DistanceToTarget;
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -151,14 +151,6 @@ public class Deer : MonoBehaviour
         StartCoroutine(GetBuff());
     }
 
-    // public void StopBuff(BuffType newBuff)
-    // {
-    //     StopCoroutine(GetBuff(newBuff));
-    //     BuffType = BuffType.No;
-    //     GameModel.StressLevel -= GameModel.StressLevel < 0.1f ? GameModel.StressLevel : 0.1f;
-    //     ResetTimerBar();
-    // }
-
     public void StopBuff(BuffType newBuff)
     {
         StopCoroutine(GetBuff(newBuff));
@@ -196,10 +188,9 @@ public class Deer : MonoBehaviour
 
     private void Move()
     {
-        var distanceToTarget = Vector2.Distance(transform.localPosition, TargetPos);
-        print(distanceToTarget);
+        DistanceToTarget = Vector2.Distance(transform.localPosition, TargetPos);
         TargetPoint.transform.position = TargetPos;
-        if (distanceToTarget < 0.65f && !IsWaiting)
+        if (DistanceToTarget < 0.65f && !IsWaiting)
         {
             StartCoroutine(WaitAndChangeTargetPose(UnityEngine.Random.Range(0, 3)));
         }
@@ -227,7 +218,8 @@ public class Deer : MonoBehaviour
     {
         if (other.name == "Deer(Clone)"
             && !other.gameObject.GetComponent<Deer>().IsPairing
-            && !this.IsPairing)
+            && !this.IsPairing
+            && IsSpawned == true)
             TargetPos = DeerSpawner.GenerateNewPosition();
     }
 

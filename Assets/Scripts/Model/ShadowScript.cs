@@ -11,7 +11,6 @@ public class ShadowScript : MonoBehaviour
     public float OffsetY;
     public float OffsetX;
 
-    private float previousDistance = 10e9f;
     private SpriteRenderer spriteRenderer;
 
     private void Start()
@@ -23,10 +22,15 @@ public class ShadowScript : MonoBehaviour
     {
         if (IsSpawning)
         {
-            var distance = Vector2.Distance(
+            var distance = 0.0f;
+            if (MyObject.TryGetComponent<Deer>(out var deer))
+                distance = deer.DistanceToTarget;
+            else if (MyObject.TryGetComponent<BaseThreat>(out var threat))
+                distance = Vector2.Distance(
                 MyObject.transform.position,
                 TargetPoint.transform.position
             );
+            
             var scale = (1 - distance / 11);
             transform.position = new Vector2(
                 TargetPoint.transform.position.x - OffsetX,
@@ -46,10 +50,8 @@ public class ShadowScript : MonoBehaviour
                 scale
             );
 
-            if (distance > previousDistance)
+            if (distance <= 0.65f)
                 IsSpawning = false;
-
-            previousDistance = distance;
         }
     }
 }

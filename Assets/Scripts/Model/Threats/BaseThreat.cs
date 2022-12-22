@@ -12,6 +12,7 @@ public abstract class BaseThreat : MonoBehaviour, IThreat
     public virtual HashSet<BoosterType> BoosterTypes => new();
     public virtual int StressTime { get; set; }
     public virtual float StressLevel { get; set; }
+    public float DistanceToTarget;
 
     public ThreatStatus Status
     {
@@ -105,15 +106,15 @@ public abstract class BaseThreat : MonoBehaviour, IThreat
 
     private void Update()
     {
-        var distanceToTarget = Vector2.Distance(transform.position, TargetDeer.transform.position);
+        DistanceToTarget = Vector2.Distance(transform.position, TargetDeer.transform.position);
 
         if (Status == ThreatStatus.Spawning)
             PlaceThreat();
-        else if (Status == ThreatStatus.Spawned && distanceToTarget > 0.5f)
-            Move(TargetDeer.transform.position, 0.5f);
+        else if (Status == ThreatStatus.Spawned && DistanceToTarget > 0.65f)
+            Move(TargetDeer.transform.position, 0.65f);
         else if (Status == ThreatStatus.Won)
             ActAfterWin();
-        else if (Status == ThreatStatus.Spawned && distanceToTarget <= 0.5f)
+        else if (Status == ThreatStatus.Spawned && DistanceToTarget <= 0.65f)
             Act();
         CheckIntersectionOnGameField();
     }

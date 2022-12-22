@@ -764,6 +764,7 @@ GameObject:
   - component: {fileID: 3946451544506674504}
   - component: {fileID: -7552677861611863939}
   - component: {fileID: 4895663516619225115}
+  - component: {fileID: 1972330894799524843}
   m_Layer: 3
   m_Name: Deer
   m_TagString: Untagged
@@ -834,6 +835,7 @@ MonoBehaviour:
   CurrentAge: 0
   DeerGender: 0
   IsSpawned: 0
+  DistanceToTarget: 0
 --- !u!58 &-7552677861611863939
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -865,6 +867,18 @@ MonoBehaviour:
   YoungDeer: {fileID: 1409130282890726055}
   MaleDeer: {fileID: 7357326592409319645}
   FemaleDeer: {fileID: 866084088957530070}
+--- !u!114 &1972330894799524843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2924974397415176546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08daae166d2db44c90a0916fccd6eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4642548409054297839
 GameObject:
   m_ObjectHideFlags: 0

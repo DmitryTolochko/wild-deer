@@ -100,8 +100,8 @@ MonoBehaviour:
   IsSpawning: 1
   TargetPoint: {fileID: 7964072726926282729}
   MyObject: {fileID: 5288127463122181102}
-  OffsetY: -0.2
-  OffsetX: 0
+  OffsetY: -0.31
+  OffsetX: 0.1
 --- !u!1 &4083557727855007727
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f9941b0e70c65429fb7defd31af09c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DistanceToTarget: 0
   TargetPoint: {fileID: 7964072726926282729}
 --- !u!50 &5553305812822072946
 Rigidbody2D:
