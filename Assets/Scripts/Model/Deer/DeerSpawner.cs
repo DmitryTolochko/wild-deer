@@ -27,6 +27,8 @@ public class DeerSpawner : MonoBehaviour
 
     public static event Action DeerSpawned;
 
+    public static event Action<Deer> SomeDeerDead;
+
     public static void GenerateNew()
     {
         isMakingNewDeer = true;
@@ -47,7 +49,7 @@ public class DeerSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (!TrainScript.IsOn && GameModel.StressLevel <= 0.5f && GameModel.Deers.Count < 14)
+        if (!TrainScript.IsOn && GameModel.StressLevel <= 0.3f && GameModel.Deers.Count < 14)
         {
             if (ChildrenCountForGeneration == 0
                 && childDeers.Count == 0
@@ -116,8 +118,8 @@ public class DeerSpawner : MonoBehaviour
         isStoped = false;
 
         var deer = PoolManager.Instance.GetPoolObject(type);
-        var deerScript = deer.GetComponent<Deer>(); 
-        
+        var deerScript = deer.GetComponent<Deer>();
+
         StartCoroutine(deerScript.GetOlder());
         SetGender(deer, deerScript);
         PlaceDeer(deer, deerScript);
@@ -168,6 +170,7 @@ public class DeerSpawner : MonoBehaviour
         DeerCount -= 1;
         FemaleCount -= deerScript.DeerGender == Gender.Female ? 1 : 0;
         MaleCount -= deerScript.DeerGender == Gender.Male ? 1 : 0;
+        SomeDeerDead.Invoke(deerScript);
         //deer.gameObject.GetComponent<Deer>().Initialize();  
         PoolManager.Instance.CoolObject(deer, type);
         GameModel.Deers.Remove(deer);
@@ -181,7 +184,7 @@ public class DeerSpawner : MonoBehaviour
         else
             deerScript.DeerGender =
                 childDeers.Last().GetComponent<Deer>().DeerGender == Gender.Female ? Gender.Male : Gender.Female;
-        
+
         //deer.GetComponent<DeerAnimator>().ChangeSprite(deerScript.CurrentAge, deerScript.DeerGender);
     }
 

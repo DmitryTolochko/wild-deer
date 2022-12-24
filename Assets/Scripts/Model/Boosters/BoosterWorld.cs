@@ -1,7 +1,6 @@
 using System.Linq;
 using Model.Inventory;
 using ServiceInstances;
-using Unity.VisualScripting;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -14,7 +13,6 @@ public class BoosterWorld : MonoBehaviour
     private Vector3 mousePositionOffset;
     private Vector3 GetMouseWorldPosition() => Camera.main.ScreenToWorldPoint(Input.mousePosition);
     public BoosterType Type { get; private set; }
-    private Timer capTimer;
 
     private BoosterSound boosterSound;
 
@@ -58,10 +56,13 @@ public class BoosterWorld : MonoBehaviour
             Inventory.RemoveItem(Type);
         }
 
-        var toReturnDistanceLimit = Type == BoosterType.ProtectiveCap ? -3 : -0.5;
-        if (gameFieldBounds.Distance(boosterCollider).distance > toReturnDistanceLimit && Type != BoosterType.PinkTrap)
+        var toReturnDistanceLimit = Type == BoosterType.ProtectiveCap ? -1 : -0.5;
+        var boosterToGameFieldDistance = gameFieldBounds.Distance(boosterCollider).distance;
+
+        if (boosterToGameFieldDistance > toReturnDistanceLimit && Type != BoosterType.PinkTrap)
         {
             ReturnBoosterToInventory();
+            return;
         }
 
         switch (Type)

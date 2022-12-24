@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Model.Inventory;
 using UnityEngine;
 
 public class ProtectiveCapBehavior : MonoBehaviour

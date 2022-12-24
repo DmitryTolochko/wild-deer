@@ -41,13 +41,13 @@ public class TaskInstance
                 FoodWorld.FoodCollected += _ => IncrementDoneCount();
                 break;
             case TaskType.FeedDeer:
-                Deer.DeerFed += IncrementDoneCount;
+                Deer.SomeDearFed += IncrementDoneCount;
                 break;
             case TaskType.GainDeers:
                 DeerSpawner.DeerSpawned += IncrementDoneCount;
                 break;
             case TaskType.WaterDeer:
-                Deer.DeerDrank += IncrementDoneCount;
+                Deer.SomeDeerDrank += IncrementDoneCount;
                 break;
             case TaskType.DealWithThreat:
                 BaseThreat.ThreatDefeated += IncrementDoneCount;

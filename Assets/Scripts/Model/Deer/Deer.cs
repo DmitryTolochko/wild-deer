@@ -34,14 +34,20 @@ public class Deer : MonoBehaviour
     private Slider lifeBar;
     private float valuePerSecond = 0;
     private Image buffImage;
-    public static event Action DeerFed;
-    public static event Action DeerHealed;
-    public static event Action DeerDrank;
+    public static event Action SomeDearFed;
+    public static event Action SomeDeerHealed;
+    public static event Action SomeDeerDrank;
+
+    public event Action DeerFed;
+    public event Action DeerHealed;
+    public event Action DeerDrank;
 
     private GameObject TargetPoint;
 
+
     public bool IsSpawned;
     public float DistanceToTarget;
+
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -160,12 +166,15 @@ public class Deer : MonoBehaviour
         {
             case BuffType.Hunger:
                 DeerFed?.Invoke();
+                SomeDearFed?.Invoke();
                 break;
             case BuffType.Ill:
                 DeerHealed?.Invoke();
+                SomeDeerHealed?.Invoke();
                 break;
             case BuffType.Thirsty:
                 DeerDrank?.Invoke();
+                SomeDeerDrank?.Invoke();
                 break;
         }
 

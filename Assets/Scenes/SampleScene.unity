@@ -2701,6 +2701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1729858292}
   - component: {fileID: 1729858293}
+  - component: {fileID: 1729858294}
   m_Layer: 0
   m_Name: DeerContainer
   m_TagString: Untagged
@@ -2736,6 +2737,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SideDeerMessagePrefab: {fileID: 2927678548218063072, guid: f8eb5d52693521048a2e8c3d3bf219c9, type: 3}
+--- !u!114 &1729858294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729858291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb143a1a11e049948949432eb7e982d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deerDeathIndicator: {fileID: 7413999182673735126, guid: 65b2f2b30d802d64fa2391bb897ea8ba, type: 3}
 --- !u!1 &1766497695
 GameObject:
   m_ObjectHideFlags: 0
