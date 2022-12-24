@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5903451535432139454}
   - component: {fileID: 3888752713402827719}
   - component: {fileID: 1953510696994516867}
+  - component: {fileID: 8953072160833228202}
   m_Layer: 0
   m_Name: Food
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 8478101848566371504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.20000002, y: 0.20000002, z: 0.20000002}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -159,3 +160,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153f32001a0faac43aba65d20762007d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &8953072160833228202
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478101848566371504}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 23c456c2d67c79a4e95e3bf14e9d927c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

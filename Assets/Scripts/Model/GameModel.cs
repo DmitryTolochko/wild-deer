@@ -36,7 +36,7 @@ public class GameModel : MonoBehaviour
             ?.GetComponent<PolygonCollider2D>();
         /*LoadStatistics();*/
         var kek = GameObject.Find("GameField");
-        TrainScript.IsOn = true;
+        TrainScript.IsOn = false;
         // PoolManager.FillPool(new PoolInfo
         // {
         //     amount = 15,
