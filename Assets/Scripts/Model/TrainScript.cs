@@ -53,7 +53,7 @@ public class TrainScript : MonoBehaviour
         panelTransform.Find("Button").gameObject.SetActive(false);
     }
 
-    /*private void Start()
+    private void Start()
     {
         lines = new List<string> {"Добро пожаловать!___Вы - сотрудник организации по защите природы и диких животных. Вам предстоит развить и защитить стадо оленей!",
                                         "Знакомство___На северо-западе Восточного Таймыра обнаружен детеныш Rangifer tarandus - Северный Олень.", 
@@ -81,7 +81,7 @@ public class TrainScript : MonoBehaviour
         TasksButton.gameObject.SetActive(false);
         ShopButton.gameObject.SetActive(false);
         StartCoroutine(StartTrain());
-    }*/
+    }
 
     private IEnumerator StartTrain()
     {

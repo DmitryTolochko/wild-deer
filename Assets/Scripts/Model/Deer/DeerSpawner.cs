@@ -170,7 +170,7 @@ public class DeerSpawner : MonoBehaviour
         DeerCount -= 1;
         FemaleCount -= deerScript.DeerGender == Gender.Female ? 1 : 0;
         MaleCount -= deerScript.DeerGender == Gender.Male ? 1 : 0;
-        SomeDeerDead.Invoke(deerScript);
+        SomeDeerDead?.Invoke(deerScript);
         //deer.gameObject.GetComponent<Deer>().Initialize();  
         PoolManager.Instance.CoolObject(deer, type);
         GameModel.Deers.Remove(deer);

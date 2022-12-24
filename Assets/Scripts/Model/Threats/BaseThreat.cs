@@ -5,6 +5,7 @@ using ServiceInstances;
 using UnityEngine;
 using System.Linq;
 using Model.Boosters;
+using Unity.VisualScripting;
 
 public abstract class BaseThreat : MonoBehaviour, IThreat
 {
@@ -74,11 +75,11 @@ public abstract class BaseThreat : MonoBehaviour, IThreat
         throw new System.NotImplementedException();
     }
 
-    public virtual IEnumerator AddStress(int time)
+    public virtual IEnumerator AddStress()
     {
         //GameModel.StressLevel += StressLevel;
         GameModel.ChangeStressAsync(StressLevel);
-        yield return new WaitForSecondsRealtime(time);
+        yield return new WaitForSecondsRealtime(StressTime);
         GameModel.ChangeStressAsync(-StressLevel);
         //GameModel.StressLevel -= StressLevel;
     }
@@ -89,7 +90,7 @@ public abstract class BaseThreat : MonoBehaviour, IThreat
             && !onGameField)
         {
             onGameField = true;
-            StartCoroutine(AddStress(StressTime));
+            StartCoroutine(AddStress());
         }
     }
 
@@ -119,5 +120,10 @@ public abstract class BaseThreat : MonoBehaviour, IThreat
         else if (Status == ThreatStatus.Spawned && DistanceToTarget <= 0.65f)
             Act();
         CheckIntersectionOnGameField();
+    }
+
+    private void OnBecameInvisible()
+    {
+        Status = ThreatStatus.Won;
     }
 }

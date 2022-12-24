@@ -1,0 +1,795 @@
+fileFormatVersion: 2
+guid: f1b31e043afaf5448b995aacc161406e
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_0
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 4527
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccaaac426714231448b22c08c694eac2
+      internalID: -817480446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_1
+      rect:
+        serializedVersion: 2
+        x: 1786
+        y: 4527
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdeceb543c64a274584b520493e0d2f0
+      internalID: -564433236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_2
+      rect:
+        serializedVersion: 2
+        x: 3227
+        y: 4527
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c332273cd7580c949ad31f264422768d
+      internalID: -2146373440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_3
+      rect:
+        serializedVersion: 2
+        x: 4664
+        y: 4530
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 696ae6041121472498b5a75e7b45c5ff
+      internalID: -1507352459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_4
+      rect:
+        serializedVersion: 2
+        x: 6109
+        y: 4527
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19baa6361b87fc14881dfed331708ba6
+      internalID: 1178371703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_5
+      rect:
+        serializedVersion: 2
+        x: 7550
+        y: 4527
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f74e9159ef41df4ab6e941023a53308
+      internalID: -866026796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_6
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 3447
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43a7582ddaa197a428cfe67b1a4902a6
+      internalID: -952006358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_7
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 3455
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13e4fa770302a534eabb69d3b4c2bb5a
+      internalID: 1699407696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_8
+      rect:
+        serializedVersion: 2
+        x: 3232
+        y: 3451
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e7d5027bcb13774b8ef909fbc794233
+      internalID: 1304809705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_9
+      rect:
+        serializedVersion: 2
+        x: 4666
+        y: 3447
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdfd021f156353d43b651b0df8371bac
+      internalID: -1770202342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_10
+      rect:
+        serializedVersion: 2
+        x: 6105
+        y: 3447
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6b6210f21c104a498d91dbb029b057b
+      internalID: -1991797709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_11
+      rect:
+        serializedVersion: 2
+        x: 7547
+        y: 3447
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e61094ab2a1187b4fa303605eaf0d0cf
+      internalID: 2098898337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_12
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 2367
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fb14fe57b3661242bc3f43d9e8458ae
+      internalID: -946429902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_13
+      rect:
+        serializedVersion: 2
+        x: 1793
+        y: 2371
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad2c57b989b0cf044a5b4840a9dc6a57
+      internalID: -1895540492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_14
+      rect:
+        serializedVersion: 2
+        x: 3232
+        y: 2371
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab560e7ee55dcde4689ae74145c598af
+      internalID: -77508314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_15
+      rect:
+        serializedVersion: 2
+        x: 4674
+        y: 2371
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 529a0966c6c409b439c9d1c7fe506853
+      internalID: -1908985955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_16
+      rect:
+        serializedVersion: 2
+        x: 6113
+        y: 2371
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21975df0592b7a34597ee45af6bc10d8
+      internalID: 1954068545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_17
+      rect:
+        serializedVersion: 2
+        x: 7552
+        y: 2371
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b7a48b2f697c7f428305ce15691abb4
+      internalID: -80125406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_18
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 1287
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71db847e67a1ff64ba5fa8828c530728
+      internalID: -560026334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_19
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 1287
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69dbadb2bb7323c42994dc69d60d28dc
+      internalID: -790442310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_20
+      rect:
+        serializedVersion: 2
+        x: 3227
+        y: 1287
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62760a8b187886f4ba177277ffb5b77e
+      internalID: -1628309993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_21
+      rect:
+        serializedVersion: 2
+        x: 4666
+        y: 1287
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65838a2615873974aa4c398eac658c0a
+      internalID: -952458337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_22
+      rect:
+        serializedVersion: 2
+        x: 6105
+        y: 1287
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b56aa7811a92dd5479c4b5cc40ed35da
+      internalID: 564062713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_23
+      rect:
+        serializedVersion: 2
+        x: 7547
+        y: 1287
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fc60f8840f068745b5d46eefa0697ca
+      internalID: -1842718478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_24
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 207
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea01154dccf804e4b97fc2d07200ec06
+      internalID: 1322260626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_25
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 207
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c205b7e7e4e81340b1a72a276e52985
+      internalID: -1748153503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_26
+      rect:
+        serializedVersion: 2
+        x: 3227
+        y: 207
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 648b8d468d1018948909e9aaf9d14d46
+      internalID: -1692021615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_27
+      rect:
+        serializedVersion: 2
+        x: 4666
+        y: 207
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3a4662d0030b614a850bf5e2aec4b5e
+      internalID: 1316641718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_28
+      rect:
+        serializedVersion: 2
+        x: 6105
+        y: 207
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 201b31e3c96102a4bb722156e03ed4b4
+      internalID: -1205693313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodWorldHighlighting_29
+      rect:
+        serializedVersion: 2
+        x: 7547
+        y: 207
+        width: 770
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a01f292adce2c34439755586326f81b0
+      internalID: 175385075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      FoodWorldHighlighting_3: -1507352459
+      FoodWorldHighlighting_27: 1316641718
+      FoodWorldHighlighting_10: -1991797709
+      FoodWorldHighlighting_12: -946429902
+      FoodWorldHighlighting_4: 1178371703
+      FoodWorldHighlighting_1: -564433236
+      FoodWorldHighlighting_18: -560026334
+      FoodWorldHighlighting_22: 564062713
+      FoodWorldHighlighting_15: -1908985955
+      FoodWorldHighlighting_9: -1770202342
+      FoodWorldHighlighting_16: 1954068545
+      FoodWorldHighlighting_0: -817480446
+      FoodWorldHighlighting_6: -952006358
+      FoodWorldHighlighting_5: -866026796
+      FoodWorldHighlighting_14: -77508314
+      FoodWorldHighlighting_8: 1304809705
+      FoodWorldHighlighting_20: -1628309993
+      FoodWorldHighlighting_7: 1699407696
+      FoodWorldHighlighting_23: -1842718478
+      FoodWorldHighlighting_26: -1692021615
+      FoodWorldHighlighting_13: -1895540492
+      FoodWorldHighlighting_17: -80125406
+      FoodWorldHighlighting_24: 1322260626
+      FoodWorldHighlighting_2: -2146373440
+      FoodWorldHighlighting_29: 175385075
+      FoodWorldHighlighting_28: -1205693313
+      FoodWorldHighlighting_21: -952458337
+      FoodWorldHighlighting_25: -1748153503
+      FoodWorldHighlighting_11: 2098898337
+      FoodWorldHighlighting_19: -790442310
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

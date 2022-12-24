@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3781391a279273246bcb5712b09b2025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ModalWindow: {fileID: 0}
+  ModalWindow: {fileID: 1933786659}
   InteractableObject: {fileID: 0}
   TasksButton: {fileID: 434206117}
   ShopButton: {fileID: 838352444}
@@ -1277,7 +1277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &633195519
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3263,6 +3263,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1933786659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4415581668447986883, guid: a427d5fa2ef31f747b44b6d8bd36373a, type: 3}
+  m_PrefabInstance: {fileID: 4415581666879629686}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2008470866
 GameObject:
   m_ObjectHideFlags: 0
@@ -4013,7 +4018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4415581668447986883, guid: a427d5fa2ef31f747b44b6d8bd36373a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a427d5fa2ef31f747b44b6d8bd36373a, type: 3}
