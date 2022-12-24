@@ -76,9 +76,11 @@ public abstract class BaseThreat : MonoBehaviour, IThreat
 
     public virtual IEnumerator AddStress(int time)
     {
-        GameModel.StressLevel += StressLevel;
+        //GameModel.StressLevel += StressLevel;
+        GameModel.ChangeStressAsync(StressLevel);
         yield return new WaitForSecondsRealtime(time);
-        GameModel.StressLevel -= StressLevel;
+        GameModel.ChangeStressAsync(-StressLevel);
+        //GameModel.StressLevel -= StressLevel;
     }
 
     public virtual void CheckIntersectionOnGameField()

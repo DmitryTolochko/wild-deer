@@ -59,21 +59,21 @@ public class TrainScript : MonoBehaviour
                                         "Знакомство___На северо-западе Восточного Таймыра обнаружен детеныш Rangifer tarandus - Северный Олень.", 
                                         "Знакомство___Ваша задача помочь олененку выжить в суровых условиях и увеличить стадо. ",
                                         "Знакомство___Объект должен быть под постоянным наблюдением, поэтому мы расставили по периметру камеры видеонаблюдения, это облегчит выполнение миссии.",
-                                        "Еда___Северные олени в основном питаются ягелем - разновидностью лишайника. Соберите ягель, нажав по нему",
-                                        "Инвентарь___Внизу экрана расположен ИНВЕНТАРЬ. В нем хранятся все твои предметы",
-                                        "Олень проголодался!___Смотри, олень хочет есть! Перетащи на него собранный тобой ранее ягель, чтобы покормить.",
-                                        "Задания___Смотри, появилась красная точка. Давай посмотрим, что там! Нажми на кнопку в левом нижнем углу",
+                                        "Еда___Северные олени питаются ягелем. Соберите ягель, нажав по нему",
+                                        "Инвентарь___Внизу расположен ИНВЕНТАРЬ. В нем хранятся все твои предметы",
+                                        "Олень проголодался!___Перетащи на него собранный ягель, чтобы покормить.",
+                                        "Задания___Смотри, появилась красная точка. Давай посмотрим, что там!",
                                         "Задания___Это список Заданий. Здесь отображаются задачи, выполняя которые, ты можешь получить вознаграждение, которое тебе точно пригодится позже.",
                                         "Задания___Смотри, одно из заданий ты уже выполнил, забери свою награду.",
                                         "Задания___Теперь вернись на главный экран",
                                         "Внимание!___Первая встреча с хищником! Нужно защитить олененка! ",
-                                        "Внимание!___Зайди в магазин, чтобы купить необходимый предмет, который поможет нам справиться с нависшей угрозой!",
+                                        "Внимание!___Зайди в магазин, чтобы купить необходимый предмет",
                                         "Магазин___Здесь ты можешь приобрести всё необходимое, главное чтобы хватило денег.",
                                         "Магазин___Сейчас тебе нужен капкан. Купи его!",
                                         "Магазин___Скорее возвращайся к нашему оленю!",
                                         "Капкан___Чтобы применить капкан, переведи его на песца",
                                         "Отлично!___Теперь подведём итог. Выполняй задания чтобы получать деньги.",
-                                        "Отлично!___Когда появится какой-то недоброжелатель - скорее покупай нужный инвентарь и применяй его!",
+                                        "Отлично!___Когда появится какой-то недоброжелатель - скорее покупай нужный предмет и применяй его!",
                                         "Отлично!___И не забывай, что олени хотят есть и пить, а ещё могут болеть."};
     
         ModalWindow = transform.Find("ModalWindow").gameObject;
@@ -89,6 +89,8 @@ public class TrainScript : MonoBehaviour
         ThreatSpawner.CanArouseThreat = false;
         FoodSpawner.IsWaiting = true;
         WaterSpawner.IsWaiting = true;
+        TasksButton.interactable = true;
+        ShopButton.interactable = true;
 
         ShowWindow(lines[0].Split("___")[0], lines[0].Split("___")[1]);
 
@@ -139,7 +141,7 @@ public class TrainScript : MonoBehaviour
         while (IsWindowActive)
             yield return new WaitForSeconds(0);
 
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSeconds(5);
 
         StartCoroutine(GameModel.Deers.First().GetComponent<Deer>().GetBuff(BuffType.Hunger));
 
@@ -160,7 +162,7 @@ public class TrainScript : MonoBehaviour
 
         //задания
 
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSeconds(3);
 
         i++;
         NotificationScript.IsHidden = false;
@@ -173,8 +175,11 @@ public class TrainScript : MonoBehaviour
         while (SceneManager.sceneCount == 1)
             yield return new WaitForSeconds(0);
 
+        HideWindow();
+
         //открываем окно заданий
         TasksTrainScript.IsOn = true;
+        TasksButton.interactable = false;
 
         while (SceneManager.sceneCount > 1)
             yield return new WaitForSeconds(0);
@@ -183,7 +188,7 @@ public class TrainScript : MonoBehaviour
         // песец
 
         ThreatSpawner.CanArouseThreat = true;
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSeconds(5);
 
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
         ShowObject(GameModel.CurrentThreat,
@@ -198,14 +203,22 @@ public class TrainScript : MonoBehaviour
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
         ShowObject(transform.Find("ShopButton").gameObject,
             transform.Find("ShopButton").GetComponent<Image>().sprite, true);
+        HideButton();
+        ShopButton.gameObject.SetActive(true);
 
         while (SceneManager.sceneCount == 1)
             yield return new WaitForSeconds(0);
+
+        HideWindow();
+        
+        //открываем окно магазина
 
         ShopTrainScript.IsOn = true;
 
         while (SceneManager.sceneCount > 1)
             yield return new WaitForSeconds(0);
+
+        ShopButton.interactable = false;
 
         // Конец обучения
 
@@ -214,6 +227,15 @@ public class TrainScript : MonoBehaviour
 
         while (GameModel.CurrentThreat != null)
             yield return new WaitForSeconds(0);
+
+        if (GameModel.Deers.Count == 0)
+        {
+            ShowWindow("Ой!", "Олень умер, но ничего страшного! Просто начнём всё с начала.");
+            while (IsWindowActive)
+                yield return new WaitForSeconds(0);
+            StartCoroutine(StartTrain());
+            yield break;
+        }
 
         i++;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
@@ -231,6 +253,8 @@ public class TrainScript : MonoBehaviour
         ThreatSpawner.CanArouseThreat = true;
         FoodSpawner.IsWaiting = false;
         WaterSpawner.IsWaiting = false;
+        TasksButton.interactable = true;
+        ShopButton.interactable = true;
     }
 
     private void ShowObject(GameObject otherObject, Sprite sprite, bool isUI = false)

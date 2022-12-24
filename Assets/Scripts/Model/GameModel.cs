@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Model.Boosters;
 using ServiceInstances;
 using Unity.VisualScripting;
@@ -19,6 +20,9 @@ public class GameModel : MonoBehaviour
     public Dictionary<BoosterType, IBooster> Boosters { get; private set; }
     public static int Balance = 1000;
     public static Collider2D GameField;
+
+    public static System.TimeSpan bestTime;
+
     public static float StressLevel = 0;
 
     private bool IsBuffAffixed = false;
@@ -48,9 +52,26 @@ public class GameModel : MonoBehaviour
         }*/
     }
 
+    public static async void ChangeStressAsync(float value)
+    {
+        if (value < 0 && StressLevel + value < 0) 
+            return;
+        if (value > 0 && StressLevel + value > 1)
+            return;
+        ChangeStress(value);
+        await Task.Yield();
+    }
+
+    private static void ChangeStress(float value)
+    {
+        StressLevel += value;
+    }
+
     private void Update()
     {
         GetBuffByStress();
+        if (Time.timeScale == 1)
+            ChangeStressAsync(0.00001f);
     }
 
     private void GetBuffByStress()
@@ -59,27 +80,39 @@ public class GameModel : MonoBehaviour
         {
             IsBuffAffixed = true;
             var count = Deers.Count >= 3 ? 3 : Deers.Count;
-            for (var i = 0; i < count; i++)
-            {
-                switch (Random.Range(0, 3))
-                {
-                    case 0:
-                        StartCoroutine(Deers.ElementAt(i).GetComponent<Deer>().GetBuff(BuffType.Hunger));
-                        break;
-                    case 1:
-                        StartCoroutine(Deers.ElementAt(i).GetComponent<Deer>().GetBuff(BuffType.Ill));
-                        break;
-                    case 2:
-                        StartCoroutine(Deers.ElementAt(i).GetComponent<Deer>().GetBuff(BuffType.Thirsty));
-                        break;
-                }
-
-                BuffedDeers.Add(Deers.ElementAt(i));
-            }
+            StartCoroutine(GetBuff(Random.Range(3, 10), count));
         }
 
         if (BuffedDeers.Count == 0)
             IsBuffAffixed = false;
+    }
+
+    private IEnumerator GetBuff(float time, int count)
+    {
+        for (var i = 0; i < count; i++)
+            {
+                var BuffType = default(BuffType);
+                switch (Random.Range(0, 3))
+                {
+                    case 0:
+                        BuffType = BuffType.Hunger;
+                        break;
+                    case 1:
+                        BuffType = BuffType.Ill;
+                        break;
+                    case 2:
+                        BuffType = BuffType.Thirsty;
+                        break;
+                }
+                // Deers.ElementAt(i).GetComponent<Deer>().BuffType == BuffType.No
+                if (Deers.Count != 0 && !BuffedDeers.Contains(Deers.ElementAt(i))
+                && Deers.ElementAt(i).GetComponent<Deer>().BuffType == BuffType.No)
+                {
+                    StartCoroutine(Deers.ElementAt(i).GetComponent<Deer>().GetBuff(BuffType));
+                    BuffedDeers.Add(Deers.ElementAt(i));
+                }
+                yield return new WaitForSeconds(time);
+            }
     }
 
 

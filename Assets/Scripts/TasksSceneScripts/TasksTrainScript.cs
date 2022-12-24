@@ -23,9 +23,9 @@ private void Start()
                                         "Еда___Северные олени в основном питаются ягелем - разновидностью лишайника. Соберите ягель, нажав по нему",
                                         "Инвентарь___Внизу экрана расположен ИНВЕНТАРЬ. В нем хранятся все твои предметы",
                                         "Олень проголодался!___Смотри, олень хочет есть! Перетащи на него собранный тобой ранее ягель, чтобы покормить.",
-                                        "Задания___Смотри, появилась красная точка. Давай посмотрим, что там! Нажми на кнопку в левом нижнем углу",
-                                        "Задания___Это список Заданий. Здесь отображаются задачи, выполняя которые, ты можешь получить вознаграждение, которое тебе точно пригодится позже.",
-                                        "Задания___Смотри, одно из заданий ты уже выполнил, забери свою награду.",
+                                        "Задания___Смотри, появилась красная точка. Давай посмотрим, что там!",
+                                        "Задания___Здесь отображаются задачи, выполняя которые ты можешь получить вознаграждение.",
+                                        "Задания___Одно из заданий ты уже выполнил, забери свою награду.",
                                         "Задания___Теперь вернись на главный экран",
                                         "Внимание!___Первая встреча с хищником! Нужно защитить олененка! ",
                                         "Внимание!___Зайди в магазин, чтобы купить необходимый предмет, который поможет нам справиться с нависшей угрозой!",
@@ -39,7 +39,7 @@ private void Start()
 
     }
 
-    private void ShowWindow(string header, string text)
+    private void ShowWindow(string header, string text, bool showButton = true)
     {
         IsWindowActive = true;
         ModalWindow.SetActive(true);
@@ -47,11 +47,12 @@ private void Start()
         var panelTransform = ModalWindow.transform.Find("Panel").transform;
         panelTransform.Find("Header").GetComponent<Text>().text = header;
         panelTransform.Find("Text").GetComponent<Text>().text = text;
-        panelTransform
-            .Find("Button")
-            .GetComponent<Button>()
-            .onClick
-            .AddListener(HideWindow);
+        if (showButton)
+            panelTransform
+                .Find("Button")
+                .GetComponent<Button>()
+                .onClick
+                .AddListener(HideWindow);
         Time.timeScale = 0;
     }
 
@@ -71,29 +72,50 @@ private void Start()
         IsWindowActive = false;
     }
 
+    private void HideButton()
+    {
+        var panelTransform = ModalWindow.transform.Find("Panel").transform;
+        panelTransform.Find("Button").gameObject.SetActive(false);
+    }
+
     public IEnumerator Begin()
     {
         IsOn = false;
-        ModalWindow = transform.Find("ModalWindow").gameObject;
+        transform.Find("Panel").transform.Find("TaskFirst").gameObject.SetActive(false);
+        transform.Find("Panel").transform.Find("TaskSecond").gameObject.SetActive(false);
+        transform.Find("Panel").transform.Find("TaskThird").gameObject.SetActive(false);
+        transform.Find("Panel").transform.Find("BackButton").gameObject.SetActive(false);
+        ModalWindow = transform.Find("Panel").transform.Find("ModalWindow").gameObject;
         var i = 8;
         
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
 
-        while (IsWindowActive)//(GameModel.Balance == 0)
+        while (IsWindowActive)
             yield return false;
 
         i++;
-        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
+        transform.Find("Panel").transform.Find("TaskFirst").gameObject.SetActive(true);
+        ModalWindow = transform.Find("Panel").transform.Find("ModalWindow2").gameObject;
+        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1], false);
+        ShowObject(transform.Find("Panel").transform.Find("TaskFirst").gameObject,
+        Resources.Load<Sprite>("CardBackround"),
+        true);
 
         while (GameModel.Balance == 0)
             yield return false;
 
+        HideWindow();
         i++;
+        transform.Find("Panel").transform.Find("BackButton").gameObject.SetActive(true);
+        ModalWindow = transform.Find("Panel").transform.Find("ModalWindow").gameObject;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
         ShowObject(transform.Find("Panel").transform.Find("BackButton").gameObject,
             Resources.Load<Sprite>("CloseButton"), 
             true);
+        HideButton();
 
+        transform.Find("Panel").transform.Find("TaskSecond").gameObject.SetActive(true);
+        transform.Find("Panel").transform.Find("TaskThird").gameObject.SetActive(true);
     }
 
     private void ShowObject(GameObject otherObject, Sprite sprite, bool isUI=false)

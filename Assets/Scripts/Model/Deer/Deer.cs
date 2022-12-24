@@ -169,7 +169,8 @@ public class Deer : MonoBehaviour
                 break;
         }
 
-        GameModel.StressLevel -= GameModel.StressLevel < 0.1f ? GameModel.StressLevel : 0.1f;
+        var diff = GameModel.StressLevel < 0.1f ? GameModel.StressLevel : 0.1f;
+        GameModel.ChangeStressAsync(-diff);
         ResetTimerBar();
     }
 

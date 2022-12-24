@@ -14,8 +14,8 @@ public class ArcticFox : BaseThreat
 
     public override void PlaceThreat()
     {
-        var distanceToTarget = Vector2.Distance(transform.position, SpawnPoint);
-        if (distanceToTarget > 0.65f)
+        DistanceToTarget = Vector2.Distance(transform.position, SpawnPoint);
+        if (DistanceToTarget > 0.65f)
         {
             Move(SpawnPoint, 3);
             TargetPoint.transform.position = SpawnPoint;
@@ -42,8 +42,8 @@ public class ArcticFox : BaseThreat
 
     public override void ActAfterWin()
     {
-        var distanceToTarget = Vector2.Distance(transform.position, SpawnPoint);
-        if (distanceToTarget > 0.5f)
+        DistanceToTarget = Vector2.Distance(transform.position, SpawnPoint);
+        if (DistanceToTarget > 0.5f)
             Move(SpawnPoint, 2);
         else
             Status = ThreatStatus.Defeated;

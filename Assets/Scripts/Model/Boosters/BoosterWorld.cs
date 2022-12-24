@@ -122,21 +122,24 @@ public class BoosterWorld : MonoBehaviour
                     case BoosterType.Food:
                         Inventory.UseBooster(Type);
                         deerComponent.StopBuff(BuffType.Hunger);
-                        GameModel.StressLevel -= 0.05f;
+                        GameModel.ChangeStressAsync(-0.05f);
+                        //GameModel.StressLevel -= 0.05f;
                         boosterSound.ChangeSoundAndPlay();
                         Destroy(gameObject);
                         break;
                     case BoosterType.Water:
                         Inventory.UseBooster(Type);
                         deerComponent.StopBuff(BuffType.Thirsty);
-                        GameModel.StressLevel -= 0.05f;
+                        GameModel.ChangeStressAsync(-0.05f);
+                        //GameModel.StressLevel -= 0.05f;
                         boosterSound.ChangeSoundAndPlay();
                         Destroy(gameObject);
                         break;
                     case BoosterType.Medicines:
                         Inventory.UseBooster(Type);
                         deerComponent.StopBuff(BuffType.Ill);
-                        GameModel.StressLevel -= 0.05f;
+                        GameModel.ChangeStressAsync(-0.05f);
+                        //GameModel.StressLevel -= 0.05f;
                         boosterSound.ChangeSoundAndPlay();
                         Destroy(gameObject);
                         break;

@@ -30,7 +30,7 @@ private void Start()
                                         "Задания___Теперь вернись на главный экран",
                                         "Внимание!___Первая встреча с хищником! Нужно защитить олененка! ",
                                         "Внимание!___Зайди в магазин, чтобы купить необходимый предмет, который поможет нам справиться с нависшей угрозой!",
-                                        "Магазин___Здесь ты можешь приобрести всё необходимое, главное чтобы хватило денег.",
+                                        "Магазин___Здесь ты можешь приобрести всё необходимое",
                                         "Магазин___Сейчас тебе нужен капкан. Купи его!",
                                         "Магазин___Скорее возвращайся к нашему оленю!",
                                         "Капкан___Чтобы применить капкан, переведи его на песца",
@@ -40,7 +40,7 @@ private void Start()
 
     }
 
-    private void ShowWindow(string header, string text)
+    private void ShowWindow(string header, string text, bool showButton = true)
     {
         IsWindowActive = true;
         ModalWindow.SetActive(true);
@@ -48,13 +48,15 @@ private void Start()
         var panelTransform = ModalWindow.transform.Find("Panel").transform;
         panelTransform.Find("Header").GetComponent<Text>().text = header;
         panelTransform.Find("Text").GetComponent<Text>().text = text;
-        panelTransform
-            .Find("Button")
-            .GetComponent<Button>()
-            .onClick
-            .AddListener(HideWindow);
+        if (showButton)
+            panelTransform
+                .Find("Button")
+                .GetComponent<Button>()
+                .onClick
+                .AddListener(HideWindow);
         Time.timeScale = 0;
     }
+
 
     private void Update() 
     {
@@ -72,10 +74,20 @@ private void Start()
         IsWindowActive = false;
     }
 
+    private void HideButton()
+    {
+        var panelTransform = ModalWindow.transform.Find("Panel").transform;
+        panelTransform.Find("Button").gameObject.SetActive(false);
+    }
+
     public IEnumerator Begin()
     {
         IsOn = false;
-        ModalWindow = transform.Find("ModalWindow").gameObject;
+        transform.Find("Panel").transform.Find("FirstItem").gameObject.SetActive(false);
+        transform.Find("Panel").transform.Find("SecondItem").gameObject.SetActive(false);
+        transform.Find("Panel").transform.Find("ThirdItem").gameObject.SetActive(false);
+        transform.Find("Panel").transform.Find("BackButton").gameObject.SetActive(false);
+        ModalWindow = transform.Find("Panel").transform.Find("ModalWindow").gameObject;
         var i = 13;
         
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
@@ -84,16 +96,28 @@ private void Start()
             yield return false;
 
         i++;
-        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
+        transform.Find("Panel").transform.Find("FirstItem").gameObject.SetActive(true);
+        ModalWindow = transform.Find("Panel").transform.Find("ModalWindow2").gameObject;
+        ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1], false);
+        ShowObject(transform.Find("Panel").transform.Find("FirstItem").gameObject,
+        Resources.Load<Sprite>("CardBackround"),
+        true);
 
-        while (GameModel.Balance != 0)
+        while (GameModel.Balance == 200)
             yield return false;
 
+        HideWindow();
         i++;
+        transform.Find("Panel").transform.Find("BackButton").gameObject.SetActive(true);
+        ModalWindow = transform.Find("Panel").transform.Find("ModalWindow").gameObject;
         ShowWindow(lines[i].Split("___")[0], lines[i].Split("___")[1]);
         ShowObject(transform.Find("Panel").transform.Find("BackButton").gameObject,
             Resources.Load<Sprite>("CloseButton"),
             true);
+        HideButton();
+
+        transform.Find("Panel").transform.Find("SecondItem").gameObject.SetActive(true);
+        transform.Find("Panel").transform.Find("ThirdItem").gameObject.SetActive(true);
     }
 
     private void ShowObject(GameObject otherObject, Sprite sprite, bool isUI=false)
