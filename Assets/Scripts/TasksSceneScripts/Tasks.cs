@@ -55,7 +55,7 @@ public class Tasks : MonoBehaviour
             {
                 GameModel.ActualTasks[i] = GetNewTask();
             }
-            else if (GameModel.ActualTasks.Count == 0)
+            else if (GameModel.ActualTasks.Count == 0 && TrainScript.IsOn)
             {
                 GameModel.ActualTasks.Add(new TaskInstance(
                     TaskType.CollectFood, 
@@ -65,6 +65,12 @@ public class Tasks : MonoBehaviour
                     200,
                     Resources.Load<Sprite>("DeerIcon")));
 
+                GameModel.ActualTasks.Add(GetNewTask());
+                GameModel.ActualTasks.Add(GetNewTask());
+            }
+            else if (GameModel.ActualTasks.Count == 0)
+            {
+                GameModel.ActualTasks.Add(GetNewTask());
                 GameModel.ActualTasks.Add(GetNewTask());
                 GameModel.ActualTasks.Add(GetNewTask());
             }

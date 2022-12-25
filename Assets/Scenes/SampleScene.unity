@@ -1036,6 +1036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c93ba2e524aae248a25fa84641e7a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ModalWindow: {fileID: 1933786659}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0

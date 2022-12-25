@@ -76,7 +76,7 @@ public class Cards : MonoBehaviour
         nonActiveCards.Enqueue(new ItemInstance(
             "Барьер",
             "Временно от всех",
-            150,
+            230,
             0,
             BoosterType.ProtectiveCap,
             Resources.Load<Sprite>("ProtectiveCapIcon")

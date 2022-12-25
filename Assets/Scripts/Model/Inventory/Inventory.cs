@@ -108,5 +108,11 @@ namespace Model.Inventory
 
             BoosterUsed?.Invoke(type);
         }
+
+        public static void Clear()
+        {
+            items.Clear();
+            ItemRemoved?.Invoke();
+        }
     }
 }

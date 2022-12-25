@@ -90,7 +90,7 @@ public class Deer : MonoBehaviour
         GetComponent<DeerAnimator>().ChangeSprite(CurrentAge, DeerGender);
         print("Ребёнок");
         yield return new WaitForSeconds(60);
-        GetComponent<DeerAnimator>().ChangeSprite(Age.Adult, DeerGender);
+        //GetComponent<DeerAnimator>().ChangeSprite(Age.Adult, DeerGender);
         CurrentAge = Age.CanMakeChild;
         print("Должен сделать детей");
         yield return new WaitForSeconds(25);

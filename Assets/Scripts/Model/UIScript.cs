@@ -24,20 +24,23 @@ public class UIScript : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        StressLevelBar = Resources
-            .FindObjectsOfTypeAll<GameObject>()
-            .FirstOrDefault(x => x.name == "StressLevelSlider")
-            .GetComponent<Image>();
+        StressLevelBar = GameObject.Find("StressLevelSlider").GetComponent<Image>();
+            // Resources
+            // .FindObjectsOfTypeAll<GameObject>()
+            // .FirstOrDefault(x => x.name == "StressLevelSlider")
+            // .GetComponent<Image>();
 
-        FemaleCount = Resources
-            .FindObjectsOfTypeAll<GameObject>()
-            .FirstOrDefault(x => x.name == "FemaleCount")
-            .GetComponent<Text>();
+        FemaleCount = GameObject.Find("FemaleCount").GetComponent<Text>();
+            // Resources
+            // .FindObjectsOfTypeAll<GameObject>()
+            // .FirstOrDefault(x => x.name == "FemaleCount")
+            // .GetComponent<Text>();
 
-        MaleCount = Resources
-            .FindObjectsOfTypeAll<GameObject>()
-            .FirstOrDefault(x => x.name == "MaleCount")
-            .GetComponent<Text>();
+        MaleCount = GameObject.Find("MaleCount").GetComponent<Text>();
+            // Resources
+            // .FindObjectsOfTypeAll<GameObject>()
+            // .FirstOrDefault(x => x.name == "MaleCount")
+            // .GetComponent<Text>();
 
         Smile = transform.Find("StressLevel").transform.Find("Smile").GetComponent<Image>();
     }

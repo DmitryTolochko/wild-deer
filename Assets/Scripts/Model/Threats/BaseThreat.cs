@@ -80,7 +80,7 @@ public abstract class BaseThreat : MonoBehaviour, IThreat
         //GameModel.StressLevel += StressLevel;
         GameModel.ChangeStressAsync(StressLevel);
         yield return new WaitForSecondsRealtime(StressTime);
-        GameModel.ChangeStressAsync(-StressLevel);
+        //GameModel.ChangeStressAsync(-StressLevel);
         //GameModel.StressLevel -= StressLevel;
     }
 

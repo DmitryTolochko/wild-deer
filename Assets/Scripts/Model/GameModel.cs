@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Model.Boosters;
+using Model.Inventory;
 using ServiceInstances;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class GameModel : MonoBehaviour
     public static List<TaskInstance> ActualTasks = new();
     public static HashSet<GameObject> FoodSpawned = new();
     public Dictionary<BoosterType, IBooster> Boosters { get; private set; }
-    public static int Balance = 1000;
+    public static int Balance = 0;
     public static Collider2D GameField;
 
     public static System.TimeSpan bestTime;
@@ -27,6 +28,8 @@ public class GameModel : MonoBehaviour
 
     private bool IsBuffAffixed = false;
     public static HashSet<GameObject> BuffedDeers = new HashSet<GameObject>();
+
+    public GameObject ModalWindow;
 
     private void Start()
     {
@@ -70,8 +73,10 @@ public class GameModel : MonoBehaviour
     private void Update()
     {
         GetBuffByStress();
-        if (Time.timeScale == 1)
+        if (Time.timeScale > 0.5)
             ChangeStressAsync(0.00001f);
+
+        CheckIfGameEnded();
     }
 
     private void GetBuffByStress()
@@ -138,5 +143,54 @@ public class GameModel : MonoBehaviour
             BuffType.Ill => BoosterType.Medicines,
             BuffType.Thirsty => BoosterType.Water
         };
+    }
+
+    private void CheckIfGameEnded()
+    {
+        if (!TrainScript.IsOn && Deers.Count == 0 && Time.timeScale == 1 )
+        {
+            GameTimer.Stopwatch.Stop();
+            var sex = GameTimer.Stopwatch.Elapsed.Seconds;
+            var mins = GameTimer.Stopwatch.Elapsed.Minutes;
+
+            var currentTime = $"{(mins < 10 ? "0" : "")}{mins}:{(sex < 10 ? "0" : "")}{sex}";
+            ModalWindow.SetActive(true);
+
+            var panelTransform = ModalWindow.transform.Find("Panel").transform;
+            panelTransform.Find("Header").GetComponent<Text>().text = "Игра окончена!";
+
+            if (bestTime < GameTimer.Stopwatch.Elapsed)
+                bestTime = GameTimer.Stopwatch.Elapsed.CloneViaFakeSerialization();
+
+            sex = bestTime.Seconds;
+            mins = bestTime.Minutes;
+
+            var bestCurrentTime = $"{(mins < 10 ? "0" : "")}{mins}:{(sex < 10 ? "0" : "")}{sex}";
+
+            var text = $"Вы играли {currentTime}.\nВаше лучшее время {bestCurrentTime}";
+            panelTransform.Find("Text").GetComponent<Text>().text = text;
+            panelTransform.Find("Button").gameObject.SetActive(true);
+            panelTransform
+                .Find("Button")
+                .GetComponent<Button>()
+                .onClick
+                .AddListener(() =>
+                    {
+                        ModalWindow.SetActive(false);
+                        Time.timeScale = 1;
+                        GameTimer.Stopwatch.Restart();
+                        StressLevel = 0;
+                        ActualTasks = new();
+                        Boosters.Clear();
+                        BuffedDeers = new HashSet<GameObject>();
+                        FoodSpawned = new();
+                        CurrentThreat = null;
+                        Balance = 150;
+                        Inventory.Clear();
+                        Application.LoadLevel(0);  
+                    }
+                );
+            Time.timeScale = 0;
+        }
     }
 }

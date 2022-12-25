@@ -31,12 +31,26 @@ public class DeerAnimator : MonoBehaviour
 
     private void Update()
     {
-        spriteRenderer.flipX = deer.TargetPos.x > transform.position.x;
+        var distance = transform.position.y - deer.TargetPos.y;
+
+        if (distance < 0)
+        {
+            animator.SetBool("IsGoingUp", true);
+            spriteRenderer.flipX = deer.TargetPos.x <= transform.position.x;
+        }
+        else
+        {
+            animator.SetBool("IsGoingUp", false);
+            spriteRenderer.flipX = deer.TargetPos.x > transform.position.x;
+        }
 
         spriteRenderer.sortingOrder = (int) (transform.position.y * (-10));
 
         if (deer.Speed == 0 || !deer.IsSpawned)
+        {
+            animator.SetBool("IsGoingUp", false);
             animator.SetFloat("Move", 0);
+        }
         else
             animator.SetFloat("Move", 1);
     }
@@ -54,24 +68,24 @@ public class DeerAnimator : MonoBehaviour
                 FemaleDeer.SetActive(false);
                 animator = YoungDeer.GetComponent<Animator>();
                 break;
-            case Age.Adult:
-                YoungDeer.SetActive(false);
+            // case Age.Adult:
+            //     YoungDeer.SetActive(false);
 
-                animator = YoungDeer.GetComponent<Animator>();
-                if (gender == Gender.Male)
-                {
-                    MaleDeer.SetActive(true);
-                    animator = MaleDeer.GetComponent<Animator>();
-                    spriteRenderer = MaleDeer.GetComponent<SpriteRenderer>();
-                }
-                else
-                {
-                    FemaleDeer.SetActive(true);
-                    animator = FemaleDeer.GetComponent<Animator>();
-                    spriteRenderer = FemaleDeer.GetComponent<SpriteRenderer>();
-                }
+            //     animator = YoungDeer.GetComponent<Animator>();
+            //     if (gender == Gender.Male)
+            //     {
+            //         MaleDeer.SetActive(true);
+            //         animator = MaleDeer.GetComponent<Animator>();
+            //         spriteRenderer = MaleDeer.GetComponent<SpriteRenderer>();
+            //     }
+            //     else
+            //     {
+            //         FemaleDeer.SetActive(true);
+            //         animator = FemaleDeer.GetComponent<Animator>();
+            //         spriteRenderer = FemaleDeer.GetComponent<SpriteRenderer>();
+            //     }
 
-                break;
+            //     break;
         }
     }
 

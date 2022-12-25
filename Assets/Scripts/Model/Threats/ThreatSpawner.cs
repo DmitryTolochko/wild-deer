@@ -42,11 +42,11 @@ public class ThreatSpawner : MonoBehaviour
         {
             case 1:
                 StartCoroutine(CreateThreat(PoolObjectType.ArcticFox));
-                print("1");
+                //print("1");
                 break;
             case 2:
                 StartCoroutine(CreateThreat(PoolObjectType.KillerPoacher));
-                print("2");
+                //print("2");
                 break;
         } 
 
@@ -54,7 +54,7 @@ public class ThreatSpawner : MonoBehaviour
         var count = GameModel.Deers.Count;
         var time = 0;
         if (count <= 3)
-            time = Random.Range(30, 40);
+            time = Random.Range(25, 35);
         else if (count <= 6)
             time = Random.Range(15, 25);
         else if (count <= 9)

@@ -35,7 +35,7 @@ public class InventoryUI : MonoBehaviour
 
     public void RefreshInventoryItems()
     {
-        if (itemSlotContainer == null)
+        if (itemSlotContainer is null)
         {
             return;
         }

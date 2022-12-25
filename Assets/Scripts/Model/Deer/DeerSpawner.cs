@@ -49,7 +49,7 @@ public class DeerSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (!TrainScript.IsOn && GameModel.StressLevel <= 0.3f && GameModel.Deers.Count < 14)
+        if (!TrainScript.IsOn && GameModel.StressLevel <= 0.5f && GameModel.Deers.Count < 14)
         {
             if (ChildrenCountForGeneration == 0
                 && childDeers.Count == 0
@@ -104,12 +104,13 @@ public class DeerSpawner : MonoBehaviour
 
     private void BringTogetherParents()
     {
-        parentDeers.ElementAt(1).GetComponent<Deer>().FreezePosition();
-        parentDeers.ElementAt(0).GetComponent<Deer>().TargetPos =
-            parentDeers.ElementAt(1).GetComponent<Deer>().transform.position;
+        var first = parentDeers.ElementAt(1).GetComponent<Deer>();
+        var second = parentDeers.ElementAt(0).GetComponent<Deer>();
+        first.FreezePosition();
+        second.TargetPos = first.transform.position;
 
-        parentDeers.ElementAt(1).GetComponent<Deer>().IsPairing = true;
-        parentDeers.ElementAt(0).GetComponent<Deer>().IsPairing = true;
+        first.IsPairing = true;
+        second.IsPairing = true;
     }
 
     private IEnumerator CreateDeer(PoolObjectType type)
