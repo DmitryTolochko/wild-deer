@@ -10,3 +10,6 @@
 
 ## Ссылка на APK игры:
 https://drive.google.com/drive/folders/1mpEhFVcRBGs4kDibYpA_kauQIIt1lXzt
+
+## Ссылка на черновик на Яндекс играх:
+https://yandex.ru/games/app/208144?draft=true&lang=ru
